@@ -22,7 +22,7 @@
 
   var foot = '<footer class="foot">'
     + '<span>SLAYER — open polish LLM lab · 2026</span>'
-    + '<span><a href="/benchmarks">metodologia</a> · <a href="/leaderboard">leaderboard</a> · <a href="/roadmap">roadmap</a> · <a href="/zespol">dołącz</a></span>'
+    + '<span><a href="https://github.com/kwikiel/slayer" rel="noopener">GitHub</a> · <a href="/benchmarks">metodologia</a> · <a href="/leaderboard">leaderboard</a> · <a href="/roadmap">roadmap</a> · <a href="/zespol">dołącz</a></span>'
     + '</footer>';
 
   function inject(){

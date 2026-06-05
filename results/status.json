@@ -1,6 +1,6 @@
 {
-  "now_ts": 1780658880.002288,
-  "now": "2026-06-05 13:28:00",
+  "now_ts": 1780659030.2751155,
+  "now": "2026-06-05 13:30:30",
   "started_ts": 1780598935.0,
   "deadline_ts": 1780678135.0,
   "max_hours": 22,
@@ -58,14 +58,14 @@
     }
   ],
   "current": {
-    "label": "INCLUDE-44 (PL, s45)",
+    "label": "Belebele EN (s45)",
     "model": "Bielik-11B-v3.0-Instruct",
-    "done": 200,
-    "total": 399,
-    "pct": 50.1,
-    "secs": 17,
-    "rate_per_s": 11.76,
-    "eta_secs": 17,
+    "done": 400,
+    "total": 900,
+    "pct": 44.4,
+    "secs": 40,
+    "rate_per_s": 10.0,
+    "eta_secs": 50,
     "stage": ""
   },
   "keep_warm": true,
@@ -190,6 +190,6 @@
     "total_jobs": 10,
     "overall_pct": 100.0,
     "eta_secs": 0,
-    "projected_done_ts": 1780658880
+    "projected_done_ts": 1780659030
   }
 }
