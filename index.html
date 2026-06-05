@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slayer — otwarte laboratorium polskiego modelu językowego</title>
+  <meta name="description" content="Teza: super-tanio zreplikować klasę najlepszego polskiego modelu i pójść o epsilon dalej — otwarcie, odtwarzalnie, na publicznych benchmarkach. Leaderboard na żywo.">
+  <link rel="stylesheet" href="/assets/lab.css">
+  <style>
+    .hero{position:relative;padding:128px clamp(18px,5vw,72px) 72px;overflow:hidden}
+    .hero::before{content:"";position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;background:radial-gradient(circle,var(--acc-soft),transparent 62%);pointer-events:none;z-index:0}
+    .hgrid{position:relative;z-index:1;width:min(1140px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(30px,5vw,68px);align-items:center}
+    @media(max-width:900px){.hgrid{grid-template-columns:1fr}}
+    .htag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px}
+    .htag .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:pl 2s infinite}
+    .hero h1{margin:0 0 22px;font-family:var(--serif);font-size:clamp(2.9rem,6.4vw,5rem);line-height:1.0;font-weight:400;letter-spacing:-.02em;color:var(--ink)}
+    .hero h1 em{font-style:italic;color:var(--acc)}
+    .lede{max-width:600px;margin:0 0 30px;color:var(--mut);font-size:clamp(1.08rem,1.7vw,1.32rem);line-height:1.5}
+    .lede b{color:var(--ink);font-weight:600}
+    .hmeta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:32px;font-family:var(--mono);font-size:.76rem;color:var(--dim)}
+    .hmeta b{color:var(--mut);font-weight:500}
+    .scoreline{display:flex;align-items:baseline;justify-content:center;gap:16px;font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6vw,3.6rem);margin:6px 0 16px}
+    .scoreline .b{color:var(--acc)}.scoreline .q{color:var(--mut)}.scoreline .c{color:var(--dim)}
+    .vs{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:.74rem;color:var(--mut)}
+    .lab2{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.74rem;color:var(--mut);margin:12px 0 5px}.lab2 .v{color:var(--ink)}
+    .pnote{margin:14px 0 0;font-size:.86rem;color:var(--mut)}.pnote a{color:var(--acc)}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <section class="hero">
+    <div class="hgrid">
+      <div>
+        <div class="htag"><span class="dot"></span><span class="kick"><span class="ac">OPEN LAB</span> · SUWERENNE POLSKIE AI · 2026</span></div>
+        <h1>Tanio zreplikować <em>klasę</em> najlepszego — i pójść o <em>epsilon</em> dalej.</h1>
+        <p class="lede">Teza badawcza: konkurencyjny polski model <b>11–14B</b> da się złożyć ułamkiem kosztu wielkich labów (<b>~15–20k zł</b>), nowoczesnymi metodami, w pełni <b>otwarcie i odtwarzalnie</b>. Cel: być o <b>epsilon lepszym</b> od punktu odniesienia — przy ułamku kosztu. Specjalizacja to najmocniejsza dźwignia.</p>
+        <div class="cta-row"><a class="btn btn-p" href="/leaderboard">Wyniki na żywo →</a><a class="btn btn-s" href="/zespol">Dołącz do labu</a></div>
+        <div class="hmeta"><span><b>11–14B</b> parametrów</span><span><b>10</b> benchmarków</span><span><b>0</b> benchmaxxingu</span><span><b>RTX 3090</b> · 4-bit</span></div>
+      </div>
+      <div class="panel">
+        <div class="panel-top"><span>leaderboard.json</span><span class="live"><span class="d"></span>LIVE</span></div>
+        <div class="panel-bd">
+          <div class="vs"><span>Bielik · ref.</span><span>Qwen3.5-9B · challenger</span></div>
+          <div class="scoreline"><span class="b" id="lb-v">·</span><span class="c">:</span><span class="q" id="lq-v">·</span></div>
+          <div class="lab2"><span>Bielik-11B-v3</span><span class="v" id="lb-w">—</span></div><div class="track"><i id="lb-bar" style="width:0"></i></div>
+          <div class="lab2"><span>Qwen3.5-9B</span><span class="v" id="lq-w">—</span></div><div class="track"><i class="q" id="lq-bar" style="width:0"></i></div>
+          <div class="lab2"><span>zmierzone</span><span class="v" id="ld-v">—</span></div><div class="track"><i id="ld-bar" style="width:0"></i></div>
+          <p class="pnote" id="l-note">wczytuję…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="sec">
+    <div class="inner">
+      <div class="shead"><div><span class="kick">01 · teza</span><h2>Ile naprawdę kosztuje <em>konkurencyjny</em> polski model?</h2></div>
+        <p>Nikt nie zweryfikował tego publicznie. My to mierzymy — jawnie, od pomiaru po trening.</p></div>
+      <div class="grid c3">
+        <div class="cell"><div class="n">REPLIKACJA + ε</div><h3>Dogonić i ruszyć dalej</h3><p>Powtórzyć klasę najlepszego polskiego modelu nowoczesnymi metodami — i dołożyć epsilon tam, gdzie się da.</p></div>
+        <div class="cell"><div class="n">EFEKTYWNOŚĆ</div><h3>~15–20k zł</h3><p>Ułamek budżetu wielkich labów. Każda złotówka jawna, każdy run odtwarzalny.</p></div>
+        <div class="cell"><div class="n">DŹWIGNIA</div><h3>Specjalizacja</h3><p>Prawo i administracja — grounding i odmowa zamiast halucynacji. Najmocniejsza ścieżka, nie ograniczenie.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="sec">
+    <div class="inner">
+      <div class="shead"><div><span class="kick">02 · laboratorium</span><h2>Wszystko jawne i odtwarzalne.</h2></div>
+        <p>Sześć modułów, jedna zasada: mierzymy czysto (held-out), trenujemy na niezależnych danych.</p></div>
+      <div class="grid auto">
+        <a class="cell" href="/leaderboard"><div class="top"><span>wyniki</span><span class="ar">→</span></div><h3 class="sm">Leaderboard</h3><p>Bielik vs Qwen3.5-9B na żywo.</p></a>
+        <a class="cell" href="/progress"><div class="top"><span>na żywo</span><span class="ar">→</span></div><h3 class="sm">Postęp kolejki</h3><p>Autonomiczny pomiar z ETA.</p></a>
+        <a class="cell" href="/benchmarks"><div class="top"><span>metoda</span><span class="ar">→</span></div><h3 class="sm">Benchmarki</h3><p>Dobór osi, metryki, czystość.</p></a>
+        <a class="cell" href="/datasety"><div class="top"><span>dane</span><span class="ar">→</span></div><h3 class="sm">Datasety</h3><p>Ewaluacja vs trening.</p></a>
+        <a class="cell" href="/trening"><div class="top"><span>metody</span><span class="ar">→</span></div><h3 class="sm">Trening</h3><p>SFT, DPO/ORPO, GRPO/RLVR.</p></a>
+        <a class="cell" href="/kierunki"><div class="top"><span>profil</span><span class="ar">→</span></div><h3 class="sm">Kierunki</h3><p>Jakim modelem ma być Slayer.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="sec">
+    <div class="inner">
+      <div class="shead"><div><span class="kick">03 · faq</span><h2>Dlaczego <em>osobny</em> lab?</h2></div><p>Najczęstsze pytanie. Krótko i wprost.</p></div>
+      <div class="grid c2">
+        <div class="cell"><h3 class="sm">Czemu nie w ramach Bielika?</h3><p>Bo chcemy publicznie zweryfikować: <b>ile naprawdę kosztuje</b> konkurencyjny polski model i czy da się go zreplikować <b>super tanio + epsilon</b>. Niezależny lab = więcej prób na bramkę dla całej sceny. Bielik to punkt odniesienia, nie konkurent.</p></div>
+        <div class="cell"><h3 class="sm">Czemu nie Bielik v3/v4?</h3><p>Używamy Bielika jako kandydata na bazę. Ale testujemy tani, nowoczesny przepis (GRPO/RLVR, trening odmowy, merging) i <b>dzielimy się całą recepturą</b> — tego nikt nie zrobił otwarcie.</p></div>
+        <div class="cell"><h3 class="sm">Konkurujecie ze SpeakLeash?</h3><p><b>Nie — komplementarnie.</b> Zdrowa konkurencja podnosi cały ekosystem; chętnie kontrybuujemy z powrotem.</p></div>
+        <div class="cell"><h3 class="sm">Czemu Qwen jako challenger?</h3><p>Mocna otwarta baza nie-polska. Sprawdzamy, <b>ile „polskości" trzeba dołożyć</b> i czy istnieje tańsza ścieżka niż trening od zera.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="inner narrow" style="text-align:center">
+      <span class="kick">dołącz</span>
+      <h2 class="serif" style="font-size:clamp(2.1rem,4.2vw,3.1rem);font-weight:400;letter-spacing:-.015em;margin:14px 0 14px">Zbuduj z nami polski model.</h2>
+      <p class="muted" style="max-width:54ch;margin:0 auto 26px;font-size:1.06rem">Kontrybutorzy, naukowcy, firmy (zgłoście use case) i fundatorzy compute. Publiczny zapis — od razu widać, kto już jest.</p>
+      <div class="cta-row" style="justify-content:center"><a class="btn btn-p" href="/zespol">Dołącz / zapisz się →</a><a class="btn btn-s" href="https://discord.gg/5YaDpSaE" rel="noopener">Discord</a></div>
+    </div>
+  </section>
+
+  <div id="site-foot"></div>
+  <script src="/assets/site.js"></script>
+  <script>
+    (function(){
+      const NB="Bielik-11B-v3.0-Instruct",NQ="Qwen3.5-9B",PLAN=10;
+      function upd(){fetch("/results/leaderboard.json?ts="+Date.now()).then(r=>r.json()).then(d=>{
+        const b=d.tally?.[NB]??0,q=d.tally?.[NQ]??0,n=(d.benchmarks||[]).length,tot=Math.max(b+q,1),$=i=>document.getElementById(i);
+        $("lb-v").textContent=b;$("lq-v").textContent=q;$("lb-v").style.color=b>=q&&b>0?"var(--acc)":"";$("lq-v").style.color=q>b?"var(--acc)":"";
+        $("lb-w").textContent=b+" wins";$("lq-w").textContent=q+" wins";$("lb-bar").style.width=(b/tot*100)+"%";$("lq-bar").style.width=(q/tot*100)+"%";
+        $("ld-v").textContent=n+" / "+PLAN;$("ld-bar").style.width=(n/PLAN*100)+"%";
+        $("l-note").innerHTML=`<b style="color:var(--ink)">${b} : ${q}</b> po ${n} benchmarkach · <a href="/leaderboard">szczegóły →</a>`;
+      }).catch(()=>{});}
+      upd();setInterval(upd,60000);
+    })();
+  </script>
+</body>
+</html>

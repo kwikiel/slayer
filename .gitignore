@@ -1,0 +1,6 @@
+.vercel
+__pycache__/
+*.pyc
+results/*.tmp
+results/*.json.tmp
+.DS_Store
