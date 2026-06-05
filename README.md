@@ -44,6 +44,8 @@ Bielik-11B-v3 (raport techniczny) trenowano pełnym, kosztownym pipeline'em: Mis
 
 Nasza teza „super tanio + epsilon": **startujemy z Qwen3.5-9B** (bije Bielika 8:1 wg leaderboardu) → **pomijamy najdroższy etap (CPT)** → tani **QLoRA SFT + GRPO/RLVR z weryfikatorem MCQ**, celowany w jedyną oś Bielika (LLMzSzŁ) i prawo/administrację. Generowanie danych: DeepSeek (jak Bielik). Pełna metodyka: [/trening](https://slayer.fabryka.ai/trening).
 
+**Licencja bazy:** Qwen3.5-9B jest na **Apache 2.0** — wolno komercyjnie używać, fine-tunować i otwarcie wydać pochodną (z zachowaniem noty licencyjnej), bez klauzul typu MAU. Kompromis: bazujemy na zagranicznych wagach (mniejsza suwerenność łańcucha niż własna baza Bielika), ale trening/hosting w PL i pełna jawność receptury.
+
 ## Reprodukcja
 
 Wymagania: [ollama](https://ollama.com), Python 3.10+, `pip install datasets huggingface_hub sacrebleu`.

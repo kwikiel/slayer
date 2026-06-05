@@ -90,9 +90,11 @@
       <div class="shead"><div><span class="kick">03 · faq</span><h2>Dlaczego <em>osobny</em> lab?</h2></div><p>Najczęstsze pytanie. Krótko i wprost.</p></div>
       <div class="grid c2">
         <div class="cell"><h3 class="sm">Czemu nie w ramach Bielika?</h3><p>Bo chcemy publicznie zweryfikować: <b>ile naprawdę kosztuje</b> konkurencyjny polski model i czy da się go zreplikować <b>super tanio + epsilon</b>. Niezależny lab = więcej prób na bramkę dla całej sceny. Bielik to punkt odniesienia, nie konkurent.</p></div>
-        <div class="cell"><h3 class="sm">Czemu nie Bielik v3/v4?</h3><p>Używamy Bielika jako kandydata na bazę. Ale testujemy tani, nowoczesny przepis (GRPO/RLVR, trening odmowy, merging) i <b>dzielimy się całą recepturą</b> — tego nikt nie zrobił otwarcie.</p></div>
+        <div class="cell"><h3 class="sm">Czy Bielik zrobił to źle?</h3><p><b>Nie.</b> Ich metody są SOTA (GRPO/RLVR, DPO-Positive, merging). Luka jest gdzie indziej: <b>drogie CPT na starszej bazie</b> (Mistral 7B) — a nowsza baza (Qwen3.5-9B) bije ją <i>off-the-shelf</i>. To kwestia <b>ROI i timingu</b>, nie błędu: gdy się commitowali, Qwen3.5 nie istniał.</p></div>
         <div class="cell"><h3 class="sm">Konkurujecie ze SpeakLeash?</h3><p><b>Nie — komplementarnie.</b> Zdrowa konkurencja podnosi cały ekosystem; chętnie kontrybuujemy z powrotem.</p></div>
-        <div class="cell"><h3 class="sm">Czemu Qwen jako challenger?</h3><p>Mocna otwarta baza nie-polska. Sprawdzamy, <b>ile „polskości" trzeba dołożyć</b> i czy istnieje tańsza ścieżka niż trening od zera.</p></div>
+        <div class="cell"><h3 class="sm">Czemu baza = Qwen3.5-9B?</h3><p>Bije Bielika 8:1 wg <a href="/leaderboard">leaderboardu</a>, w tym na większości osi polskich. Startując z mocniejszej bazy <b>pomijamy najdroższy etap (CPT)</b> — sedno „tanio + epsilon".</p></div>
+        <div class="cell"><h3 class="sm">Możecie to otwarcie wydać?</h3><p><b>Tak.</b> Qwen3.5-9B jest na <b>Apache 2.0</b> — komercja, fine-tuning i otwarte wydanie pochodnej dozwolone (z notką licencyjną). Bez klauzul typu MAU jak w licencji Llamy.</p></div>
+        <div class="cell"><h3 class="sm">A suwerenność (chińskie wagi)?</h3><p>Uczciwie: bazujemy na zagranicznych wagach — to realny kompromis vs własna baza Bielika. Ale licencja jest otwarta (Apache 2.0), wszystko trenujemy i hostujemy w PL, a recepturę publikujemy. Niezależność operacyjną mamy; pełną suwerenność łańcucha — nie.</p></div>
       </div>
     </div>
   </section>
