@@ -1,6 +1,6 @@
 {
-  "now_ts": 1780659030.2751155,
-  "now": "2026-06-05 13:30:30",
+  "now_ts": 1780659451.0394156,
+  "now": "2026-06-05 13:37:31",
   "started_ts": 1780598935.0,
   "deadline_ts": 1780678135.0,
   "max_hours": 22,
@@ -58,14 +58,14 @@
     }
   ],
   "current": {
-    "label": "Belebele EN (s45)",
-    "model": "Bielik-11B-v3.0-Instruct",
-    "done": 400,
-    "total": 900,
-    "pct": 44.4,
-    "secs": 40,
-    "rate_per_s": 10.0,
-    "eta_secs": 50,
+    "label": "ARC-C EN (s45)",
+    "model": "Qwen3.5-9B",
+    "done": 200,
+    "total": 1172,
+    "pct": 17.1,
+    "secs": 43,
+    "rate_per_s": 4.65,
+    "eta_secs": 209,
     "stage": ""
   },
   "keep_warm": true,
@@ -142,7 +142,7 @@
       "unit": "%",
       "metric": "accuracy (MCQ, exact letter) [EN regresja]",
       "n": 900,
-      "runs": 3,
+      "runs": 4,
       "bielik": 92.4,
       "qwen": 94.9,
       "winner": "Qwen3.5-9B",
@@ -190,6 +190,6 @@
     "total_jobs": 10,
     "overall_pct": 100.0,
     "eta_secs": 0,
-    "projected_done_ts": 1780659030
+    "projected_done_ts": 1780659451
   }
 }

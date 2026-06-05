@@ -56,6 +56,32 @@
 
     <div class="note"><p><b>Zasada:</b> ewaluacyjne i treningowe to rozłączne światy; korpusy treningowe przechodzą dekontaminację. Masz dobre dane prawno-urzędowe? <a href="/zespol" style="color:var(--acc);font-weight:500">Dołącz / zgłoś →</a></p></div>
   </div></section>
+
+  <section class="sec tight alt"><div class="inner">
+    <div class="ghead"><h2>Dane pod <em>LLMzSzŁ</em></h2><span class="c">jedyna oś, gdzie Bielik wygrywa — i nasz target</span></div>
+    <p class="muted" style="max-width:70ch;margin:0 0 22px">LLMzSzŁ to w przewadze <b style="color:var(--ink)">egzaminy zawodowe</b> (przepisy branżowe, BHP, prawo) → „wygrać LLMzSzŁ" pokrywa się z naszą specjalizacją prawno-urzędową. Wszystko niezależne od test-splitu, dekontaminowane.</p>
+
+    <div class="ghead"><h2 style="font-size:1.3rem">A · Najwyższa dźwignia</h2><span class="c">on-target</span></div>
+    <div class="tbl"><table><thead><tr><th>Źródło</th><th>Co buduje</th><th>Status</th></tr></thead><tbody>
+      <tr><td><div class="dn">Arkusze CKE/OKE + klucze</div><div class="ds">matura, ósmoklasista, <b>egzaminy zawodowe/kwalifikacje</b> — starsze roczniki</div></td><td>umiejętność + format MCQ (to samo źródło, inne pozycje)</td><td><span class="chip">do zebrania</span></td></tr>
+      <tr><td><div class="dn"><a href="https://isap.sejm.gov.pl" rel="noopener">ISAP</a> + BHP / normy</div><div class="ds">ustawy, rozporządzenia, przepisy branżowe, bezpieczeństwo</div></td><td>rdzeń części zawodowej + specjalizacja prawna</td><td><span class="chip">do zebrania</span></td></tr>
+    </tbody></table></div>
+
+    <div class="ghead"><h2 style="font-size:1.3rem">B · Wiedza ogólna i program szkolny</h2></div>
+    <div class="tbl"><table><thead><tr><th>Źródło</th><th>Co buduje</th><th>Status</th></tr></thead><tbody>
+      <tr><td><div class="dn"><a href="https://huggingface.co/datasets/wikimedia/wikipedia" rel="noopener">Wikipedia / Wikibooks / Wikisource PL</a></div><div class="ds">wiedza + treści podręcznikowe</div></td><td>szerokość (matura/ósmoklasista)</td><td><span class="chip">publiczne</span></td></tr>
+      <tr><td><div class="dn"><a href="https://huggingface.co/speakleash" rel="noopener">Korpusy SpeakLeash</a> · CulturaX-pl / OSCAR-pl</div><div class="ds">polski pretraining/CPT</div></td><td>nie regresować polskiego</td><td><span class="chip">publiczne</span></td></tr>
+    </tbody></table></div>
+
+    <div class="ghead"><h2 style="font-size:1.3rem">C · Format MCQ + rozumowanie</h2><span class="c">to test wielokrotnego wyboru</span></div>
+    <div class="grid auto">
+      <div class="cell"><div class="n">SYNTETYCZNE</div><h3 class="sm">Polskie MCQ z korpusów</h3><p>Generowane z Wikipedia/ISAP (Evol/Magpie) + weryfikacja → uczy „odpowiedz literą" i szerokości.</p></div>
+      <div class="cell"><div class="n">CoT</div><h3 class="sm">Distylacja rozumowania PL</h3><p>Łańcuchy myślenia z mocnego nauczyciela na trudniejsze pozycje.</p></div>
+      <div class="cell"><div class="n">RLVR</div><h3 class="sm">GRPO na polskich MCQ</h3><p>Nagroda = poprawna litera → optymalizuje dokładnie to, co mierzy LLMzSzŁ, czysto.</p></div>
+    </div>
+
+    <div class="note"><p><b>Przepis:</b> CPT (Wikipedia + ISAP/BHP) → SFT (arkusze zawodowe + syntetyczne MCQ, dekontaminowane) → GRPO/RLVR na polskich MCQ. Pomiar na <b>prywatnym held-out</b> (świeże arkusze). Masz arkusze/przepisy/dane? <a href="/zespol" style="color:var(--acc);font-weight:500">Zgłoś →</a></p></div>
+  </div></section>
   <div id="site-foot"></div>
   <script src="/assets/site.js"></script>
 </body>
