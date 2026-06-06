@@ -76,45 +76,10 @@
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",hudChrome); else hudChrome();
 
-  /* ── Arwes FX: decipher nagłówków + canvas „moving lines" w hero.
+  /* ── Arwes FX: canvas „moving lines" w hero.
      Tylko bez prefers-reduced-motion; bez JS strona w pełni statyczna. ── */
   function arwesFx(){
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    /* dekodowanie tekstu: losowe znaki ustępują oryginałowi od lewej */
-    var GLYPHS="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&@$+=*";
-    function decipher(el){
-      var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false);
-      var parts=[],node;
-      while((node=walker.nextNode())) if(node.nodeValue.trim()) parts.push({node:node,text:node.nodeValue});
-      if(!parts.length) return;
-      var steps=Math.min(40,Math.max(14,Math.ceil(el.textContent.length*0.7))),step=0;
-      var timer=setInterval(function(){
-        step++;
-        parts.forEach(function(p){
-          var lock=Math.floor(p.text.length*step/steps),out="";
-          for(var i=0;i<p.text.length;i++){
-            var ch=p.text.charAt(i);
-            out+=(i<lock||ch===" ")?ch:GLYPHS.charAt(Math.floor(Math.random()*GLYPHS.length));
-          }
-          p.node.nodeValue=out;
-        });
-        if(step>=steps){
-          clearInterval(timer);
-          parts.forEach(function(p){p.node.nodeValue=p.text});
-        }
-      },30);
-    }
-    if("IntersectionObserver" in window){
-      var dio=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(!e.isIntersecting) return;
-          dio.unobserve(e.target);
-          decipher(e.target);
-        });
-      },{threshold:.2});
-      document.querySelectorAll("h1, .shead h2").forEach(function(h){dio.observe(h)});
-    }
 
     /* dryfujące linie świetlne w hero (tylko strona główna ma .hero) */
     var hero=document.querySelector(".hero");
@@ -134,13 +99,14 @@
       function spawn(l){
         l.x=Math.random()*W;
         l.y=H+Math.random()*H*0.5;
-        l.len=30+Math.random()*90;
-        l.sp=0.4+Math.random()*1.1;
-        l.a=0.05+Math.random()*0.11;
+        l.len=40+Math.random()*110;
+        l.sp=0.5+Math.random()*1.3;
+        l.a=0.12+Math.random()*0.18;
         return l;
       }
       var lines=[];
-      for(var i=0;i<26;i++){var l=spawn({});l.y=Math.random()*H;lines.push(l)}
+      for(var i=0;i<36;i++){var l=spawn({});l.y=Math.random()*H;lines.push(l)}
+      ctx.lineWidth=1.5;
       (function tick(){
         ctx.clearRect(0,0,W,H);
         lines.forEach(function(l){

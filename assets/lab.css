@@ -193,10 +193,12 @@ textarea{min-height:74px;resize:vertical}
   .rev.in{opacity:1;transform:none}
   /* dorysowywane ramki paneli: narożniki rosną, obramowanie się wyłania.
      Stan docelowy = stan bazowy, więc zdjęcie klas po wejściu nie powoduje skoku. */
-  .panel .cnr{transition:width .45s ease .25s,height .45s ease .25s}
+  .panel .cnr{transition:width .65s ease .3s,height .65s ease .3s}
   .panel.rev:not(.in) .cnr{width:0;height:0}
-  .panel.rev{transition:opacity .55s ease,transform .55s ease,border-color .6s ease .1s,box-shadow .15s ease,background .15s ease,color .15s ease}
+  .panel.rev{transition:opacity .55s ease,transform .55s ease,border-color .9s ease .15s,box-shadow .15s ease,background .15s ease,color .15s ease}
   .panel.rev:not(.in){border-color:transparent}
+  /* trwała reguła: dociąga ramkę po zdjęciu klas .rev/.in (po fade-inie) bez skoku */
+  .panel{transition:border-color .9s ease .15s}
   /* canvas „moving lines" w hero — wstrzykiwany przez site.js tylko bez reduced-motion */
   .hero-fx{position:absolute;inset:0;z-index:0;pointer-events:none}
 }
