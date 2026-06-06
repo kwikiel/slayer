@@ -30,4 +30,40 @@
     var f=document.getElementById("site-foot"); if(f) f.outerHTML=foot;
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",inject); else inject();
+
+  /* ── Amber HUD chrome: narożniki paneli, scanbeam, animacje wejścia.
+     Kosmetyka wstrzykiwana centralnie — podstron nie trzeba edytować. ── */
+  function hudChrome(){
+    document.querySelectorAll(".panel").forEach(function(p){
+      if(p.querySelector(".cnr")) return;
+      ["tl","tr","bl","br"].forEach(function(pos){
+        var c=document.createElement("i");
+        c.className="cnr "+pos;
+        p.appendChild(c);
+      });
+    });
+    if(!document.querySelector(".scanbeam")){
+      var s=document.createElement("div");
+      s.className="scanbeam";
+      s.setAttribute("aria-hidden","true");
+      document.body.appendChild(s);
+    }
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if(!("IntersectionObserver" in window)) return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      });
+    },{threshold:.12});
+    var SEL=".hgrid > div:not(.panel) > *, .shead, .panel, .tbl, .tl, .note, .grid > *";
+    document.querySelectorAll(SEL).forEach(function(el){
+      var idx=Array.prototype.indexOf.call(el.parentElement.children,el);
+      el.classList.add("rev");
+      el.style.transitionDelay=Math.min(idx*0.08,0.36)+"s";
+      io.observe(el);
+    });
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",hudChrome); else hudChrome();
 })();
