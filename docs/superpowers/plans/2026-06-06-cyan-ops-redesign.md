@@ -55,3 +55,5 @@
 - [ ] Trigger: osobny IntersectionObserver na `h1, .shead h2` (threshold .2, once). Progressive enhancement: bez JS tekst po prostu stoi.
 - [ ] `heroFx()`: canvas wstrzykiwany jako pierwsze dziecko `.hero` (tylko index), 26 pionowych linii dryfujących w górę (gradientowe końce, alpha .04–.16, prędkość .4–1.5), DPR≤2, resize handler, rAF (auto-pauza w ukrytej karcie). Gated: reduced-motion → brak canvasa.
 - [ ] Verify: `node --check`, 11×200, reduced-motion: brak canvasa, brak decipheru, treść widoczna. Commit.
+
+> **Korekta po testach:** decipher wycofany (zbyt chaotyczny — decyzja użytkowniczki); moving lines wzmocnione (36 linii, alpha .12–.30, lineWidth 1.5), rysowanie ramek wydłużone (.65s/.9s) z trwałą regułą przejścia na `.panel`.
