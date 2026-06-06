@@ -40,3 +40,18 @@
 - [ ] Kontrast (skrypt z planu bazowego, pary: `b8d4d8/020c10`, `00f8ff/020c10`, `7fa3a9/06181f`, `5f8489/020c10`, `ffd76e/020c10`, `ff6b5e/020c10`, `021114/00f8ff`) — wszystkie ≥4.5:1.
 - [ ] Przegląd wzrokiem 11 stron vs podgląd; poprawki → commity `redesign: fix — …`.
 - [ ] `git status --short` → pusto.
+
+---
+
+## Faza 2 — efekty Arwes (zatwierdzone: decipher, rysowanie ramek, canvas hero)
+
+### Task 5: lab.css — rysowanie ramek + pozycja canvasa
+- [ ] W bloku `prefers-reduced-motion:no-preference`: `.panel .cnr{transition:width .45s ease .25s,height .45s ease .25s}`, `.panel.rev:not(.in) .cnr{width:0;height:0}`, `.panel{transition:border-color .6s ease .1s}` w obrębie reguł `.rev`, `.panel.rev:not(.in){border-color:transparent}` — narożniki rosną, ramka wyłania się przy wejściu. Stan docelowy = stan bazowy, więc zdjęcie `.rev`/`.in` po transitionend nie powoduje skoku.
+- [ ] `.hero-fx{position:absolute;inset:0;z-index:0;pointer-events:none}` (canvas pod treścią hero; `.hgrid` ma z-index:1).
+- [ ] Verify: braces zbalansowane, `curl /` 200. Commit.
+
+### Task 6: site.js — decipher + canvas MovingLines
+- [ ] `decipher(el)`: TreeWalker po text nodes (zachowuje `<em>`), ~40 kroków co 30 ms, znaki locked rosnąco od lewej, spacje nieruszane, na końcu przywrócenie oryginału. Gated: reduced-motion → skip.
+- [ ] Trigger: osobny IntersectionObserver na `h1, .shead h2` (threshold .2, once). Progressive enhancement: bez JS tekst po prostu stoi.
+- [ ] `heroFx()`: canvas wstrzykiwany jako pierwsze dziecko `.hero` (tylko index), 26 pionowych linii dryfujących w górę (gradientowe końce, alpha .04–.16, prędkość .4–1.5), DPR≤2, resize handler, rAF (auto-pauza w ukrytej karcie). Gated: reduced-motion → brak canvasa.
+- [ ] Verify: `node --check`, 11×200, reduced-motion: brak canvasa, brak decipheru, treść widoczna. Commit.
