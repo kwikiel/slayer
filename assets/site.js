@@ -39,6 +39,7 @@
       ["tl","tr","bl","br"].forEach(function(pos){
         var c=document.createElement("i");
         c.className="cnr "+pos;
+        c.setAttribute("aria-hidden","true");
         p.appendChild(c);
       });
     });
@@ -59,6 +60,7 @@
         /* po wejściu zdejmij opóźnienie kaskady — inaczej opóźniałoby hovery */
         el.addEventListener("transitionend",function done(){
           el.style.transitionDelay="";
+          el.classList.remove("rev","in"); /* element zostaje widoczny; wracają szybkie przejścia hoverów */
           el.removeEventListener("transitionend",done);
         });
       });

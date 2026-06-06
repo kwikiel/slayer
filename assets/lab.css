@@ -195,4 +195,5 @@ textarea{min-height:74px;resize:vertical}
 @media(prefers-reduced-motion:reduce){
   .scanbeam{display:none}
   .live .d,.cursor,.htag .dot{animation:none}
+  html{scroll-behavior:auto}
 }
