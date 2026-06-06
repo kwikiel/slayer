@@ -9,13 +9,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/lab.css">
   <style>
-    .yr{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start;padding:12px 0;border-top:1px solid var(--line2)}.yr:first-child{border-top:0}
-    .yr .y{font-family:var(--mono);font-weight:600;font-size:1.1rem}
+    /* lineage „spine": świecąca oś, diamentowe węzły, 2026 pulsuje, starsze lata przygaszone */
+    .lineage{position:relative;padding-left:34px}
+    .lineage::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,rgba(0,248,255,.08),rgba(0,248,255,.55) 80%,var(--acc));box-shadow:0 0 8px rgba(0,248,255,.25)}
+    .yr{position:relative;display:grid;grid-template-columns:88px 1fr;gap:18px;align-items:start;padding:18px 0}
+    .yr::before{content:"";position:absolute;left:-30px;top:26px;width:9px;height:9px;transform:rotate(45deg);background:var(--bg2);border:2px solid var(--dim)}
+    .yr > .y{font-family:var(--disp);font-weight:700;font-size:1.3rem;color:var(--dim);letter-spacing:.04em}
+    .yr.now::before{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px var(--acc);animation:pl 2s ease infinite}
+    .yr.now > .y{color:var(--acc);text-shadow:0 0 12px rgba(0,248,255,.5)}
+    .yr.now{background:linear-gradient(90deg,rgba(0,248,255,.05),transparent 70%);outline:1px solid var(--line2)}
+    .yr.past .ms{opacity:.75}
+    .yr.old .ms{opacity:.5}
+    @media(prefers-reduced-motion:reduce){.yr.now::before{animation:none}}
     .ms{display:flex;flex-wrap:wrap;gap:8px}
     .tag{font-family:var(--mono);font-size:.78rem;font-weight:400;line-height:1.2;padding:5px 11px;border:1px solid var(--line);background:var(--panel);color:var(--mut);white-space:nowrap}
     .tag.g{color:var(--acc);background:var(--acc-soft);border-color:rgba(0,248,255,.34)}
     .tag.b{color:var(--ink);background:var(--panel);border-color:var(--line)}
-    .tag.y{color:var(--dim);background:var(--panel);border-color:var(--line2)}
+    .tag.nn{color:var(--dim);background:var(--panel);border-color:var(--line2)}
     .tag.leg{color:var(--dim);background:transparent;border-color:var(--line2);text-decoration:line-through}
     .legend{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--mono);font-size:.76rem;color:var(--mut);margin-bottom:18px}
     .legend .sw{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:middle}
@@ -35,12 +45,12 @@
   <section class="sec tight alt"><div class="inner">
     <div class="ghead"><h2>Lineage — co działa w 2026, co było modą 2025</h2></div>
     <div class="legend"><span><span class="sw" style="background:var(--acc)"></span>SOTA 2026</span><span><span class="sw" style="background:var(--ink)"></span>nadal użyteczne</span><span><span class="sw" style="background:var(--dim)"></span>niszowe / wyparte</span><span><span class="sw" style="background:transparent;border:1px solid var(--line)"></span>legacy</span></div>
-    <div>
-      <div class="yr"><div class="y">2022</div><div class="ms"><span class="tag leg">RLHF/PPO</span><span class="tag b">LoRA (’21)</span><span class="tag b">Self-Instruct</span></div></div>
-      <div class="yr"><div class="y">2023</div><div class="ms"><span class="tag g">DPO</span><span class="tag y">IPO</span><span class="tag g">QLoRA</span><span class="tag b">Evol-Instruct</span></div></div>
-      <div class="yr"><div class="y">2024</div><div class="ms"><span class="tag g">ORPO</span><span class="tag b">SimPO</span><span class="tag b">KTO</span><span class="tag y">Self-Rewarding</span><span class="tag g">GRPO</span><span class="tag b">DoRA</span><span class="tag g">Unsloth/Liger</span><span class="tag g">Magpie</span></div></div>
-      <div class="yr"><div class="y">2025</div><div class="ms"><span class="tag g">RLVR (R1)</span><span class="tag g">distylacja CoT</span><span class="tag y">PRM</span><span class="tag b">iterative DPO</span><span class="tag b">mergekit</span></div></div>
-      <div class="yr"><div class="y">2026</div><div class="ms"><span class="tag g">GRPO+RLVR = domyślne</span><span class="tag g">DPO/ORPO żyją</span><span class="tag g">QLoRA+merging</span></div></div>
+    <div class="lineage">
+      <div class="yr old"><div class="y">2022</div><div class="ms"><span class="tag leg">RLHF/PPO</span><span class="tag b">LoRA (’21)</span><span class="tag b">Self-Instruct</span></div></div>
+      <div class="yr old"><div class="y">2023</div><div class="ms"><span class="tag g">DPO</span><span class="tag nn">IPO</span><span class="tag g">QLoRA</span><span class="tag b">Evol-Instruct</span></div></div>
+      <div class="yr past"><div class="y">2024</div><div class="ms"><span class="tag g">ORPO</span><span class="tag b">SimPO</span><span class="tag b">KTO</span><span class="tag nn">Self-Rewarding</span><span class="tag g">GRPO</span><span class="tag b">DoRA</span><span class="tag g">Unsloth/Liger</span><span class="tag g">Magpie</span></div></div>
+      <div class="yr past"><div class="y">2025</div><div class="ms"><span class="tag g">RLVR (R1)</span><span class="tag g">distylacja CoT</span><span class="tag nn">PRM</span><span class="tag b">iterative DPO</span><span class="tag b">mergekit</span></div></div>
+      <div class="yr now"><div class="y">2026</div><div class="ms"><span class="tag g">GRPO+RLVR = domyślne</span><span class="tag g">DPO/ORPO żyją</span><span class="tag g">QLoRA+merging</span></div></div>
     </div>
     <p style="margin-top:16px;font-weight:500"><span class="dim" style="text-decoration:line-through">RLHF/PPO</span> <span class="acc">→</span> <b>DPO</b> (’23) <span class="acc">→</span> <b>GRPO+RLVR</b> (’25, króluje przy weryfikowalnej nagrodzie).</p>
     <div class="note"><p><b>2026:</b> SFT (QLoRA) → DPO/ORPO → GRPO/RLVR na egzaminach. <b>Nie:</b> RLHF-PPO z modelem nagrody (wyparte); IPO i process-reward modele okazały się niszowe. KTO/SimPO = tańsze alternatywy DPO.</p></div>
