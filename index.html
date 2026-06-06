@@ -9,18 +9,17 @@
   <style>
     .hero{position:relative;padding:128px clamp(18px,5vw,72px) 72px;overflow:hidden}
     .hero::before{content:"";position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;background:radial-gradient(circle,var(--acc-soft),transparent 62%);pointer-events:none;z-index:0}
-    .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:repeating-linear-gradient(0deg,rgba(255,200,80,.035) 0 1px,transparent 1px 4px)}
+    .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,248,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,248,255,.045) 1px,transparent 1px);background-size:24px 24px}
     .hgrid{position:relative;z-index:1;width:min(1140px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(30px,5vw,68px);align-items:center}
     @media(max-width:900px){.hgrid{grid-template-columns:1fr}}
     .htag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px}
     .htag .dot{width:7px;height:7px;background:var(--acc);animation:pl 2s infinite;box-shadow:0 0 8px rgba(255,176,0,.8)}
-    .hero h1{margin:0 0 22px;font-family:var(--disp);font-size:clamp(2.1rem,4.8vw,3.6rem);line-height:1.12;font-weight:400;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);text-shadow:0 0 18px rgba(255,176,0,.25)}
+    .hero h1{margin:0 0 22px;font-family:var(--disp);font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.06;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);text-shadow:0 0 22px rgba(255,176,0,.3)}
     .hero h1 em{font-style:normal;color:var(--acc);text-shadow:0 0 14px rgba(255,176,0,.6)}
     .lede{max-width:600px;margin:0 0 30px;color:var(--mut);font-size:clamp(1.08rem,1.7vw,1.32rem);line-height:1.5}
     .lede b{color:var(--ink);font-weight:600}
     .hmeta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:32px;font-family:var(--mono);font-size:.76rem;color:var(--dim)}
     .hmeta b{color:var(--acc);font-weight:500}
-    .hmeta span::before{content:"["}.hmeta span::after{content:"]"}
     .scoreline{display:flex;align-items:baseline;justify-content:center;gap:16px;font-family:var(--disp);font-weight:400;font-size:clamp(2.6rem,6vw,3.6rem);margin:6px 0 16px}
     .scoreline .b{color:var(--acc)}.scoreline .q{color:var(--mut)}.scoreline .c{color:var(--dim)}
     .vs{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:.74rem;color:var(--mut)}
@@ -35,7 +34,7 @@
     <div class="hgrid">
       <div>
         <div class="htag"><span class="dot"></span><span class="kick"><span class="ac">OPEN LAB</span> · SUWERENNE POLSKIE AI · 2026</span></div>
-        <h1>Tanio zreplikować <em>klasę</em> najlepszego — i pójść o <em>epsilon</em> dalej.<span class="cursor"></span></h1>
+        <h1>Tanio zreplikować <em>klasę</em> najlepszego — i pójść o <em>epsilon</em> dalej.</h1>
         <p class="lede">Teza badawcza: konkurencyjny polski model <b>11–14B</b> da się złożyć ułamkiem kosztu wielkich labów (<b>~15–20k zł</b>), nowoczesnymi metodami, w pełni <b>otwarcie i odtwarzalnie</b>. Cel: być o <b>epsilon lepszym</b> od punktu odniesienia — przy ułamku kosztu. Specjalizacja to najmocniejsza dźwignia.</p>
         <div class="cta-row"><a class="btn btn-p" href="/leaderboard">Wyniki na żywo →</a><a class="btn btn-s" href="/zespol">Dołącz do labu</a></div>
         <div class="hmeta"><span><b>11–14B</b> parametrów</span><span><b>10</b> benchmarków</span><span><b>0</b> benchmaxxingu</span><span><b>RTX 3090</b> · 4-bit</span></div>
@@ -117,7 +116,7 @@
       const NB="Bielik-11B-v3.0-Instruct",NQ="Qwen3.5-9B",PLAN=10;
       function upd(){fetch("/results/leaderboard.json?ts="+Date.now()).then(r=>r.json()).then(d=>{
         const b=d.tally?.[NB]??0,q=d.tally?.[NQ]??0,n=(d.benchmarks||[]).length,tot=Math.max(b+q,1),$=i=>document.getElementById(i);
-        $("lb-v").textContent=b;$("lq-v").textContent=q;$("lb-v").style.color=b>=q&&b>0?"var(--acc)":"";$("lq-v").style.color=q>b?"var(--acc)":"";
+        $("lb-v").textContent=b;$("lq-v").textContent=q;$("lb-v").style.color=b>=q&&b>0?"var(--acc)":"";$("lq-v").style.color=q>b?"var(--sec)":"";
         $("lb-w").textContent=b+" wins";$("lq-w").textContent=q+" wins";$("lb-bar").style.width=(b/tot*100)+"%";$("lq-bar").style.width=(q/tot*100)+"%";
         $("ld-v").textContent=n+" / "+PLAN;$("ld-bar").style.width=(n/PLAN*100)+"%";
         $("l-note").innerHTML=`<b style="color:var(--ink)">${b} : ${q}</b> po ${n} benchmarkach · <a href="/leaderboard">szczegóły →</a>`;
