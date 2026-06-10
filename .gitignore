@@ -6,3 +6,11 @@ results/*.json.tmp
 .DS_Store
 slayer-data/
 .openrouter_key
+.env
+.env.tmp
+
+# heavy / local-only (added for slayerlabs deploy hygiene)
+.venv*/
+slayer-out*/
+runs/
+arena/

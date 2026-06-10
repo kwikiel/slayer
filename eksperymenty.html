@@ -32,6 +32,23 @@
     .xp-links{display:flex;gap:14px;font-family:var(--mono);font-size:.74rem}.xp-links a{color:var(--acc)}
     .banner{border:1px solid var(--line2);border-radius:10px;padding:16px 18px;background:rgba(31,214,196,.04);font-size:.92rem;color:var(--mut);line-height:1.55;margin-top:22px}
     .banner b{color:var(--ink)}
+    .chartwrap{margin-top:4px;border:1px solid var(--line2);border-radius:8px;padding:10px 12px 6px;background:rgba(255,255,255,.015)}
+    .chart{width:100%;height:130px;display:block}
+    .chart .ltrain{fill:none;stroke:var(--mut);stroke-width:1.2;opacity:.85}
+    .chart .leval{fill:none;stroke:var(--acc);stroke-width:1.8}
+    .chart .deval{fill:var(--acc)}
+    .chart .grid{stroke:var(--line2);stroke-width:.6;stroke-dasharray:3 3}
+    .chart .ax{fill:var(--dim);font-family:var(--mono);font-size:9px}
+    .leg{display:flex;gap:14px;font-family:var(--mono);font-size:.68rem;color:var(--dim);margin-top:4px}
+    .leg .lg::before{content:"";display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:5px}
+    .leg .lg.t::before{background:var(--mut)}.leg .lg.e::before{background:var(--acc)}
+    .xp-es{font-family:var(--mono);font-size:.74rem;color:var(--acc);margin-top:2px}
+    .secline{font-family:var(--mono);font-size:.68rem;color:var(--dim);letter-spacing:.04em;text-transform:uppercase;margin:6px 0 2px}
+    .lossimg{width:100%;max-width:640px;border:1px solid var(--line2);border-radius:8px;display:block}
+    .dataset{display:flex;flex-direction:column;gap:7px}
+    .dspill{align-self:flex-start;font-family:var(--mono);font-size:.76rem;padding:5px 11px;border-radius:6px;background:var(--acc-soft);border:1px solid rgba(190,85,53,.25);color:var(--acc);text-decoration:none}
+    .dspill:hover{background:rgba(190,85,53,.16)}
+    .dsdesc{font-size:.86rem;color:var(--mut);line-height:1.5}
   </style>
 </head>
 <body>
@@ -60,6 +77,25 @@
     const $=i=>document.getElementById(i);
     const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
     const SRCLABEL={style:"styl",klej_train_split:"KLEJ train",klej_synth:"KLEJ synth",replay:"replay",distill_pl:"destylacja PL",aya_pl:"Aya-PL",oasst_pl:"OASST-PL",en_retention:"EN retencja"};
+    function chart(cv){
+      if(!cv||((!cv.train||!cv.train.length)&&(!cv.eval||!cv.eval.length)))return "";
+      const W=520,H=130,pl=34,pr=8,pt=10,pb=18;
+      const all=[...(cv.train||[]),...(cv.eval||[])];
+      const xs=all.map(p=>p[0]),ys=all.map(p=>p[1]);
+      let x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+      if(y1===y0){y1+=.05;y0-=.05;} if(x1===x0)x1=x0+1;
+      const sx=s=>pl+(s-x0)/(x1-x0)*(W-pl-pr);
+      const sy=v=>pt+(1-(v-y0)/(y1-y0))*(H-pt-pb);
+      const path=pts=>pts.map((p,i)=>(i?"L":"M")+sx(p[0]).toFixed(1)+" "+sy(p[1]).toFixed(1)).join(" ");
+      let s=`<svg viewBox="0 0 ${W} ${H}" class="chart" preserveAspectRatio="none">`;
+      s+=`<line x1="${pl}" y1="${sy(y1).toFixed(1)}" x2="${W-pr}" y2="${sy(y1).toFixed(1)}" class="grid"/><line x1="${pl}" y1="${sy(y0).toFixed(1)}" x2="${W-pr}" y2="${sy(y0).toFixed(1)}" class="grid"/>`;
+      s+=`<text x="2" y="${(sy(y1)+3).toFixed(1)}" class="ax">${y1.toFixed(2)}</text><text x="2" y="${(sy(y0)+3).toFixed(1)}" class="ax">${y0.toFixed(2)}</text>`;
+      if(cv.train&&cv.train.length)s+=`<path d="${path(cv.train)}" class="ltrain"/>`;
+      if(cv.eval&&cv.eval.length){s+=`<path d="${path(cv.eval)}" class="leval"/>`+cv.eval.map(p=>`<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="2.8" class="deval"/>`).join("");}
+      s+=`<text x="${pl}" y="${H-4}" class="ax">step ${x0}</text><text x="${W-pr}" y="${H-4}" class="ax" text-anchor="end">${x1}</text></svg>`;
+      const leg=`<div class="leg">${cv.train&&cv.train.length?'<span class="lg t">train loss</span>':''}${cv.eval&&cv.eval.length?'<span class="lg e">eval loss</span>':''}</div>`;
+      return `<div class="secline">krzywa loss</div><div class="chartwrap">${s}${leg}</div>`;
+    }
     function card(x){
       const clean=x.status==="clean";
       const badge=clean?'<span class="badge clean">CZYSTY</span>':'<span class="badge contaminated">KONTAMINACJA</span>';
@@ -67,13 +103,21 @@
       const macro=(ev.macro!=null)?`<div class="xp-macro">${ev.macro}<span class="d"> macro${ev.base_macro!=null?` · base ${ev.base_macro} (Δ ${(ev.macro-ev.base_macro).toFixed(1)})`:""}</span></div>`:"";
       const chips=Object.entries(x.data||{}).map(([k,v])=>{const contam=(k==="klej_train_split"||k==="klej_synth");return `<span class="chip ${contam?'contam':''}">${esc(SRCLABEL[k]||k)} ${v}</span>`;}).join("");
       const tasks=(ev.tasks)?`<div class="tasks">${Object.entries(ev.tasks).map(([k,v])=>`<div class="t"><div class="k">${esc(k)}</div><div class="v">${v}</div></div>`).join("")}</div>`:"";
-      const links=[x.hf?`<a href="https://huggingface.co/${esc(x.hf)}" rel="noopener">model ↗</a>`:"",x.data_hf?`<a href="https://huggingface.co/datasets/${esc(x.data_hf)}" rel="noopener">dane ↗</a>`:""].filter(Boolean).join("");
+      const cfg=x.train_cfg?`<div class="secline">hiperparametry</div><div class="chips">${Object.entries(x.train_cfg).map(([k,v])=>`<span class="chip">${esc(k)}: ${esc(v)}</span>`).join("")}</div>`:"";
+      const dataset=(x.dataset_desc||x.data_hf)?`<div class="secline">dataset</div><div class="dataset">${x.data_hf?`<a class="dspill" href="https://huggingface.co/datasets/${esc(x.data_hf)}" rel="noopener">🤗 ${esc(x.data_hf)} ↗</a>`:""}${x.dataset_desc?`<div class="dsdesc">${esc(x.dataset_desc)}</div>`:""}</div>`:"";
+      const ch=x.plot?`<div class="secline">krzywa loss</div><img class="lossimg" src="${esc(x.plot)}" alt="loss curve ${esc(x.name)}" loading="lazy">`:chart(x.curves);
+      const es=x.early_stop?`<div class="xp-es">⏹ ${esc(x.early_stop)}</div>`:"";
+      const logn=x.log_note?`<div class="muted mono" style="font-size:.72rem">${esc(x.log_note)}</div>`:"";
+      const links=[x.hf?`<a href="https://huggingface.co/${esc(x.hf)}" rel="noopener">model ↗</a>`:"",x.data_hf?`<a href="https://huggingface.co/datasets/${esc(x.data_hf)}" rel="noopener">dane ↗</a>`:"",x.log?`<a href="${esc(x.log)}" rel="noopener">log ↗</a>`:"",x.wandb?`<a href="${esc(x.wandb)}" rel="noopener">W&amp;B ↗</a>`:""].filter(Boolean).join("");
       return `<div class="xp">
         <div class="xp-top"><span class="xp-date">${esc(x.date)}</span><span class="xp-name">${esc(x.name)}</span>${badge}${macro}</div>
         <div class="xp-bd">
           <div class="meta"><span>baza <b>${esc(x.base)}</b></span><span>metoda <b>${esc(x.method)}</b></span><span><b>${(x.n_examples||0).toLocaleString("pl")}</b> przykładów</span>${ev.harness?`<span>harness <b>${esc(ev.harness)}</b></span>`:""}</div>
-          <div class="chips">${chips}</div>
-          ${tasks}
+          <div class="secline">skład danych</div><div class="chips">${chips}</div>
+          ${dataset}
+          ${cfg}
+          ${ch}${es}${logn}
+          ${tasks?'<div class="secline">eval (held-out)</div>'+tasks:""}
           <div class="xp-note">${esc(x.note)}</div>
           ${links?`<div class="xp-links">${links}</div>`:""}
         </div></div>`;

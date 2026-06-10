@@ -1,0 +1,17 @@
+# Only the static site deploys. Exclude code, data, venvs, model artifacts.
+.venv*
+slayer-out*
+slayer-data
+runs
+arena
+bench
+pipeline
+__pycache__
+*.pyc
+*.jsonl
+*.safetensors
+node_modules
+.git
+.DS_Store
+results/v1_analiza
+results/*.tmp
