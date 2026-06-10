@@ -3,43 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Styl — „AI-polski" bazy to angielski przetłumaczony | Slayer</title>
-  <meta name="description" content="Domyślny 'polski' Qwen3.5-27B to angielska STRUKTURA z polskimi słowami (translationese). Fine-tuned v1 łamie szablon i pisze natywną polszczyznę: 0 szablonu, krócej, na temat. Base vs v1, podświetlone issues.">
+  <title>Styl — co base Qwen robi źle po polsku | Slayer</title>
+  <meta name="description" content="Ręczny przegląd outputów base Qwen3.5-27B po polsku: twarde błędy gramatyki (Hipoza, Bezpośrednie sprzedaż, samodzielną rozwiązywanie), kalki, liczenie w dolarach, szablon. Fine-tuned v1 obok. Bez regexu — przejrzane ręcznie.">
   <link rel="stylesheet" href="/assets/lab.css">
   <style>
     .phero{padding:104px clamp(18px,5vw,72px) 8px}
     .phero .inner{width:min(1080px,100%);margin:0 auto}
-    .phero h1{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.04;font-size:clamp(2.2rem,5vw,3.5rem);margin:14px 0 18px;color:var(--ink)}
+    .phero h1{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.04;font-size:clamp(2.1rem,5vw,3.4rem);margin:14px 0 18px;color:var(--ink)}
     .phero h1 em{font-style:italic;color:var(--acc)}
     .phero .lede{max-width:66ch;color:var(--mut);font-size:clamp(1.04rem,1.6vw,1.2rem);line-height:1.55}
     .phero .lede b{color:var(--ink);font-weight:600}
-    .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:26px 0 4px;font-family:var(--mono);font-size:.78rem;color:var(--mut);align-items:center}
+    .legend{display:flex;flex-wrap:wrap;gap:9px 16px;margin:24px 0 4px;font-family:var(--mono);font-size:.76rem;color:var(--mut);align-items:center}
     .legend .lg{display:inline-flex;align-items:center;gap:7px}
-    .legend .sw{width:14px;height:14px;border-radius:3px;display:inline-block}
-    .sw.s{background:#f4d98a}.sw.p{background:#eec3b8}.sw.t{background:var(--acc)}
+    .legend .sw{width:13px;height:13px;border-radius:3px;display:inline-block}
+    .sw.err{background:#e8a99d}.sw.tmpl{background:#f4d98a}.sw.calq{background:#bcd6e8}.sw.ph{background:#eec3b8}.sw.good{background:#bfe0bf}
     .sd{width:min(1080px,100%);margin:0 auto;padding:8px clamp(18px,5vw,72px) 40px}
     .ex{border:1px solid var(--line);border-radius:13px;background:var(--panel);box-shadow:0 10px 30px rgba(26,22,12,.04);margin:22px 0;overflow:hidden}
     .ex-task{padding:14px clamp(16px,3vw,24px);background:rgba(26,22,12,.035);border-bottom:1px solid var(--line);font-size:.95rem;color:var(--ink)}
     .ex-task b{font-weight:600;color:var(--acc)}
-    .ex-en{padding:11px clamp(16px,3vw,24px);border-bottom:1px solid var(--line);font-size:.8rem;line-height:1.5;color:var(--dim);background:rgba(26,22,12,.018)}
+    .ex-en{padding:11px clamp(16px,3vw,24px);border-bottom:1px solid var(--line);font-size:.8rem;line-height:1.55;color:var(--dim);background:rgba(26,22,12,.018)}
     .ex-en .enh{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
     .cmp{display:grid;grid-template-columns:1fr 1fr}
     .side{padding:16px clamp(16px,3vw,24px)}
     .side.win{background:var(--acc-soft);border-left:2px solid var(--acc)}
-    .side-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+    .side-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:9px}
     .side.win .side-h{color:var(--acc-d);font-weight:600}
     .side-h span{text-transform:none;letter-spacing:0;color:var(--mut)}
-    .badge{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:3px 9px;border-radius:20px;margin-bottom:11px;font-weight:500}
-    .badge.bad{background:#f4d98a;color:#5a4a1a}
-    .badge.good{background:#d2e4d1;color:#2f6b3f}
-    .col-b{font-size:.86rem;line-height:1.62;color:var(--mut);word-break:break-word}
-    .col-b.ep{font-family:var(--serif);font-size:1rem;line-height:1.55;color:var(--ink)}
-    mark{background:none;color:inherit;padding:.5px 1px;border-radius:2px}
-    mark.h-s{background:#f4d98a;color:#3a3320}
-    mark.h-p{background:#eec3b8;color:#5a2b1f}
-    .more{display:block;margin:6px auto 0;font-family:var(--mono);font-size:.82rem;color:var(--acc);background:none;border:1px solid var(--line);border-radius:8px;padding:11px 20px;cursor:pointer}
-    .more:hover{background:var(--acc-soft)}
-    .hidden{display:none}
+    .col-b{font-size:.87rem;line-height:1.66;color:var(--mut);word-break:break-word}
+    .col-b.ep{font-family:var(--serif);font-size:1rem;line-height:1.6;color:var(--ink)}
+    .col-b .muted{color:var(--dim);font-style:italic}
+    mark{background:none;color:inherit;padding:.5px 2px;border-radius:2px}
+    mark.h-tmpl{background:#f4d98a;color:#3a3320}
+    mark.h-calq{background:#bcd6e8;color:#234e63}
+    mark.h-ph{background:#eec3b8;color:#5a2b1f}
+    mark.h-err{background:#f3c9c2;color:#7a241a;border-bottom:2px solid #c0392b;font-weight:500}
+    mark.h-good{background:#cfe6cf;color:#2f6b3f}
+    .errs{border-top:1px solid var(--line);padding:13px clamp(16px,3vw,24px);background:rgba(26,22,12,.015)}
+    .errs-h{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:9px}
+    .errs ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+    .errs li{display:flex;gap:9px;font-size:.85rem;line-height:1.5;color:var(--mut)}
+    .errs .dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;margin-top:6px}
+    .dot.k-err{background:#c0392b}.dot.k-tmpl{background:#e0b94a}.dot.k-calq{background:#5a8fb0}.dot.k-ph{background:#c98a78}
+    .errs code{background:rgba(26,22,12,.06);padding:1px 6px;border-radius:4px;font-size:.82rem;color:var(--ink);white-space:nowrap;overflow-wrap:anywhere;white-space:normal}
     .wniosek{width:min(1080px,100%);margin:0 auto 64px;padding:0 clamp(18px,5vw,72px)}
     .wniosek .box{border-left:3px solid var(--acc);background:var(--panel);border-radius:0 10px 10px 0;padding:20px 24px;color:var(--mut);font-size:.98rem;line-height:1.6}
     .wniosek .box b{color:var(--ink)}
@@ -51,13 +56,15 @@
 
   <section class="phero">
     <div class="inner">
-      <span class="kick">01 · styl · v1 (de-translationese)</span>
-      <h1>Base kalkuje angielski szablon. <em>Fine-tuned v1</em> pisze po polsku.</h1>
-      <p class="lede">Qwen3.5-27B daje <b>ten sam angielski szablon w obu językach</b>: nagłówki markdown, „Here are a few options" = „Oto kilka propozycji", <code>Option 1</code> = <code>Opcja 1</code>, placeholdery <code>[Boss's Name]</code> = <code>[Imię]</code>. Fine-tuned <b>v1</b> łamie szablon i odpowiada natywnie: <b>0 markerów szablonu</b>, krócej, na temat. Po lewej base z podświetlonymi issues, po prawej v1.</p>
+      <span class="kick">01 · styl · v1 · przegląd ręczny</span>
+      <h1>Co base Qwen robi <em>źle</em> po polsku.</h1>
+      <p class="lede">Przeczytałem odpowiedzi base Qwen3.5-27B i zaznaczyłem błędy ręcznie, nie regexem. Nie tylko szablon: <b>twarde błędy gramatyki i ortografii</b> („Hipoza", „Bezpośrednie sprzedaż", „samodzielną rozwiązywanie"), <b>kalki z angielskiego</b>, a nawet <b>liczenie w dolarach</b> dla polskiego promptu. Po lewej base z anotacjami, po prawej fine-tuned <b>v1</b>. Uczciwie zaznaczam też potknięcia v1.</p>
       <div class="legend">
-        <span class="lg"><span class="sw s"></span>szablon: markdown / kalki-otwarcia</span>
-        <span class="lg"><span class="sw p"></span>placeholdery</span>
-        <span class="lg"><span class="sw t"></span>v1 — natywny polski, 0 szablonu</span>
+        <span class="lg"><span class="sw err"></span>twardy błąd (gramatyka/ortografia)</span>
+        <span class="lg"><span class="sw tmpl"></span>szablon / markdown / kalka-otwarcia</span>
+        <span class="lg"><span class="sw calq"></span>kalka z angielskiego</span>
+        <span class="lg"><span class="sw ph"></span>placeholder</span>
+        <span class="lg"><span class="sw good"></span>v1 poprawnie</span>
       </div>
     </div>
   </section>
@@ -66,7 +73,7 @@
 
   <div class="wniosek">
     <div class="box">
-      <b>Wniosek:</b> domyślny „polski" modelu to angielska STRUKTURA z polskimi słowami (translationese). Fine-tuned v1 uczy modelu <b>myślenia po polsku, nie tłumaczenia z angielskiego</b> — w każdym przykładzie schodzi do <b>0 markerów szablonu</b>, często wielokrotnie krócej. To jest wartość v1: nie liczba na benchmarku (v1 celuje w styl, nie KLEJ), tylko jakość wyjścia. Dane: <code>results/style_demo.json</code> · base (Qwen3.5-27B) vs <code>slayer-style ep3 (v1)</code>.
+      <b>Wniosek:</b> regex łapie myślniki i słowo „feedback". Ręczny przegląd wyłapuje to, co naprawdę boli: <b>błędy fleksyjne, literówki w nagłówkach, walutę po amerykańsku, składnię kalkowaną</b>. To nie jest tani efekt — to realna niepoprawna polszczyzna w „flagowym" modelu. v1 (styl-tuning) usuwa szablon i większość kalek, choć sam nie jest bez skazy (też to zaznaczam). Dane: <code>results/style_demo.json</code> — kurowane ręcznie, base Qwen3.5-27B vs <code>slayer-style ep3 (v1)</code>.
     </div>
   </div>
 
@@ -74,47 +81,25 @@
   <script src="/assets/site.js"></script>
   <script>
     (function(){
-      function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-      function hl(s){
-        var t=esc(s);
-        t=t.replace(/(\[[^\]\n]{1,40}\])/g,'<mark class="h-p">$1</mark>');                 // placeholdery
-        t=t.replace(/(^|\n)(\s*)(&gt;)(\s)/g,'$1$2<mark class="h-s">$3</mark>$4');           // blockquote >
-        t=t.replace(/(\*\*|#{1,6}(?=\s))/g,'<mark class="h-s">$1</mark>');                   // markdown bold + naglowki
-        t=t.replace(/\b(Here are|Oto kilka|Option\s\d+|Opcja\s\d+|Subject:|Temat:)/gi,'<mark class="h-s">$1</mark>'); // kalki-otwarcia
-        return t.replace(/\n/g,"<br>");
+      var KIND={err:"k-err",tmpl:"k-tmpl",calq:"k-calq",ph:"k-ph"};
+      function errItem(e){
+        return '<li><span class="dot '+(KIND[e.k]||'k-err')+'"></span><span><code>'+e.q+'</code> → '+e.fix+'</span></li>';
       }
-      // policz markery szablonu + placeholdery (do metryki "ile naprawiono")
-      function tmpl(s){return (s.match(/\*\*|#{1,6}\s|Oto kilka|Opcja \d|Option \d|Subject:|Temat:/gi)||[]).length
-                            + (s.match(/(^|\n)\s*>/g)||[]).length;}
-      function ph(s){return (s.match(/\[[^\]\n]{1,40}\]/g)||[]).length;}
-      function trunc(s,n){return s.length>n? esc(s.slice(0,n)).replace(/\n/g," ")+" …" : hl(s);}
-
-      function card(e,i){
-        var bt=tmpl(e.pl_base), bp=ph(e.pl_base);
-        var ratio=e.ep3.length? e.pl_base.length/e.ep3.length : 1;
-        var badBadge='<span class="badge bad">'+bt+'× szablon'+(bp? ' · '+bp+' placeholder':'')+'</span>';
-        var winBadge='<span class="badge good">✓ 0 szablonu'+(ratio>=1.5? ' · '+ratio.toFixed(1)+'× krócej':' · natywna struktura')+'</span>';
-        var en = e.en ? ('<div class="ex-en"><span class="enh">oryginał EN — z tego base kalkuje szablon w obu językach</span>'+trunc(e.en,300)+'</div>') : '';
-        return '<article class="ex'+(i>=4?' hidden ex-extra':'')+'">'
-          + '<div class="ex-task"><b>Zadanie:</b> '+esc(e.prompt)+'</div>'
+      function card(e){
+        var en = e.en_html ? ('<div class="ex-en"><span class="enh">oryginał EN — z tego base kalkuje szablon</span>'+e.en_html+'</div>') : '';
+        var errs = (e.errors&&e.errors.length) ? ('<div class="errs"><div class="errs-h">błędy zaznaczone ręcznie ('+e.errors.length+')</div><ul>'+e.errors.map(errItem).join("")+'</ul></div>') : '';
+        return '<article class="ex">'
+          + '<div class="ex-task"><b>Zadanie:</b> '+e.prompt+'</div>'
           + en
           + '<div class="cmp">'
-          +   '<div class="side base"><div class="side-h">BASE · polski <span>(szablon EN przetłumaczony)</span></div>'+badBadge+'<div class="col-b">'+hl(e.pl_base)+'</div></div>'
-          +   '<div class="side win"><div class="side-h">v1 · fine-tuned <span>(natywny polski)</span></div>'+winBadge+'<div class="col-b ep">'+hl(e.ep3)+'</div></div>'
+          +   '<div class="side base"><div class="side-h">BASE · Qwen3.5-27B <span>(z błędami)</span></div><div class="col-b">'+e.base_html+'</div></div>'
+          +   '<div class="side win"><div class="side-h">v1 · fine-tuned <span>(natywny polski)</span></div><div class="col-b ep">'+e.ep3_html+'</div></div>'
           + '</div>'
+          + errs
           + '</article>';
       }
       fetch("/results/style_demo.json?ts="+Date.now()).then(function(r){return r.json();}).then(function(d){
-        var list=document.getElementById("sd-list");
-        var html=d.examples.map(card).join("");
-        var extra=d.examples.length-4;
-        if(extra>0) html+='<button class="more" id="sd-more">pokaż pozostałe '+extra+' przykłady ↓</button>';
-        list.innerHTML=html;
-        var btn=document.getElementById("sd-more");
-        if(btn) btn.addEventListener("click",function(){
-          document.querySelectorAll(".ex-extra").forEach(function(el){el.classList.remove("hidden");});
-          btn.remove();
-        });
+        document.getElementById("sd-list").innerHTML=d.examples.map(card).join("");
       }).catch(function(){
         document.getElementById("sd-list").innerHTML='<p style="color:var(--mut)">Nie udało się wczytać przykładów.</p>';
       });
