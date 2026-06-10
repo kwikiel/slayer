@@ -1,0 +1,40 @@
+{
+  "total": 1742,
+  "seed": 42,
+  "shares_target": {
+    "distill": 0.6,
+    "human_pl": 0.15,
+    "en_retention": 0.2
+  },
+  "by_layer": {
+    "distill": 1022,
+    "human_pl": 304,
+    "en_retention": 416
+  },
+  "by_source": {
+    "distill_rating": 106,
+    "distill_paraphrase": 98,
+    "qwen_raw_teacher_rewrite": 104,
+    "tulu3_tulu_v3.9_open_math_2_gsm8k_50k": 61,
+    "oasst2_pl_human": 96,
+    "distill_toxicity": 125,
+    "distill_topic": 120,
+    "tulu3_numinamath_tir_math_decontaminated": 48,
+    "aya_pl_human": 104,
+    "tulu3_personahub_code_v2_34999": 49,
+    "distill_nli": 104,
+    "tulu3_personahub_math_v5_regen_149960": 61,
+    "distill_reading": 117,
+    "distill_sentiment": 111,
+    "distill_qa_correctness": 116,
+    "distill_general": 100,
+    "tulu3_evol_codealpaca_heval_decontaminated": 60,
+    "tulu3_tulu_v3.9_personahub_math_interm_algebra": 66,
+    "tulu3_tulu_v3.9_sciriff_10k": 14,
+    "tulu3_tulu-3-sft-personas-math-grade": 57,
+    "distill_ner": 25
+  },
+  "contam_dropped": 0,
+  "dash_dropped": 226,
+  "clean_guarantee": "zero benchmark train/test splits; dedup vs runs/test_atoms.txt"
+}

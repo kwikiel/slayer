@@ -27,7 +27,7 @@ OUT = "slayer-data/v3/train_v3.jsonl"
 REPORT = "results/train_v3_mix_report.json"
 
 LAYERS = {
-    "distill": ["slayer-data/distill/distill_pl.jsonl"],
+    "distill": ["slayer-data/distill/distill_pl.clean.jsonl"],
     "human_pl": ["slayer-data/v3/human_pl_aya.clean.jsonl",
                  "slayer-data/v3/human_pl_oasst2.jsonl",
                  "slayer-data/style/style_pl_sft_v3_openjudge_disjoint.jsonl"],
