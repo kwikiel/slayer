@@ -40,15 +40,17 @@ def chat(sysp, usr, maxt=1200, temp=0.7):
             if a == 3: return ""
             time.sleep(3)
 
-ENT_SYS = ("Wypisz najważniejsze encje (osoby, miejsca, organizacje, pojęcia, daty, wydarzenia) z podanego "
-           "fragmentu. Zwróć WYŁĄCZNIE listę 4–8 encji oddzielonych średnikami, bez numeracji.")
-REL_SYS = ("Jesteś autorem rzetelnych polskich tekstów encyklopedycznych. Na podstawie WYŁĄCZNIE podanego "
-           "fragmentu napisz zwięzły, faktograficznie wierny akapit wyjaśniający związek między wskazanymi "
-           "encjami. Nie zmyślaj; jeśli fragment nie opisuje związku, opisz każdą encję osobno na podstawie fragmentu.")
-PARA_SYS = ("Przeredaguj poniższy fragment na nowo WŁASNYMI słowami, zachowując wszystkie fakty i nazwy. "
-            "Naturalna współczesna polszczyzna, bez kalk, bez markdownu. Zwróć tylko przeredagowany tekst.")
-SUM_SYS = ("Streść poniższy fragment w 2–4 zdaniach, zachowując kluczowe fakty i nazwy. Zwróć tylko streszczenie.")
-QA_SYS = ("Na podstawie WYŁĄCZNIE fragmentu ułóż 3 pytania i wyczerpujące odpowiedzi (wiedza zamknięta). "
+REL_SYS = ("Jesteś autorem rzetelnych polskich tekstów encyklopedycznych. Z podanego fragmentu: "
+           "(1) wybierz 4-8 najważniejszych encji (osoby, miejsca, organizacje, pojęcia, daty); "
+           "(2) dla 3-4 PAR encji napisz po jednym zwięzłym, faktograficznie wiernym akapicie "
+           "wyjaśniającym ich związek WYŁĄCZNIE na podstawie fragmentu. Nie zmyślaj. "
+           "Zwróć każdy akapit po linii '### AKAPIT', bez innych nagłówków i bez markdownu w treści.")
+PARA_SUM_SYS = ("Na podstawie WYŁĄCZNIE poniższego fragmentu zwróć dwie rzeczy: "
+                "po linii '### PARAFRAZA' przeredagowany własnymi słowami fragment (wszystkie fakty i nazwy "
+                "zachowane, naturalna współczesna polszczyzna, bez kalk i markdownu), "
+                "a po linii '### STRESZCZENIE' streszczenie w 2-4 zdaniach.")
+QA_SYS = ("Na podstawie WYŁĄCZNIE fragmentu ułóż 5 pytań i wyczerpujące odpowiedzi (wiedza zamknięta, "
+          "pytania samodzielne, bez odwołań do 'fragmentu/tekstu'). "
           "Format: 'Pytanie: ...\\nOdpowiedź: ...' — każda para w nowej linii. Nie zmyślaj.")
 
 ATOMS_F = "runs/test_atoms.txt"
@@ -99,20 +101,21 @@ def passages(skip_titles=()):
             yield p, title
 
 def explode(item):
-    """One source chunk -> several grounded synthetic docs (the EntiGraph step)."""
+    """One source chunk -> grounded synthetic docs in 3 batched calls (latency-bound -> batched)."""
     para, title = item
+    usr = f"Fragment ({title}):\n{para}"
     out = []
-    ents = [e.strip() for e in re.split(r"[;\n]", chat(ENT_SYS, f"Fragment ({title}):\n{para}", maxt=200)) if e.strip()][:8]
-    # entity-relation statements over a few entity pairs
-    import itertools
-    pairs = list(itertools.combinations(ents, 2))[:4]
-    for e1, e2 in pairs:
-        t = chat(REL_SYS, f"Fragment ({title}):\n{para}\n\nEncje: {e1}; {e2}")
+    rel = chat(REL_SYS, usr, maxt=1400)
+    for t in re.split(r"###\s*AKAPIT\s*", rel):
+        t = t.strip()
         if len(t) > 60: out.append((t, "relation"))
-    # paraphrase, summary, QA
-    for sysp, kind, mt in [(PARA_SYS, "paraphrase", 900), (SUM_SYS, "summary", 300), (QA_SYS, "qa", 900)]:
-        t = chat(sysp, f"Fragment ({title}):\n{para}", maxt=mt)
-        if len(t) > 40: out.append((t, kind))
+    ps = chat(PARA_SUM_SYS, usr, maxt=1200)
+    m = re.split(r"###\s*(PARAFRAZA|STRESZCZENIE)\s*", ps)
+    for i in range(1, len(m) - 1, 2):
+        t = m[i + 1].strip()
+        if len(t) > 40: out.append((t, "paraphrase" if m[i] == "PARAFRAZA" else "summary"))
+    qa = chat(QA_SYS, usr, maxt=1300)
+    if len(qa) > 60: out.append((qa, "qa"))
     return [{"text": t, "kind": k, "source_title": title, "gen_model": TEACHER}
             for t, k in out if not contaminated(t)]
 
