@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log eksperymentów | Slayer</title>
+  <meta name="description" content="Uczciwy log eksperymentów Slayer: każdy model, co trenowane, na czym, z jakim wynikiem. Kontaminacja benchmarkowa oznaczona jawnie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/lab.css">
+  <style>
+    h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4.4vw,2.8rem);letter-spacing:-.015em;margin:10px 0 0}
+    .log{display:grid;gap:16px;margin-top:26px}
+    .xp{border:1px solid var(--line2);border-radius:10px;background:var(--bg);overflow:hidden}
+    .xp-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--line2);background:rgba(255,255,255,.02)}
+    .xp-date{font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+    .xp-name{font-family:var(--serif);font-size:1.35rem;color:var(--ink)}
+    .badge{font-family:var(--mono);font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.03em}
+    .badge.clean{background:rgba(31,214,196,.13);color:var(--acc);border:1px solid rgba(31,214,196,.3)}
+    .badge.contaminated{background:rgba(255,93,93,.12);color:#ff7a7a;border:1px solid rgba(255,93,93,.32)}
+    .xp-macro{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:1.4rem;color:var(--ink)}
+    .xp-macro .d{font-size:.8rem;color:var(--dim);font-weight:400}
+    .xp-bd{padding:16px 18px;display:grid;gap:12px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:.76rem;color:var(--mut)}
+    .meta b{color:var(--ink);font-weight:500}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}
+    .chip{font-family:var(--mono);font-size:.72rem;padding:3px 9px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--mut)}
+    .chip.contam{border-color:rgba(255,93,93,.3);color:#ff9a9a}
+    .tasks{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:.78rem;margin-top:2px}
+    .tasks .t .k{color:var(--dim);font-size:.7rem}.tasks .t .v{color:var(--ink);font-weight:600}
+    .xp-note{font-size:.9rem;color:var(--mut);line-height:1.5;border-left:2px solid var(--line2);padding-left:12px}
+    .xp-links{display:flex;gap:14px;font-family:var(--mono);font-size:.74rem}.xp-links a{color:var(--acc)}
+    .banner{border:1px solid var(--line2);border-radius:10px;padding:16px 18px;background:rgba(31,214,196,.04);font-size:.92rem;color:var(--mut);line-height:1.55;margin-top:22px}
+    .banner b{color:var(--ink)}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="sec page-top">
+    <div class="inner">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div><span class="kick"><span class="ac">LOG</span> — eksperymenty · co · na czym · z jakim wynikiem</span><h1>Log eksperymentów</h1></div>
+        <span class="live"><span class="d"></span><span id="upd">—</span></span>
+      </div>
+
+      <div class="banner">
+        <b>Uczciwa zasada:</b> każdy model jest tu z pełnym składem danych i wynikiem. Trening na train-splicie
+        benchmarku oznaczamy <b style="color:#ff7a7a">KONTAMINACJA</b> — bo zawyża wynik i jest nieporównywalny
+        z modelami liczonymi 5-shot. Realny claim robimy wyłącznie na <b>oficjalnym 5-shot leaderboardzie + MT-Bench-PL</b>.
+      </div>
+
+      <div class="log" id="log"><div class="muted mono" style="margin-top:20px">wczytuję log…</div></div>
+
+      <p class="muted mono" id="foot" style="text-align:center;font-size:.78rem;margin-top:22px">—</p>
+    </div>
+  </div>
+  <div id="site-foot"></div>
+  <script src="/assets/site.js"></script>
+  <script>
+    const $=i=>document.getElementById(i);
+    const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+    const SRCLABEL={style:"styl",klej_train_split:"KLEJ train",klej_synth:"KLEJ synth",replay:"replay",distill_pl:"destylacja PL",aya_pl:"Aya-PL",oasst_pl:"OASST-PL",en_retention:"EN retencja"};
+    function card(x){
+      const clean=x.status==="clean";
+      const badge=clean?'<span class="badge clean">CZYSTY</span>':'<span class="badge contaminated">KONTAMINACJA</span>';
+      const ev=x.eval||{};
+      const macro=(ev.macro!=null)?`<div class="xp-macro">${ev.macro}<span class="d"> macro${ev.base_macro!=null?` · base ${ev.base_macro} (Δ ${(ev.macro-ev.base_macro).toFixed(1)})`:""}</span></div>`:"";
+      const chips=Object.entries(x.data||{}).map(([k,v])=>{const contam=(k==="klej_train_split"||k==="klej_synth");return `<span class="chip ${contam?'contam':''}">${esc(SRCLABEL[k]||k)} ${v}</span>`;}).join("");
+      const tasks=(ev.tasks)?`<div class="tasks">${Object.entries(ev.tasks).map(([k,v])=>`<div class="t"><div class="k">${esc(k)}</div><div class="v">${v}</div></div>`).join("")}</div>`:"";
+      const links=[x.hf?`<a href="https://huggingface.co/${esc(x.hf)}" rel="noopener">model ↗</a>`:"",x.data_hf?`<a href="https://huggingface.co/datasets/${esc(x.data_hf)}" rel="noopener">dane ↗</a>`:""].filter(Boolean).join("");
+      return `<div class="xp">
+        <div class="xp-top"><span class="xp-date">${esc(x.date)}</span><span class="xp-name">${esc(x.name)}</span>${badge}${macro}</div>
+        <div class="xp-bd">
+          <div class="meta"><span>baza <b>${esc(x.base)}</b></span><span>metoda <b>${esc(x.method)}</b></span><span><b>${(x.n_examples||0).toLocaleString("pl")}</b> przykładów</span>${ev.harness?`<span>harness <b>${esc(ev.harness)}</b></span>`:""}</div>
+          <div class="chips">${chips}</div>
+          ${tasks}
+          <div class="xp-note">${esc(x.note)}</div>
+          ${links?`<div class="xp-links">${links}</div>`:""}
+        </div></div>`;
+    }
+    fetch("/results/experiments.json?ts="+Date.now()).then(r=>r.json()).then(d=>{
+      const xs=(d.experiments||[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+      $("log").innerHTML=xs.length?xs.map(card).join(""):'<div class="muted mono">brak eksperymentów</div>';
+      $("upd").textContent="zaktualizowano "+(d.updated||"—");
+      $("foot").textContent=xs.length+" eksperymentów · log auto-aktualizowany przez pipeline (pipeline/run_daily.py)";
+    }).catch(()=>{$("log").innerHTML='<div class="muted mono">brak danych (results/experiments.json)</div>';});
+  </script>
+</body>
+</html>

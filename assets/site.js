@@ -5,6 +5,7 @@
   var LINKS = [
     ["/kierunki","kierunki"],
     ["/trening","trening"],
+    ["/eksperymenty","log"],
     ["/zadania","zadania"],
     ["/datasety","datasety"],
     ["/leaderboard","leaderboard"],

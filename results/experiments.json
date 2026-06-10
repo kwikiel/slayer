@@ -1,0 +1,39 @@
+{
+  "updated": "2026-06-10",
+  "note": "Uczciwy log eksperymentów Slayer. Każdy wpis: co trenowane, na czym, z jakim wynikiem. Kontaminacja benchmarkowa oznaczona jawnie.",
+  "experiments": [
+    {
+      "id": "v2",
+      "date": "2026-06-09",
+      "name": "slayer-v2-klej",
+      "base": "Qwen3.5-27B",
+      "method": "DoRA r=16 · KLEJ-targeted SFT",
+      "n_examples": 2482,
+      "data": {"style": 1004, "klej_train_split": 1100, "klej_synth": 150, "replay": 228},
+      "status": "contaminated",
+      "eval": {
+        "harness": "nasza (greedy, enable_thinking=False, n=200) — NIE 5-shot leaderboard",
+        "macro": 87.83,
+        "base_macro": 81.83,
+        "tasks": {"psc": 97.5, "ppc": 81.0, "dyk": 86.0, "belebele": 92.0, "8tags": 81.0, "polemo2_in": 89.5}
+      },
+      "note": "Trenowany na train splitach KLEJ → KONTAMINACJA. Dowód: belebele +0.0 (0 przykładów w miksie) vs psc +26.5 — artefakt train-splitów, nie zdolność. NIE jest claimem leaderboardowym. Train≠test (dedup), więc to nie oszustwo, ale nieporównywalne z 5-shot Bielikiem.",
+      "hf": "kacperwikiel/slayer-v2-qwen3.5-27b-klej",
+      "data_hf": "kacperwikiel/slayer-data-v2-klej-mix"
+    },
+    {
+      "id": "v1",
+      "date": "2026-06-05",
+      "name": "slayer-style (ep1/2/3)",
+      "base": "Qwen3.5-27B",
+      "method": "DoRA · style SFT (LIMA-style, ~1k kuracja)",
+      "n_examples": 1004,
+      "data": {"style": 1004},
+      "status": "clean",
+      "eval": {"harness": "—", "macro": null, "note": "cel = styl PL (de-translationese), nie KLEJ"},
+      "note": "Czysty styl polski: bez nadużycia myślników, natywna fleksja, zero danych benchmarkowych. Teacher deepseek-v4-pro / sędzia otwarty Qwen3.5.",
+      "hf": "kacperwikiel/slayer-style-qwen3.5-27b-ep3",
+      "data_hf": "kacperwikiel/slayer-data-v1-style"
+    }
+  ]
+}
