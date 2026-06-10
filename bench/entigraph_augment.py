@@ -131,22 +131,31 @@ def main():
             tok += approx_tokens(d.get("text", "")); ndoc += 1
             kinds[d.get("kind", "?")] += 1; done_titles.add(d.get("source_title", ""))
         print(f"  resume: {ndoc} docs / ~{tok/1e6:.2f}M tok / {len(done_titles)} artykułów", flush=True)
-    src = passages(done_titles); t0 = time.time()
+    src = passages(done_titles); t0 = time.time(); tok0 = tok
     print(f"EntiGraph augment -> target ~{TARGET_TOKENS/1e6:.0f}M tokens | teacher={TEACHER} | {WORKERS} workers", flush=True)
+    from concurrent.futures import FIRST_COMPLETED, wait
+    last_report = 0
     with open(OUT, "a", encoding="utf-8") as f, ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        while tok < TARGET_TOKENS:
-            batch = []
-            for _ in range(WORKERS):
-                try: batch.append(next(src))
-                except StopIteration: break
-            if not batch: break
-            for docs in ex.map(explode, batch):
+        pending = set()
+        exhausted = False
+        while tok < TARGET_TOKENS and (pending or not exhausted):
+            # rolling window: dosypujemy do pełna, żaden straggler nie blokuje reszty
+            while not exhausted and len(pending) < WORKERS:
+                try: pending.add(ex.submit(explode, next(src)))
+                except StopIteration: exhausted = True; break
+            if not pending: break
+            done, pending = wait(pending, return_when=FIRST_COMPLETED)
+            for fut in done:
+                try: docs = fut.result()
+                except Exception: continue
                 for d in docs:
-                    f.write(json.dumps(d, ensure_ascii=False) + "\n"); f.flush()
+                    f.write(json.dumps(d, ensure_ascii=False) + "\n")
                     tok += approx_tokens(d["text"]); ndoc += 1; kinds[d["kind"]] += 1
-            if ndoc and ndoc % 50 < WORKERS:
-                rate = tok / max(time.time()-t0, 1)
-                print(f"  ~{tok/1e6:.2f}M tok / {ndoc} docs ({rate:.0f} tok/s, {time.time()-t0:.0f}s) {dict(kinds)}", flush=True)
+            f.flush()
+            if ndoc - last_report >= 200:
+                last_report = ndoc
+                rate = (tok - tok0) / max(time.time() - t0, 1)
+                print(f"  ~{tok/1e6:.2f}M tok / {ndoc} docs ({rate:.0f} tok/s marginalnie, {time.time()-t0:.0f}s) {dict(kinds)}", flush=True)
     print(f"\nDONE ~{tok/1e6:.2f}M tokens, {ndoc} synthetic docs -> {OUT}", flush=True)
     print(f"  kinds: {dict(kinds)}", flush=True)
 

@@ -32,7 +32,7 @@ CAPS = {
  "qa_correctness": "ocena, czy podana odpowiedź jest POPRAWNĄ odpowiedzią na pytanie (wiedza ogólna o świecie, Polsce, nauce, historii). WYMYŚL pytania + odpowiedzi, część poprawnych część błędnych.",
  "reading": "rozumienie tekstu: krótki akapit + pytanie o jego treść + poprawna odpowiedź (z uzasadnieniem z tekstu). WYMYŚL różnorodne akapity.",
  "toxicity": "klasyfikacja wypowiedzi pod kątem moderacji treści (trening klasyfikatora bezpieczeństwa): kategorie 'neutralna', 'uszczypliwa/sarkastyczna', 'wymaga moderacji'. WYMYŚL zwykłe wypowiedzi z internetu: większość neutralnych albo lekko uszczypliwych (sarkazm, złośliwostka, ostra krytyka); przykłady 'wymaga moderacji' opisuj łagodnie (wyśmiewanie, podpuszczanie), bez wulgaryzmów i bez cytowania realnego hejtu.",
- "ner": "rozpoznawanie nazw własnych w zdaniu (osoba, miejsce, organizacja, data). WYMYŚL zdania z różnymi encjami; w odpowiedzi wypisz encje z typami.",
+ "ner": "szkolne zadanie z języka polskiego: wskazywanie nazw własnych w zdaniu i ich kategorii (postać historyczna lub fikcyjna, miejscowość, rzeka, instytucja, wydarzenie, data). WYMYŚL zdania o tematyce encyklopedycznej (historia, geografia, kultura) z FIKCYJNYMI lub historycznymi postaciami (żadnych współczesnych prywatnych osób); w odpowiedzi wypisz nazwy własne z kategoriami.",
  "rating": "ocena recenzji produktu/usługi w skali 1–5 gwiazdek na podstawie treści. WYMYŚL recenzje o różnym nasileniu.",
  "general": "ogólne instrukcje po polsku (pisanie, wyjaśnianie, kod, rozumowanie krok po kroku, streszczanie) — szeroka pokrywa zdolności, by uniknąć zapominania.",
 }
@@ -107,12 +107,18 @@ def main():
             except Exception: pass
     print(f"[distill] istniejących: {len(kept_rows)}", flush=True)
 
+    from concurrent.futures import ThreadPoolExecutor
+    workers = int(os.environ.get("GEN_WORKERS", "12"))
     contam = 0
     for cap in caps:
         desc = CAPS[cap]; have = sum(1 for r in kept_rows if r.get("task") == cap); rounds = 0
         while have < a.per and rounds < 40:
             rounds += 1
-            for ex in gen_batch(cap, desc, a.batch):
+            # równoległe batche w rundzie (latency-bound)
+            need_batches = min(max((a.per - have) // a.batch + 1, 1), workers)
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                batches = list(pool.map(lambda _: gen_batch(cap, desc, a.batch), range(need_batches)))
+            for ex in (x for b in batches for x in b):
                 txt = ex["messages"][0]["content"] + " " + ex["messages"][1]["content"]
                 h = hashlib.sha1(norm(ex["messages"][0]["content"]).encode()).hexdigest()
                 if h in seen: continue
