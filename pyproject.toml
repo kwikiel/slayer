@@ -1,0 +1,10 @@
+[project]
+name = "slayer"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=5.0.0",
+    "huggingface-hub>=1.19.0",
+    "sacrebleu>=2.6.0",
+]
