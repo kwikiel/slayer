@@ -29,21 +29,21 @@
     {
       "id": "entigraph-10m",
       "date": "2026-06-11",
-      "name": "EntiGraph PL-focus — korpus wiedzy 10M tok",
+      "name": "EntiGraph — korpusy wiedzy 2×10M tok (wiki PL-focus + ZPE)",
       "base": "—",
       "method": "synthetic CPT data: relacje encji + parafrazy + streszczenia + QA (×~10 na fakt), teacher deepseek-flash",
-      "n_examples": 92202,
+      "n_examples": 183828,
       "data": {
-        "relation": 46713,
-        "paraphrase": 15149,
-        "summary": 15177,
-        "qa": 15163
+        "wiki: relation": 46713,
+        "wiki: para/sum/qa": 45489,
+        "zpe: relation": 45097,
+        "zpe: para/sum/qa": 47803
       },
       "status": "clean",
       "eval": {
         "harness": "decon_audit 8-gram: 43 kolizje wycięte (0.047%)"
       },
-      "note": "~100k faktów z 6.5k artykułów o Polsce. Inżynieria throughput: 8 sekwencyjnych wywołań/chunk -> 3 zbiorcze + rolling window 256 workerów = 430 -> 13 000 tok/s (30x). Koszt ~$4. Drugi korpus (ZPE, materiał egzaminacyjny 64k akapitów) w generacji.",
+      "note": "~200k faktów: 6.5k artykułów o Polsce + 64k akapitów egzaminacyjnych ZPE. Audyt verbatim na ZPE wyciął 1274 kolizje (1.37%; materiał szkolny pokrywa się z frazami egzaminów z evali — dokładnie po to jest bramka). Inżynieria throughput: 430 -> 13 000 tok/s (30x). Koszt łączny ~$8.",
       "log_note": "slayer-data/knowledge/entigraph_pl_focus.clean.jsonl (shardy w repo datasets)"
     },
     {
