@@ -23,7 +23,7 @@
         var active = (P===l[0]) ? " active" : "";
         return '<a class="'+active.trim()+'" href="'+l[0]+'">'+l[1]+'</a>';
       }).join("")
-    + '<a class="ncta" href="https://discord.gg/9R3RZwjPSp" rel="noopener" target="_blank">wejście →</a>'
+    + '<a class="ncta" href="https://discord.gg/HnTkVR4c5T" rel="noopener" target="_blank">wejście →</a>'
     + '</nav></header>';
 
   var foot = '<footer class="foot">'

@@ -77,7 +77,7 @@ results/      wyniki (leaderboard.json, status.json)
 Szukamy ludzi: dane (korpusy prawno-urzędowe), ewaluacje, trening (SFT/DPO/GRPO), infra — oraz firm (use case) i fundatorów compute.
 
 - 📋 [Zadania od początkujących](https://slayer.fabryka.ai/zadania) · 🧪 [Metody treningu](https://slayer.fabryka.ai/trening)
-- ✍️ [Dołącz / zapisz się](https://slayer.fabryka.ai/zespol) · [Discord](https://discord.gg/5YaDpSaE)
+- ✍️ [Dołącz / zapisz się](https://slayer.fabryka.ai/zespol) · [Discord](https://discord.gg/HnTkVR4c5T)
 
 ## Licencja
 
