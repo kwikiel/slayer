@@ -56,13 +56,13 @@
     <div class="grid auto"><div class="cell"><div class="top"><span>QLoRA / LoRA</span><span class="ct">rekom.</span></div><p>4-bit + adaptery → 11–14B na jednym GPU.</p></div>
       <div class="cell"><div class="top"><span>DoRA / LoRA+</span><span class="ct y">zaawans.</span></div><p>Bliżej full-FT przy podobnym koszcie.</p></div>
       <div class="cell"><div class="top"><span>Unsloth / Liger</span><span class="ct b">tanie</span></div><p>2–4× szybciej, mniej VRAM.</p></div>
-      <div class="cell"><div class="top"><span>NEFTune + packing</span><span class="ct b">tanie</span></div><p>Darmowy zysk jakości i throughputu.</p></div></div>
+      <div class="cell"><div class="top"><span>NEFTune + packing</span><span class="ct b">tanie</span></div><p>Darmowy zysk jakości i przepustowości.</p></div></div>
     <div class="ghead"><h2>3 · Preferencje</h2><span class="c">offline, bez ciężkiego RLHF</span></div>
     <div class="grid auto"><div class="cell"><div class="top"><span>DPO</span><span class="ct">sprawdzone</span></div><p>Pary lepsza/gorsza, stabilne, bez modelu nagrody.</p></div>
       <div class="cell"><div class="top"><span>ORPO</span><span class="ct">1 etap</span></div><p>SFT + preferencje naraz, bez modelu ref.</p></div>
       <div class="cell"><div class="top"><span>SimPO / KTO</span><span class="ct b">tańsze</span></div><p>Ref-free / bez par — łatwiej o dane.</p></div>
       <div class="cell"><div class="top"><span>iterative DPO</span><span class="ct y">zaawans.</span></div><p>Generuj → oceń (RLAIF) → dotrenuj, w pętli.</p></div></div>
-    <div class="ghead"><h2>4 · RL na weryfikowalnych nagrodach</h2><span class="c">killer pod egzaminy</span></div>
+    <div class="ghead"><h2>4 · RL na weryfikowalnych nagrodach</h2><span class="c">przełom pod egzaminy</span></div>
     <div class="grid auto"><div class="cell"><div class="top"><span>GRPO</span><span class="ct">pod egzaminy</span></div><p>RL bez modelu wartości. Nagroda = poprawna litera.</p></div>
       <div class="cell"><div class="top"><span>RLVR</span><span class="ct">pod target</span></div><p>Egzaminy mają klucz → tania, mocna nagroda.</p></div>
       <div class="cell"><div class="top"><span>distylacja CoT</span><span class="ct b">tanie</span></div><p>Łańcuchy myślenia z mocnego nauczyciela.</p></div></div>
