@@ -20,8 +20,6 @@ def load():
         try:
             p = json.load(open(f, encoding="utf-8"))
             if isinstance(p, dict) and "benchmark" in p and "models" in p:
-                if p.get("benchmark") == "include":  # loader gold-mapping broken (below random) — excluded until fixed
-                    continue
                 out.append(p)
         except Exception: pass
     return out

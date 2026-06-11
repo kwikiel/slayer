@@ -9,7 +9,7 @@ from collections import defaultdict
 from huggingface_hub import hf_hub_download, HfApi
 
 OLLAMA = "http://127.0.0.1:11434/api/chat"
-OUT = "/home/kacper/bench_results"
+OUT = os.environ.get("BENCH_OUT", os.path.expanduser("~/bench_results"))
 MODELS = [
     ("Bielik-11B-v3.0-Instruct", "hf.co/speakleash/Bielik-11B-v3.0-Instruct-GGUF:Q4_K_M"),
     ("Qwen3.5-9B",               "qwen3.5:9b"),
@@ -72,7 +72,7 @@ def load_include(n, seed):
     for r in ds:
         opts = [r["option_a"], r["option_b"], r["option_c"], r["option_d"]]
         a = str(r["answer"]).strip()
-        gold = "abcdABCD".find(a) % 4 if a and a[0].lower() in "abcd" else int(a) - 1  # INCLUDE: 1-based int
+        gold = "abcdABCD".find(a) % 4 if a and a[0].lower() in "abcd" else int(a)  # 0-based int
         if 0 <= gold < 4:
             items.append({"q": r["question"], "options": opts, "gold": gold, "cat": r.get("domain", "?")})
     return sample_strat(items, n, seed)
