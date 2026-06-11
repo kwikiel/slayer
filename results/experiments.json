@@ -1,7 +1,37 @@
 {
-  "updated": "2026-06-10",
+  "updated": "2026-06-11",
   "note": "Uczciwy log eksperymentów Slayer. Każdy wpis: co trenowane, na czym, z jakim wynikiem. Kontaminacja benchmarkowa oznaczona jawnie.",
   "experiments": [
+    {
+      "id": "knowledge-probe-v1",
+      "date": "2026-06-11",
+      "name": "knowledge_probe_v1 — długi ogon wiedzy o Polsce (smoke)",
+      "base": null,
+      "method": "71 pytań closed-book z korpusu EntiGraph (38 polonica / 33 ogólne), sędzia: otwarty Qwen3.5-122B vs gold ugruntowany w źródle",
+      "status": "clean",
+      "eval": {
+        "harness": "bench/knowledge_probe.py, temp 0, ollama Q4 (Bielik, Qwen9B) + API bf16 (Qwen27B)",
+        "results": {
+          "Bielik-11B-v3": {
+            "polonica": 28.9,
+            "ogolne": 39.4,
+            "all": 33.8
+          },
+          "Qwen3.5-9B": {
+            "polonica": 18.4,
+            "ogolne": 30.3,
+            "all": 23.9
+          },
+          "Qwen3.5-27B": {
+            "polonica": 15.8,
+            "ogolne": 33.3,
+            "all": 23.9
+          }
+        }
+      },
+      "note": "Długi ogon (regionalia, lokalne fakty) leży u wszystkich: 16-29%. Bielik najlepszy (CPT 1.1T PL częściowo kupił ogon), baza 27B najsłabsza na polonica przy dobrej wiedzy ogólnej. Wniosek: CPT na zmultiplikowanym syntetycznie ogonie (EntiGraph 10M) ma ~85% przestrzeni do odzyskania; cel po CPT: >28.9 na polonica. n=71 to smoke: różnica Bielik vs 27B na polonica (13pp, n=38) jeszcze nieistotna statystycznie; potwierdzenie na probe 300-500 + drugi niezależny sędzia. Itemy probe = held-out (exclusion list z treningu CPT).",
+      "artifacts": "results/knowledge_probe_v1.json; probe prywatnie (datasets/data/eval)"
+    },
     {
       "id": "v2",
       "date": "2026-06-09",
