@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drabina — od obserwatora do core teamu | Slayer</title>
+  <meta name="description" content="Drabina społeczności Slayer: 7 poziomów statusu, odpowiedzialności i dowodów pracy. Awans za artefakty, nie za gadanie. Lejek: Discord → starter task → Contributor → Builder → Fellow → Maintainer → Core.">
+  <link rel="stylesheet" href="/assets/lab.css">
+  <style>
+    .funnel{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:var(--mono);font-size:.78rem;color:var(--mut);margin:18px 0 0}
+    .funnel b{color:var(--ink);font-weight:500;padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:var(--panel)}
+    .funnel .ar{color:var(--acc)}
+    .lvl{border:1px solid var(--line);border-radius:var(--rad);background:var(--panel);margin:18px 0;overflow:hidden}
+    .lvl-top{display:flex;align-items:baseline;gap:16px;padding:18px clamp(16px,3vw,26px) 6px}
+    .lvl-top .no{font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--acc);opacity:.85;line-height:1}
+    .lvl-top h3{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.7rem);letter-spacing:-.01em}
+    .lvl-top .cel{font-size:.92rem;color:var(--mut)}
+    .lvl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line2);margin-top:12px}
+    @media(max-width:820px){.lvl-grid{grid-template-columns:1fr}}
+    .lvl-col{padding:14px clamp(16px,3vw,26px);border-left:1px solid var(--line2)}
+    .lvl-col:first-child{border-left:0}
+    @media(max-width:820px){.lvl-col{border-left:0;border-top:1px solid var(--line2)}.lvl-col:first-child{border-top:0}}
+    .lvl-col .h{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+    .lvl-col ul{margin:0;padding-left:16px;color:var(--mut);font-size:.88rem;line-height:1.6}
+    .lvl-col .h.acc{color:var(--acc)}
+    .qcard{font-family:var(--mono);font-size:.82rem;line-height:1.8;color:var(--txt);background:var(--panel2);border:1px solid var(--line);border-radius:var(--rad);padding:18px 22px;white-space:pre}
+    .qcard .k{color:var(--acc)}
+    .tags2{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <section class="phero"><div class="inner">
+    <span class="kick">społeczność · drabina statusu, odpowiedzialności i dowodów pracy</span>
+    <h1>Od obserwatora do <em>core teamu</em>.</h1>
+    <p>Społeczność labu nie jest tłumem; to lejek rekrutacyjny z publicznym research outputem.
+    Każdy poziom ma jasne wejście, oczekiwania i nagrodę, a awans przyznajemy za artefakty, nie za gadanie.</p>
+    <div class="funnel">
+      <b>Reach</b><span class="ar">→</span><b>Discord</b><span class="ar">→</span><b>Starter task</b><span class="ar">→</span><b>Contributor</b><span class="ar">→</span><b>Builder</b><span class="ar">→</span><b>Fellow</b><span class="ar">→</span><b>Maintainer</b><span class="ar">→</span><b>Core</b>
+    </div>
+  </div></section>
+
+  <section class="sec tight"><div class="inner">
+    <div class="ghead"><h2>Siedem poziomów</h2><span class="c">wejście · co dostajesz · dowód przejścia wyżej</span></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">01</span><h3>Lurker</h3><span class="cel">obserwuje, czyta, uczy się języka projektu</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>publiczne kanały i weekly updates</li><li>roadmapę i reading listę</li><li>dostęp do demo, modeli i leaderboardów</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>zero presji</li><li>czytaj, reaguj, zadawaj pytania</li></ul></div>
+        <div class="lvl-col"><div class="h acc">dalej, gdy</div><ul><li>pierwsza sensowna wiadomość lub zgłoszenie błędu</li><li>próba odpalenia modelu albo benchmarku</li></ul></div>
+      </div></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">02</span><h3>User</h3><span class="cel">realnie używa i daje feedback</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>narzędzia, modele, playground</li><li>kanał feedbackowy i early access do buildów</li><li>możliwość proponowania use-case'ów</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>raportujesz jakość: gdzie model się wywala</li><li>przykłady promptów, porażek, edge-case'ów</li></ul></div>
+        <div class="lvl-col"><div class="h acc">dalej, gdy</div><ul><li>3-5 użytecznych feedbacków z konkretami</li><li>aktywność bez chaotycznego spamu</li></ul></div>
+      </div></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">03</span><h3>Contributor</h3><span class="cel">dokłada małe, mierzalne cegły</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>rolę, kanały robocze, zadania z backlogu</li><li>publiczny credit w changelogu i README</li><li>opcjonalnie bounty</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>dane, evale, kod, research notes albo onboarding innych</li><li>kończenie małych zadań, komunikacja async, brak ego-dramy</li></ul></div>
+        <div class="lvl-col"><div class="h acc">dalej, gdy</div><ul><li>2-3 zaakceptowane contribution</li><li>powtarzalność zamiast jednorazowego zrywu</li></ul></div>
+      </div></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">04</span><h3>Operator / Builder</h3><span class="cel">człowiek, któremu można dać fragment systemu</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>ownership małego obszaru (eval suite, pipeline danych, harness, docs, inference…)</li><li>prywatniejsze kanały robocze i mini-projekt</li><li>priorytet przy bounty i płatnej współpracy</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>dowozisz co tydzień i sam rozbijasz problem na taski</li><li>raportujesz status, przyciągasz 1-2 kolejnych ludzi</li></ul></div>
+        <div class="lvl-col"><div class="h acc">dalej, gdy</div><ul><li>zamknięty projekt z widocznym artefaktem</li><li>powtarzalna praca przez 3-4 tygodnie</li></ul></div>
+      </div></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">05</span><h3>Research Fellow</h3><span class="cel">semi-core, prowadzi eksperymenty</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>compute, dane, prywatny kanał research</li><li>eksperymenty pod brandem labu, współautorstwo raportów</li><li>potencjalnie grant, bounty albo stypendium</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>hipotezy, eksperymenty z logami, krótkie technical notes</li><li>nie "ma opinie", tylko generuje evidence</li></ul></div>
+        <div class="lvl-col"><div class="h acc">dalej, gdy</div><ul><li>1 solidny publiczny artefakt (np. "Eval Failure Taxonomy", "Synthetic Data Recipe")</li><li>1 eksperyment użyteczny dla modelu, bez prowadzenia za rękę</li></ul></div>
+      </div></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">06</span><h3>Maintainer</h3><span class="cel">pilnuje jakości części labu</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>merge i review rights w wybranym repo</li><li>realny wpływ na roadmapę, strategiczne calle</li><li>ścieżkę revenue / bounty / kontraktów</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>review contribution, utrzymywanie standardów</li><li>zamykanie pętli, projektowanie procesów, bycie filtrem jakości</li></ul></div>
+        <div class="lvl-col"><div class="h acc">dalej, gdy</div><ul><li>dowozi 2-3 miesiące, inni chcą z nim pracować</li><li>umie powiedzieć "nie" i ma techniczny smak</li></ul></div>
+      </div></div>
+
+    <div class="lvl"><div class="lvl-top"><span class="no">07</span><h3>Core Team</h3><span class="cel">buduje instytucję, nie tylko robi taski</span></div>
+      <div class="lvl-grid">
+        <div class="lvl-col"><div class="h">dostajesz</div><ul><li>upside zależny od struktury (equity / revenue share)</li><li>pełny kontekst strategiczny i decyzyjność</li><li>ownership filaru: Models, Data, Evals, Inference, Community, Research Ops, Commercial</li></ul></div>
+        <div class="lvl-col"><div class="h">oczekiwanie</div><ul><li>działa jak founder obszaru i rekrutuje innych</li><li>reprezentuje lab na zewnątrz</li></ul></div>
+        <div class="lvl-col"><div class="h acc">kryteria</div><ul><li>trust ponad skill, długoterminowość</li><li>wysoka energia, niski chaos</li></ul></div>
+      </div></div>
+  </div></section>
+
+  <section class="sec tight alt"><div class="inner">
+    <div class="ghead"><h2>Proof of work</h2><span class="c">awans za artefakty, nie za gadanie</span></div>
+    <p class="muted" style="max-width:70ch">Każdy poziom ma dowód pracy. Liczą się rzeczy, które można otworzyć, odpalić i ocenić:</p>
+    <div class="tags2">
+      <span class="chip">dobry issue</span><span class="chip">eval case</span><span class="chip">dataset PR</span>
+      <span class="chip">benchmark run</span><span class="chip">technical note</span><span class="chip">onboarding guide</span>
+      <span class="chip">eksperyment z logami</span><span class="chip">model comparison</span><span class="chip">bug report</span><span class="chip">pull request</span>
+    </div>
+    <div class="grid c2" style="margin-top:26px">
+      <div class="cell"><div class="top"><span>role na discordzie</span></div>
+        <div class="tags2"><span class="chip acc">Observer</span><span class="chip acc">User</span><span class="chip acc">Contributor</span><span class="chip acc">Builder</span><span class="chip acc">Research Fellow</span><span class="chip acc">Maintainer</span><span class="chip acc">Core</span></div>
+      </div>
+      <div class="cell"><div class="top"><span>tagi kompetencji</span></div>
+        <div class="tags2"><span class="chip">data</span><span class="chip">evals</span><span class="chip">training</span><span class="chip">inference</span><span class="chip">frontend</span><span class="chip">backend</span><span class="chip">infra</span><span class="chip">research</span><span class="chip">community</span><span class="chip">docs</span><span class="chip">bizdev</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec tight"><div class="inner">
+    <div class="ghead"><h2>Onboarding: pierwsze 7 dni</h2><span class="c">od wejścia do pierwszego artefaktu</span></div>
+    <div class="grid c3">
+      <div class="cell"><div class="top"><span>krok 1-3</span></div><h3 class="sm">Wejdź i wybierz ścieżkę</h3><p>Dołącz na Discorda, przeczytaj "Start Here", wybierz: data / evals / code / research / community.</p></div>
+      <div class="cell"><div class="top"><span>krok 4-5</span></div><h3 class="sm">Zrób starter task</h3><p>Jeden mały task z quest boardu. Dostajesz feedback od reviewera w ciągu paru dni.</p></div>
+      <div class="cell"><div class="top"><span>krok 6-7</span></div><h3 class="sm">Dowiezione = Contributor</h3><p>Zaakceptowany artefakt to rola Contributor, kanały robocze i kolejne taski z backlogu.</p></div>
+    </div>
+    <div class="grid c2" style="margin-top:26px">
+      <div class="cell"><div class="top"><span>przykładowe starter taski</span></div>
+        <ul style="margin:8px 0 0;padding-left:18px;color:var(--mut);font-size:.93rem;line-height:1.8">
+          <li>Znajdź 20 polskich promptów, na których Bielik/Qwen failuje.</li>
+          <li>Dodaj 10 przykładów do eval suite.</li>
+          <li>Uruchom benchmark i wrzuć wynik.</li>
+          <li>Napisz 1-stronicowe streszczenie papera.</li>
+          <li>Zrób taksonomię błędów modelu na 30 przykładach.</li>
+          <li>Popraw docs instalacji albo porównaj 3 modele na jednym tasku.</li>
+        </ul>
+      </div>
+      <div class="cell"><div class="top"><span>quest board · format taska</span></div>
+<div class="qcard"><span class="k">Title:</span>     20 promptów, na których pada Bielik
+<span class="k">Context:</span>   eval stylu PL, sekcja anty-tells
+<span class="k">Expected:</span>  JSONL: prompt + output + co poszło źle
+<span class="k">Difficulty:</span> S / M / L
+<span class="k">Reward:</span>    credit · bounty · progres roli
+<span class="k">Reviewer:</span>  maintainer obszaru
+<span class="k">Deadline:</span>  7 dni</div>
+        <p style="margin:10px 0 0;font-size:.85rem;color:var(--dim);font-family:var(--mono)">kategorie: good first tasks · bounties · research / eval / data / infra quests · needs owner</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec tight alt"><div class="inner">
+    <div class="ghead"><h2>Prestiż musi być widoczny</h2><span class="c">co dostają ludzie, którzy dowożą</span></div>
+    <div class="grid c3">
+      <div class="cell"><h3 class="sm">Publiczny credit</h3><p>Leaderboard contributorów, credits w README, monthly builders report, shoutouty na X/LinkedIn.</p></div>
+      <div class="cell"><h3 class="sm">Dostęp</h3><p>Compute, priority access do modeli, prywatne calle, współautorstwo raportów.</p></div>
+      <div class="cell"><h3 class="sm">Pieniądze</h3><p>Bounty, płatne zlecenia, kontrakty; core team z upside'em zależnym od struktury.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec alt"><div class="inner narrow" style="text-align:center">
+    <span class="kick">start</span>
+    <h2 class="serif" style="font-size:clamp(2rem,4vw,2.9rem);font-weight:400;letter-spacing:-.015em;margin:14px 0 14px">Wejdź na drabinę.</h2>
+    <p class="muted" style="max-width:54ch;margin:0 auto 26px">Pierwszy szczebel to jedna sensowna wiadomość albo jeden starter task. Reszta to powtarzalne artefakty.</p>
+    <div class="cta-row" style="justify-content:center"><a class="btn btn-p" href="https://discord.gg/HnTkVR4c5T" rel="noopener" target="_blank">Dołącz na Discord →</a><a class="btn btn-s" href="/zadania">zobacz zadania</a></div>
+  </div></section>
+
+  <div id="site-foot"></div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>
