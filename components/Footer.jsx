@@ -5,7 +5,8 @@ export default function Footer() {
       <span>
         <a href="https://github.com/slayerlabs" rel="noopener">GitHub</a> ·{" "}
         <a href="/benchmarks">protokoły</a> · <a href="/leaderboard">pomiary</a> ·{" "}
-        <a href="/rules">rules</a> · <a href="/roadmap">roadmap</a> ·{" "}
+        <a href="/rules">rules</a> · <a href="/drabina">drabina</a> ·{" "}
+        <a href="/roadmap">roadmap</a> ·{" "}
         <a href="/team">zespół</a> · <a href="/zespol">wejście</a>
       </span>
     </footer>
