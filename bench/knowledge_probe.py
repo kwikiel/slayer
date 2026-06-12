@@ -31,7 +31,7 @@ from concurrent.futures import ThreadPoolExecutor
 CORPUS = "slayer-data/knowledge/entigraph_pl_focus.clean.jsonl"
 PROBE_F = "slayer-data/knowledge/probe_v1.jsonl"
 EXCL_F = "slayer-data/knowledge/probe_v1.excluded_hashes.txt"
-OUT = "results/knowledge_probe_v1.json"
+OUT = "public/results/knowledge_probe_v1.json"
 OLLAMA = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11435")
 OR_KEY = os.environ.get("OPENROUTER_API_KEY") or (
     open(os.path.expanduser("~/.openrouter_key")).read().strip()

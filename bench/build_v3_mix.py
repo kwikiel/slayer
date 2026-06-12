@@ -14,7 +14,7 @@ filtr myślników na odpowiedziach; raport per źródło; udziały liczone PO fi
 brak pliku warstwy = twardy błąd (chyba że --allow-missing); na końcu OBOWIĄZKOWA
 bramka decon_audit na gotowym miksie (exit != 0 gdy trafienia).
 
-Out: slayer-data/v3/train_v3.jsonl + results/train_v3_mix_report.json
+Out: slayer-data/v3/train_v3.jsonl + public/results/train_v3_mix_report.json
 Usage: python3 bench/build_v3_mix.py [--distill-share 0.60] [--seed 42]
 """
 import argparse
@@ -28,7 +28,7 @@ from collections import Counter
 
 ATOMS_F = "runs/test_atoms.txt"
 OUT = "slayer-data/v3/train_v3.jsonl"
-REPORT = "results/train_v3_mix_report.json"
+REPORT = "public/results/train_v3_mix_report.json"
 
 # bielik_distill USUNIĘTY z treningu (2026-06-12): słaby teacher (50.6% fakty=powazne
 # u sędziego), 78% próbek to faktograficzne QA. Dane zostają w slayer-data/external/

@@ -1,8 +1,8 @@
 .vercel
 __pycache__/
 *.pyc
-results/*.tmp
-results/*.json.tmp
+public/results/*.tmp
+public/results/*.json.tmp
 .DS_Store
 slayer-data/
 .openrouter_key
@@ -14,3 +14,9 @@ slayer-data/
 slayer-out*/
 runs/
 arena/
+
+# Next.js
+node_modules/
+.next/
+out/
+next-env.d.ts

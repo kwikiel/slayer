@@ -190,7 +190,7 @@ def main():
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--ngram", type=int, default=8)
     ap.add_argument("--strip", action="store_true")
-    ap.add_argument("--report", default="results/decon_audit.json")
+    ap.add_argument("--report", default="public/results/decon_audit.json")
     a = ap.parse_args()
 
     paths = a.paths or []
