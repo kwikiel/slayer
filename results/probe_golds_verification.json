@@ -1,0 +1,23 @@
+{
+  "judge": "qwen/qwen3.5-122b-a10b",
+  "n": 71,
+  "verdicts": {
+    "ok": 70,
+    "zly": 1
+  },
+  "by_strata": {
+    "polonica": {
+      "ok": 38
+    },
+    "ogolne": {
+      "ok": 32,
+      "zly": 1
+    }
+  },
+  "ambiguous": 0,
+  "pct_bad_gold": 1.4,
+  "bad_line_indices": [
+    25
+  ],
+  "decision_rule": "<10% zlych => sonda zostaje z raportem bledu; >=10% => przebudowa"
+}

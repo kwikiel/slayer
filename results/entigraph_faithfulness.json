@@ -1,0 +1,257 @@
+{
+  "judge": "deepseek/deepseek-v4-pro",
+  "n_per_corpus": 100,
+  "seed": 42,
+  "corpora": {
+    "pl_focus": {
+      "sampled": 200,
+      "verdicts": {
+        "wierny": 157,
+        "niewierny": 41,
+        "drobne": 2
+      },
+      "by_kind": {
+        "summary": {
+          "wierny": 22,
+          "niewierny": 6,
+          "drobne": 1
+        },
+        "relation": {
+          "niewierny": 26,
+          "wierny": 82,
+          "drobne": 1
+        },
+        "paraphrase": {
+          "wierny": 26,
+          "niewierny": 7
+        },
+        "qa": {
+          "wierny": 27,
+          "niewierny": 2
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-flash": 200
+      },
+      "pct_niewierny": 20.5,
+      "pct_ok": 79.5
+    },
+    "zpe": {
+      "sampled": 200,
+      "verdicts": {
+        "niewierny": 149,
+        "wierny": 51
+      },
+      "by_kind": {
+        "qa": {
+          "niewierny": 21,
+          "wierny": 6
+        },
+        "relation": {
+          "niewierny": 74,
+          "wierny": 25
+        },
+        "paraphrase": {
+          "niewierny": 28,
+          "wierny": 10
+        },
+        "summary": {
+          "niewierny": 26,
+          "wierny": 10
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-flash": 200
+      },
+      "pct_niewierny": 74.5,
+      "pct_ok": 25.5
+    },
+    "pro_wiki": {
+      "sampled": 200,
+      "verdicts": {
+        "wierny": 128,
+        "niewierny": 67,
+        "drobne": 5
+      },
+      "by_kind": {
+        "relation": {
+          "wierny": 60,
+          "niewierny": 44,
+          "drobne": 5
+        },
+        "qa": {
+          "wierny": 21,
+          "niewierny": 10
+        },
+        "paraphrase": {
+          "wierny": 22,
+          "niewierny": 4
+        },
+        "summary": {
+          "wierny": 25,
+          "niewierny": 9
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-pro": 200
+      },
+      "pct_niewierny": 33.5,
+      "pct_ok": 66.5
+    },
+    "pro_zpe": {
+      "sampled": 200,
+      "verdicts": {
+        "wierny": 125,
+        "niewierny": 73,
+        "drobne": 2
+      },
+      "by_kind": {
+        "qa": {
+          "wierny": 22,
+          "niewierny": 10
+        },
+        "relation": {
+          "niewierny": 51,
+          "wierny": 53,
+          "drobne": 2
+        },
+        "paraphrase": {
+          "wierny": 28,
+          "niewierny": 3
+        },
+        "summary": {
+          "wierny": 22,
+          "niewierny": 9
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-pro": 200
+      },
+      "pct_niewierny": 36.5,
+      "pct_ok": 63.5
+    },
+    "flash_hardened_wiki": {
+      "sampled": 200,
+      "verdicts": {
+        "wierny": 159,
+        "niewierny": 40,
+        "drobne": 1
+      },
+      "by_kind": {
+        "paraphrase": {
+          "wierny": 27,
+          "niewierny": 8
+        },
+        "summary": {
+          "wierny": 27,
+          "niewierny": 9
+        },
+        "qa": {
+          "wierny": 32,
+          "niewierny": 6
+        },
+        "relation": {
+          "wierny": 73,
+          "niewierny": 17,
+          "drobne": 1
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-flash": 200
+      },
+      "pct_niewierny": 20.0,
+      "pct_ok": 80.0
+    },
+    "filtered_smoke": {
+      "sampled": 100,
+      "verdicts": {
+        "wierny": 86,
+        "niewierny": 14
+      },
+      "by_kind": {
+        "relation": {
+          "wierny": 37,
+          "niewierny": 7
+        },
+        "qa": {
+          "wierny": 17
+        },
+        "paraphrase": {
+          "niewierny": 4,
+          "wierny": 16
+        },
+        "summary": {
+          "wierny": 16,
+          "niewierny": 3
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-flash": 100
+      },
+      "pct_niewierny": 14.0,
+      "pct_ok": 86.0
+    },
+    "filtered_smoke3": {
+      "sampled": 100,
+      "verdicts": {
+        "wierny": 79,
+        "niewierny": 21
+      },
+      "by_kind": {
+        "qa": {
+          "wierny": 13,
+          "niewierny": 1
+        },
+        "relation": {
+          "wierny": 35,
+          "niewierny": 13
+        },
+        "summary": {
+          "wierny": 14,
+          "niewierny": 4
+        },
+        "paraphrase": {
+          "wierny": 17,
+          "niewierny": 3
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-flash": 100
+      },
+      "pct_niewierny": 21.0,
+      "pct_ok": 79.0
+    },
+    "filtered_validated_by_pro": {
+      "sampled": 100,
+      "verdicts": {
+        "wierny": 93,
+        "niewierny": 1,
+        "drobne": 6
+      },
+      "by_kind": {
+        "relation": {
+          "wierny": 45,
+          "drobne": 1
+        },
+        "summary": {
+          "wierny": 13,
+          "drobne": 2
+        },
+        "paraphrase": {
+          "wierny": 14,
+          "niewierny": 1,
+          "drobne": 3
+        },
+        "qa": {
+          "wierny": 21
+        }
+      },
+      "gen_models": {
+        "deepseek/deepseek-v4-flash": 100
+      },
+      "pct_niewierny": 1.0,
+      "pct_ok": 99.0
+    }
+  },
+  "decision_rule": ">=5% niewierny => flash nie skaluje się; regeneracja pro albo filtr wierności"
+}

@@ -42,6 +42,11 @@ CAPS = {
  "ner": "szkolne zadanie z języka polskiego: wskazywanie nazw własnych w zdaniu i ich kategorii (postać historyczna lub fikcyjna, miejscowość, rzeka, instytucja, wydarzenie, data). WYMYŚL zdania o tematyce encyklopedycznej (historia, geografia, kultura) z FIKCYJNYMI lub historycznymi postaciami (żadnych współczesnych prywatnych osób); w odpowiedzi wypisz nazwy własne z kategoriami, każda w nowej linii w formacie 'Nazwa: kategoria' (dwukropek, BEZ myślników).",
  "rating": "ocena recenzji produktu/usługi w skali 1–5 gwiazdek na podstawie treści. WYMYŚL recenzje o różnym nasileniu.",
  "general": "ogólne instrukcje po polsku (pisanie, wyjaśnianie, kod, rozumowanie krok po kroku, streszczanie) — szeroka pokrywa zdolności, by uniknąć zapominania.",
+ # warstwa generatywna (pod MT-Bench-PL): dłuższe formy, rozumowanie, streszczanie, redakcja
+ "writing": "dłuższe formy użytkowe po polsku: mail służbowy, notatka, opis produktu, ogłoszenie, krótki esej, instrukcja krok po kroku, post informacyjny. WYMYŚL różnorodne polecenia z konkretnym kontekstem; odpowiedź 150-350 słów, naturalna polszczyzna, właściwy rejestr, BEZ nadużywania myślników i wypunktowań.",
+ "reasoning": "zadania wymagające rozumowania krok po kroku po polsku: logika, matematyka tekstowa (proporcje, procenty, czas), planowanie, wnioskowanie przyczynowo-skutkowe, zagadki. Odpowiedź pokazuje poprawny tok rozumowania i kończy się jednoznacznym wynikiem.",
+ "summarize": "streszczanie i upraszczanie: WYMYŚL dłuższy akapit (200-300 słów; artykuł, raport, opowiadanie) i polecenie streszczenia (do N zdań / dla laika / najważniejsze punkty). Streszczenie wierne treści, zwięzłe, naturalne.",
+ "rewrite": "redakcja tekstu po polsku: WYMYŚL tekst z konkretnymi wadami (kalki z angielskiego, drętwy urzędowy styl, zdania-tasiemce, nadmiar myślników, anglicyzmy) i polecenie poprawy; odpowiedź to poprawiona wersja w naturalnej polszczyźnie z zachowaniem sensu.",
 }
 
 def chat(sysp, usr, maxt=2200, temp=0.8):
@@ -80,7 +85,7 @@ def gen_batch(cap, desc, n):
            "\"output\": <wzorcowa odpowiedź; przy klasyfikacji krótka, przy QA/rozumieniu z krótkim uzasadnieniem>}.\n"
            "Zróżnicuj domeny i długości. Zwróć tablicę JSON tych obiektów, nic więcej.")
     out = []
-    for ex in parse_arr(chat(SYS, usr)):
+    for ex in parse_arr(chat(SYS, usr, maxt=4000)):
         if not isinstance(ex, dict): continue
         ins = (ex.get("instruction") or "").strip(); inp = (ex.get("input") or "").strip(); o = (ex.get("output") or "").strip()
         if not ins or not o: continue

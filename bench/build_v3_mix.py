@@ -36,8 +36,8 @@ REPORT = "results/train_v3_mix_report.json"
 # Styl wydzielony z human_pl (uczciwość etykiet: to dane syntetyczne, nie ludzkie).
 LAYERS = {
     "distill": ["slayer-data/distill/distill_pl.verified.jsonl"],
-    "human_pl": ["slayer-data/v3/human_pl_aya.clean.jsonl",
-                 "slayer-data/v3/human_pl_oasst2.jsonl"],
+    "human_pl": ["slayer-data/v3/human_pl_aya.verified.jsonl",
+                 "slayer-data/v3/human_pl_oasst2.verified.jsonl"],
     "style": ["slayer-data/style/style_pl_sft_v3_openjudge_disjoint.jsonl"],
     "en_retention": ["slayer-data/v3/en_retention_tulu3.clean.jsonl"],
 }

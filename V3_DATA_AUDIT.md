@@ -1,5 +1,24 @@
 # Slayer v3 — Data Pipeline Audit (2026-06-12)
 
+> **PASS METODOLOGICZNY (ten sam dzień, „fix until methodologically correct"):**
+> 1. **Sondaż wierności EntiGraph rozstrzygnięty pomiarem:** flash pl_focus 20.5% / zpe 74.5%
+>    niewiernych źródłu; **pro gorszy, nie lepszy (33.5/36.5%)** -> wina metody, nie teachera;
+>    utwardzanie promptów bez efektu (20.0%); sędzia skalibrowany (50/50 kontrola, 1/100 retest).
+>    **Receptura: flash + filtr per dok (122b) = 1.0% niewiernych pod NIEZALEŻNYM sędzią (pro).**
+>    Korpus zpe = kwarantanna; pl_focus wymaga filtra przed CPT. `slayer-data/knowledge/README.md`.
+> 2. **Golds sondy wiedzy zweryfikowane niezależnie:** 70/71 ok (1.4% złych) — target CPT
+>    (Bielik 28.9 vs Qwen 15.8) stoi na solidnym evalu. `results/probe_golds_verification.json`.
+> 3. **Warstwa human PL osądzona** (była jedyną nieosądzoną): aya 535/1108, oasst 54/96 —
+>    połowa „ludzkich" danych odpadła na faktach/jakości. Miks bierze tylko verified.
+> 4. **Miks zrównoważony pod MT-Bench-PL:** +4 zdolności generatywne (writing/reasoning/
+>    summarize/rewrite, osądzone --grounded). Near-dup w distill: 1 para/1139 (nie-problem).
+> 5. **Runner MT-Bench-PL zbudowany** (`bench/mtbench_pl.py`): pytania lightblue/mt_bench_polish,
+>    sędzia otwarty 122b, temp per kategoria jak w oryginale, tryb --compare. Bramka wewnętrzna
+>    (delta base-vs-tuned na tym samym sędzi); claim publiczny nadal przez oficjalny eval.
+> 6. **Finalny miks: 2233 ex** (distill 65.1% w 14 zdolnościach / en 21.7% / human 7.8% /
+>    styl 5.4%), bramka decon: CZYSTY. Słaby punkt: summarize 27/120 po sędzi (do regeneracji).
+> Koszt całego passu: ~$6-7 API. Następny wydatek (korpus CPT 455M tok wiernych): ~$1.1-1.2k.
+
 > **FIX PASS (same day, „fix all issues"):** wszystkie pozycje CRITICAL i MAJOR oraz większość MINOR
 > naprawione. Stan po naprawach:
 > - **Bramka decon obowiązkowa** w `build_v3_mix.py` (exit != 0 blokuje); indeks rozszerzony o pełny

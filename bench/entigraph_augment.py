@@ -48,18 +48,61 @@ def chat(sysp, usr, maxt=1200, temp=0.7):
                 return ""
             time.sleep(3)
 
-REL_SYS = ("Jesteś autorem rzetelnych polskich tekstów encyklopedycznych. Z podanego fragmentu: "
-           "(1) wybierz 4-8 najważniejszych encji (osoby, miejsca, organizacje, pojęcia, daty); "
-           "(2) dla 3-4 PAR encji napisz po jednym zwięzłym, faktograficznie wiernym akapicie "
-           "wyjaśniającym ich związek WYŁĄCZNIE na podstawie fragmentu. Nie zmyślaj. "
+# Prompty UTWARDZONE (2026-06-12): spot-check wykazał konfabulację w generacji swobodnej
+# (flash 20.5-74.5%, pro 33.5-36.5% niewiernych; kind=relation najgorszy). Twarda zasada:
+# każdy fakt MUSI wynikać wprost z fragmentu — lepiej napisać mniej niż dodać cokolwiek.
+GROUND = ("TWARDA ZASADA: każde zdanie musi wynikać WPROST z podanego fragmentu. NIE dodawaj "
+          "żadnych dat, liczb, nazw, tytułów ani związków spoza fragmentu, NAWET JEŚLI je znasz "
+          "i są prawdziwe. Jeśli fragment nie zawiera dość informacji, napisz mniej albo pomiń. ")
+REL_SYS = ("Jesteś autorem rzetelnych polskich tekstów encyklopedycznych. " + GROUND +
+           "Z podanego fragmentu: (1) wybierz encje (osoby, miejsca, organizacje, pojęcia, daty); "
+           "(2) dla 2-4 PAR encji, których związek fragment OPISUJE WPROST, napisz po jednym "
+           "zwięzłym akapicie wyjaśniającym ten związek wyłącznie słowami faktów z fragmentu; "
+           "pary bez opisanego związku POMIŃ. "
            "Zwróć każdy akapit po linii '### AKAPIT', bez innych nagłówków i bez markdownu w treści.")
-PARA_SUM_SYS = ("Na podstawie WYŁĄCZNIE poniższego fragmentu zwróć dwie rzeczy: "
+PARA_SUM_SYS = ("Jesteś autorem rzetelnych polskich tekstów encyklopedycznych. " + GROUND +
+                "Na podstawie WYŁĄCZNIE poniższego fragmentu zwróć dwie rzeczy: "
                 "po linii '### PARAFRAZA' przeredagowany własnymi słowami fragment (wszystkie fakty i nazwy "
-                "zachowane, naturalna współczesna polszczyzna, bez kalk i markdownu), "
+                "zachowane, ŻADNYCH nowych, naturalna współczesna polszczyzna, bez kalk i markdownu), "
                 "a po linii '### STRESZCZENIE' streszczenie w 2-4 zdaniach.")
-QA_SYS = ("Na podstawie WYŁĄCZNIE fragmentu ułóż 5 pytań i wyczerpujące odpowiedzi (wiedza zamknięta, "
-          "pytania samodzielne, bez odwołań do 'fragmentu/tekstu'). "
-          "Format: 'Pytanie: ...\\nOdpowiedź: ...' — każda para w nowej linii. Nie zmyślaj.")
+QA_SYS = ("Jesteś autorem rzetelnych polskich tekstów encyklopedycznych. " + GROUND +
+          "Na podstawie WYŁĄCZNIE fragmentu ułóż 5 pytań i odpowiedzi, przy czym ODPOWIEDŹ ma być "
+          "w całości zawarta we fragmencie (wiedza zamknięta, pytania samodzielne, bez odwołań do "
+          "'fragmentu/tekstu'). Format: 'Pytanie: ...\\nOdpowiedź: ...' — każda para w nowej linii.")
+
+# Inline filtr wierności (FAITH_FILTER=1): sędzia ocenia każdy dok vs fragment źródłowy,
+# zostają tylko 'wierny'/'drobne' — korpus wierny z konstrukcji. Koszt: +1 wywołanie/dok.
+FAITH_FILTER = os.environ.get("FAITH_FILTER", "") == "1"
+FAITH_JUDGE = os.environ.get("FAITH_JUDGE", "qwen/qwen3.5-122b-a10b")
+if re.search(r"anthropic|claude|openai/(?!gpt-oss)", FAITH_JUDGE, re.I):
+    raise SystemExit(f"FAITH_JUDGE={FAITH_JUDGE} łamie regułę provenance.")
+# UWAGA (zmierzono 2026-06-12): ocena wsadowa (3-7 tekstów/wywołanie) ROZMYWA rygor sędziego
+# (14-21% niewiernych przechodziło mimo progu 5%; test-retest sędziego per-dok: 1/100 flipów).
+# Dlatego filtr = pojedyncze wywołanie per dok, DOKŁADNIE ten sam format co spotcheck_entigraph.
+FAITH_SYS = ("Jesteś surowym weryfikatorem wierności źródłu. Dostajesz ŹRÓDŁO (fragmenty artykułu) "
+             "i TEKST SYNTETYCZNY wygenerowany na jego podstawie. Oceń, czy KAŻDY fakt z tekstu "
+             "syntetycznego wynika ze źródła: 'wierny' = wszystko wynika; 'drobne' = nieistotne "
+             "przeformułowania/oczywistości spoza źródła; 'niewierny' = fakty sprzeczne ze źródłem "
+             "albo konkretne twierdzenia (daty, liczby, nazwy, związki), których w źródle nie ma. "
+             "Zwróć WYŁĄCZNIE JSON: {\"wiernosc\":\"wierny|drobne|niewierny\",\"uwaga\":\"<=12 słów\"}")
+
+
+def faithful(src, syn):
+    body = {"model": FAITH_JUDGE, "temperature": 0.0, "max_tokens": 120, "reasoning": {"enabled": False},
+            "messages": [{"role": "system", "content": FAITH_SYS},
+                         {"role": "user", "content": f"ŹRÓDŁO:\n{src[:5000]}\n\nTEKST SYNTETYCZNY:\n{syn[:2500]}"}]}
+    req = urllib.request.Request(API, data=json.dumps(body).encode(),
+            headers={"Content-Type": "application/json", "Authorization": "Bearer " + KEY})
+    for a in range(3):
+        try:
+            c = json.loads(urllib.request.urlopen(req, timeout=120).read())["choices"][0]["message"]["content"]
+            m = re.search(r"\{.*\}", c, re.S)
+            if m:
+                return json.loads(m.group(0)).get("wiernosc") in ("wierny", "drobne")
+        except Exception:
+            time.sleep(2 * (a + 1))
+    ERRS["chat_fail"] += 1
+    return False  # brak werdyktu = nie przepuszczamy
 
 ATOMS_F = "runs/test_atoms.txt"
 _atoms = []
@@ -130,9 +173,20 @@ def explode(item):
         if len(t) > 40: out.append((t, "paraphrase" if m[i] == "PARAFRAZA" else "summary"))
     qa = chat(QA_SYS, usr, maxt=1300)
     if len(qa) > 60: out.append((qa, "qa"))
-    return [{"text": t, "kind": k, "source_title": title, "src_sha": _sha(para),
+    docs = [{"text": t, "kind": k, "source_title": title, "src_sha": _sha(para),
              "gen_model": TEACHER}
             for t, k in out if not contaminated(t)]
+    if FAITH_FILTER:
+        verdicts = [faithful(para, d["text"]) for d in docs]
+        kept = []
+        for d, ok in zip(docs, verdicts):
+            if ok:
+                d["faith_judge"] = FAITH_JUDGE
+                kept.append(d)
+            else:
+                ERRS["unfaithful_dropped"] = ERRS.get("unfaithful_dropped", 0) + 1
+        return kept
+    return docs
 
 def main():
     if not KEY: print("BRAK klucza OpenRouter"); sys.exit(1)
