@@ -48,7 +48,7 @@ Nasza teza „super tanio + epsilon": **startujemy z Qwen3.5-9B** (bije Bielika 
 
 ## Reprodukcja
 
-Wymagania: [ollama](https://ollama.com), Python 3.10+, `pip install datasets huggingface_hub sacrebleu`.
+Wymagania: [ollama](https://ollama.com), Python 3.10+. `pip install -e .` (lub `uv sync`).
 
 ```bash
 ollama pull qwen3.5:9b
