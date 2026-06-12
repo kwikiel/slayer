@@ -122,6 +122,10 @@ const MEMBERS = [
   { img: "/assets/team/kuba6.jpg", name: "Kuba", specialty: "AI Engineer · Fullstack", bio: "Fizyk-teoretyk z wykształcenia. AI Engineer w projekcie onkologicznym (CV), ostatnie 2 lata w GenAI i agentach. Chce trenować LLM, robi datasety i benchmarki." },
 ];
 
+const ADVISORS = [
+  { img: "/assets/team/juliusz-straszynski.jpeg", name: "dr Juliusz Straszyński", specialty: "ML Research · LLM", bio: "Doktor, Senior ML Researcher w RTB House. Wcześniej ML Engineer w Google (zespół Gemini Code Assist) i Senior AI Developer w Huawei.", link: "https://ludzie.nauka.gov.pl/ln/profiles/sCrgLf1YSOK/publications/fa141c33-cc8e-4fb9-b197-b44259c8832f" },
+];
+
 export default function Team() {
   return (
     <>
@@ -168,6 +172,27 @@ export default function Team() {
                 <p className="member-bio"><a href="https://discord.gg/HnTkVR4c5T" target="_blank" rel="noopener" style={{ color: "var(--acc)" }}>Dołącz do zespołu →</a></p>
               </div>
             </article>
+          </div>
+
+          <div className="advisors-head" style={{ marginTop: "clamp(56px, 8vw, 96px)" }}>
+            <span className="kick">advisors · rada</span>
+            <h2 style={{ fontFamily: "var(--serif)", fontWeight: 400, letterSpacing: "-.02em", fontSize: "clamp(1.7rem, 3vw, 2.2rem)", margin: "10px 0 0" }}>Doradcy</h2>
+            <p className="hero-lead" style={{ marginTop: 12 }}>Wsparcie merytoryczne: research, ewaluacja, kierunek modeli.</p>
+          </div>
+          <div className="team-grid">
+            {ADVISORS.map((m) => (
+              <article className="member" key={m.name}>
+                <div className="av">
+                  <img src={m.img} alt={m.name} />
+                </div>
+                <div className="member-info">
+                  <div className="member-title-label">Advisor</div>
+                  <h2 className="member-name">{m.name}</h2>
+                  <div className="member-specialty">{m.specialty}</div>
+                  <p className="member-bio">{m.bio}{m.link ? <> {" "}<a href={m.link} target="_blank" rel="noopener" style={{ color: "var(--acc)" }}>publikacje →</a></> : null}</p>
+                </div>
+              </article>
+            ))}
           </div>
 
           <div className="join-cta">
