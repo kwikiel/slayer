@@ -1,0 +1,2592 @@
+{
+  "name": "Synthetic Polish Morphology Stress Set",
+  "version": "0.1.0",
+  "description": "Random template-generated examples for pipeline stress testing. These are not manually verified gold examples.",
+  "seed": 2026,
+  "cases": [
+    {
+      "id": "synthetic_001",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "poszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "po",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_002",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "oczem",
+      "expected_morph_tags": [
+        "subst:sg:inst"
+      ],
+      "gold": [
+        [
+          "ocz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "em",
+          "INST_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_003",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "kiedykolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "kiedy",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_004",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "dziece",
+      "expected_morph_tags": [
+        "subst:pl:nom",
+        "subst:pl:acc"
+      ],
+      "gold": [
+        [
+          "dziec",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "e",
+          "NOM_ACC_PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_005",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "siennego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "sien",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_006",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "biernego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_007",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odliczają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "licz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_008",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "szybciej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "szybc",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_009",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "innego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "in",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_010",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "rodzinnego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "rodzin",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_011",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "wolniej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "woln",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_012",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "częściej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "częśc",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_013",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "dziecu",
+      "expected_morph_tags": [
+        "subst:sg:gen",
+        "subst:sg:loc",
+        "subst:sg:dat"
+      ],
+      "gold": [
+        [
+          "dziec",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "u",
+          "GEN_LOC_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_014",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "rzadziej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "rzadz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_015",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "czymkolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "czym",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_016",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "powołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "po",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_017",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "szkolnego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "szkol",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_018",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "rozstawają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "roz",
+          "PREFIX"
+        ],
+        [
+          "staw",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_019",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ludzem",
+      "expected_morph_tags": [
+        "subst:sg:inst"
+      ],
+      "gold": [
+        [
+          "ludz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "em",
+          "INST_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_020",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "prawnego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "praw",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_021",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ludzu",
+      "expected_morph_tags": [
+        "subst:sg:gen",
+        "subst:sg:loc",
+        "subst:sg:dat"
+      ],
+      "gold": [
+        [
+          "ludz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "u",
+          "GEN_LOC_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_022",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "nóżu",
+      "expected_morph_tags": [
+        "subst:sg:gen",
+        "subst:sg:loc",
+        "subst:sg:dat"
+      ],
+      "gold": [
+        [
+          "nóż",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "u",
+          "GEN_LOC_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_023",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ludze",
+      "expected_morph_tags": [
+        "subst:pl:nom",
+        "subst:pl:acc"
+      ],
+      "gold": [
+        [
+          "ludz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "e",
+          "NOM_ACC_PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_024",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "pse",
+      "expected_morph_tags": [
+        "subst:pl:nom",
+        "subst:pl:acc"
+      ],
+      "gold": [
+        [
+          "ps",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "e",
+          "NOM_ACC_PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_025",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "komukolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "komu",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_026",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadliczają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "licz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_027",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "jakkolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "jak",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_028",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "czegokolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "czego",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_029",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "gminnego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "gmin",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_030",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "nóże",
+      "expected_morph_tags": [
+        "subst:pl:nom",
+        "subst:pl:acc"
+      ],
+      "gold": [
+        [
+          "nóż",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "e",
+          "NOM_ACC_PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_031",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "dziennego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "dzien",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_032",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ocze",
+      "expected_morph_tags": [
+        "subst:pl:nom",
+        "subst:pl:acc"
+      ],
+      "gold": [
+        [
+          "ocz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "e",
+          "NOM_ACC_PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_033",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "trudniej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "trudn",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_034",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przepisają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "pis",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_035",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "czynnego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "czyn",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_036",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odmierzają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "mierz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_037",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "kimkolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "kim",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_038",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przeszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_039",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "kogokolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "kogo",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_040",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "daleiej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "dale",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_041",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "rozpisają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "roz",
+          "PREFIX"
+        ],
+        [
+          "pis",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_042",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "rozliczają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "roz",
+          "PREFIX"
+        ],
+        [
+          "licz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_043",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "dziecem",
+      "expected_morph_tags": [
+        "subst:sg:inst"
+      ],
+      "gold": [
+        [
+          "dziec",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "em",
+          "INST_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_044",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ręce",
+      "expected_morph_tags": [
+        "subst:pl:nom",
+        "subst:pl:acc"
+      ],
+      "gold": [
+        [
+          "ręc",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "e",
+          "NOM_ACC_PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_045",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadbierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_046",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "wypisają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "wy",
+          "PREFIX"
+        ],
+        [
+          "pis",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_047",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadmierzają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "mierz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_048",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ręcem",
+      "expected_morph_tags": [
+        "subst:sg:inst"
+      ],
+      "gold": [
+        [
+          "ręc",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "em",
+          "INST_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_049",
+      "split": "synthetic",
+      "category": "synthetic_indefinite_pronoun",
+      "surface": "gdziekolwiek",
+      "expected_morph_tags": [],
+      "gold": [
+        [
+          "gdzie",
+          "PRONOUN_BASE"
+        ],
+        [
+          "kolwiek",
+          "INDEF_PARTICLE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_050",
+      "split": "synthetic",
+      "category": "synthetic_adjective_stem_extension",
+      "surface": "winnego",
+      "expected_morph_tags": [
+        "adj:sg:gen",
+        "adj:sg:acc"
+      ],
+      "gold": [
+        [
+          "win",
+          "ROOT"
+        ],
+        [
+          "n",
+          "STEM_EXT"
+        ],
+        [
+          "ego",
+          "GEN_SG_MN_ADJ"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_051",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "bliżiej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "bliż",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_052",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_053",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odkrojają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "kroj",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_054",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "popisają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "po",
+          "PREFIX"
+        ],
+        [
+          "pis",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_055",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "zaszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "za",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_056",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przewołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_057",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "psu",
+      "expected_morph_tags": [
+        "subst:sg:gen",
+        "subst:sg:loc",
+        "subst:sg:dat"
+      ],
+      "gold": [
+        [
+          "ps",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "u",
+          "GEN_LOC_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_058",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "mocniej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "mocn",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_059",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przebierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_060",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przeliczają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "licz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_061",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadstawają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "staw",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_062",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "rozmierzają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "roz",
+          "PREFIX"
+        ],
+        [
+          "mierz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_063",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadwołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_064",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "dostawają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "do",
+          "PREFIX"
+        ],
+        [
+          "staw",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_065",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "bardziej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "bardz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_066",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przenosają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "nos",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_067",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "oczu",
+      "expected_morph_tags": [
+        "subst:sg:gen",
+        "subst:sg:loc",
+        "subst:sg:dat"
+      ],
+      "gold": [
+        [
+          "ocz",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "u",
+          "GEN_LOC_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_068",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "przeczytają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "prze",
+          "PREFIX"
+        ],
+        [
+          "czyt",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_069",
+      "split": "synthetic",
+      "category": "synthetic_adverb_comparative",
+      "surface": "łatwiej",
+      "expected_morph_tags": [
+        "adv:com"
+      ],
+      "gold": [
+        [
+          "łatw",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "iej",
+          "ADV_COMPARATIVE"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_070",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "nóżem",
+      "expected_morph_tags": [
+        "subst:sg:inst"
+      ],
+      "gold": [
+        [
+          "nóż",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "em",
+          "INST_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_071",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadczytają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "czyt",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_072",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "rozbierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "roz",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_073",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "dobierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "do",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_074",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "psem",
+      "expected_morph_tags": [
+        "subst:sg:inst"
+      ],
+      "gold": [
+        [
+          "ps",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "em",
+          "INST_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_075",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_076",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "policzają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "po",
+          "PREFIX"
+        ],
+        [
+          "licz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_077",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odbierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_078",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "ponosają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "po",
+          "PREFIX"
+        ],
+        [
+          "nos",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_079",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "podszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "pod",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_080",
+      "split": "synthetic",
+      "category": "synthetic_nominal_allomorph",
+      "surface": "ręcu",
+      "expected_morph_tags": [
+        "subst:sg:gen",
+        "subst:sg:loc",
+        "subst:sg:dat"
+      ],
+      "gold": [
+        [
+          "ręc",
+          "ROOT_ALLOMORPH"
+        ],
+        [
+          "u",
+          "GEN_LOC_SG"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_081",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "zawołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "za",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_082",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "wykrojają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "wy",
+          "PREFIX"
+        ],
+        [
+          "kroj",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_083",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "zabierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "za",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_084",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "doszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "do",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_085",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "podwołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "pod",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_086",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "wymierzają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "wy",
+          "PREFIX"
+        ],
+        [
+          "mierz",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_087",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "zanosają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "za",
+          "PREFIX"
+        ],
+        [
+          "nos",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_088",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "zaczytają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "za",
+          "PREFIX"
+        ],
+        [
+          "czyt",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_089",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "podbierają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "pod",
+          "PREFIX"
+        ],
+        [
+          "bier",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_090",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odwołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_091",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "wyczytają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "wy",
+          "PREFIX"
+        ],
+        [
+          "czyt",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_092",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "doczytają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "do",
+          "PREFIX"
+        ],
+        [
+          "czyt",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_093",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "podkrojają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "pod",
+          "PREFIX"
+        ],
+        [
+          "kroj",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_094",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "odstawają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "od",
+          "PREFIX"
+        ],
+        [
+          "staw",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_095",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "dowołają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "do",
+          "PREFIX"
+        ],
+        [
+          "woł",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_096",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "podczytają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "pod",
+          "PREFIX"
+        ],
+        [
+          "czyt",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_097",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "nadkrojają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "nad",
+          "PREFIX"
+        ],
+        [
+          "kroj",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_098",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "zapisają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "za",
+          "PREFIX"
+        ],
+        [
+          "pis",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_099",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "wyszukają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "wy",
+          "PREFIX"
+        ],
+        [
+          "szuk",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    },
+    {
+      "id": "synthetic_100",
+      "split": "synthetic",
+      "category": "synthetic_prefixed_verb",
+      "surface": "pokrojają",
+      "expected_morph_tags": [
+        "fin:pl:ter"
+      ],
+      "gold": [
+        [
+          "po",
+          "PREFIX"
+        ],
+        [
+          "kroj",
+          "ROOT"
+        ],
+        [
+          "aj",
+          "VERB_THEME"
+        ],
+        [
+          "ą",
+          "PRES_3PL"
+        ]
+      ],
+      "provenance": "synthetic_template_generator",
+      "verified": false
+    }
+  ]
+}

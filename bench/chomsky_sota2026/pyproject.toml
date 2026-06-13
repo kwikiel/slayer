@@ -1,0 +1,8 @@
+[project]
+name = "polish-morph-tokenizer-demo"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "morfeusz2==1.99.15",
+  "tiktoken==0.13.0",
+]

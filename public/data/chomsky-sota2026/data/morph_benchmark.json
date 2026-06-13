@@ -1,0 +1,91 @@
+{
+  "name": "Polish Morphological Boundary Benchmark",
+  "version": "0.1.0",
+  "description": "Small gold set for Polish morpheme boundary evaluation. Cases are grouped by failure mode rather than by frequency.",
+  "cases": [
+    {
+      "id": "adv_comp_bardziej",
+      "category": "adverb_comparative",
+      "surface": "bardziej",
+      "expected_morph_tags": ["adv:com"],
+      "gold": [["bardz", "ROOT_ALLOMORPH"], ["iej", "ADV_COMPARATIVE"]]
+    },
+    {
+      "id": "adv_comp_najbardziej",
+      "category": "adverb_comparative",
+      "surface": "najbardziej",
+      "expected_morph_tags": ["adv:sup"],
+      "gold": [["naj", "PREFIX"], ["bardz", "ROOT_ALLOMORPH"], ["iej", "ADV_COMPARATIVE"]]
+    },
+    {
+      "id": "pron_kolwiek_kogo",
+      "category": "indefinite_pronoun",
+      "surface": "kogokolwiek",
+      "expected_morph_tags": ["subst:sg:gen", "subst:sg:acc"],
+      "gold": [["kogo", "PRONOUN_BASE"], ["kolwiek", "INDEF_PARTICLE"]]
+    },
+    {
+      "id": "pron_kolwiek_czego",
+      "category": "indefinite_pronoun",
+      "surface": "czegokolwiek",
+      "expected_morph_tags": ["subst:sg:gen", "subst:sg:acc"],
+      "gold": [["czego", "PRONOUN_BASE"], ["kolwiek", "INDEF_PARTICLE"]]
+    },
+    {
+      "id": "verb_pref_przemierzaja",
+      "category": "prefixed_verb_theme",
+      "surface": "przemierzają",
+      "expected_morph_tags": ["fin:pl:ter"],
+      "gold": [["prze", "PREFIX"], ["mierz", "ROOT"], ["aj", "VERB_THEME"], ["ą", "PRES_3PL"]]
+    },
+    {
+      "id": "verb_pref_odmierzaja",
+      "category": "prefixed_verb_theme",
+      "surface": "odmierzają",
+      "expected_morph_tags": ["fin:pl:ter"],
+      "gold": [["od", "PREFIX"], ["mierz", "ROOT"], ["aj", "VERB_THEME"], ["ą", "PRES_3PL"]]
+    },
+    {
+      "id": "adj_stem_ext_innego",
+      "category": "adjective_stem_extension",
+      "surface": "innego",
+      "expected_morph_tags": ["adj:sg:gen", "adj:sg:acc"],
+      "gold": [["in", "ROOT"], ["n", "STEM_EXT"], ["ego", "GEN_SG_MN_ADJ"]]
+    },
+    {
+      "id": "adj_stem_ext_czynnego",
+      "category": "adjective_stem_extension",
+      "surface": "czynnego",
+      "expected_morph_tags": ["adj:sg:gen", "adj:sg:acc"],
+      "gold": [["czyn", "ROOT"], ["n", "STEM_EXT"], ["ego", "GEN_SG_MN_ADJ"]]
+    },
+    {
+      "id": "noun_alt_psem",
+      "category": "nominal_root_alternation",
+      "surface": "psem",
+      "expected_morph_tags": ["subst:sg:inst"],
+      "gold": [["ps", "ROOT_ALLOMORPH"], ["em", "INST_SG"]]
+    },
+    {
+      "id": "noun_alt_psu",
+      "category": "nominal_root_alternation",
+      "surface": "psu",
+      "expected_morph_tags": ["subst:sg:dat"],
+      "gold": [["ps", "ROOT_ALLOMORPH"], ["u", "GEN_LOC_SG"]]
+    },
+    {
+      "id": "noun_alt_rece",
+      "category": "nominal_root_alternation",
+      "surface": "ręce",
+      "expected_morph_tags": ["subst:sg:dat", "subst:sg:loc", "subst:pl:nom", "subst:pl:acc"],
+      "gold": [["ręc", "ROOT_ALLOMORPH"], ["e", "NOM_ACC_PL"]]
+    },
+    {
+      "id": "verb_allomorph_przyszlismy",
+      "category": "verbal_root_alternation",
+      "surface": "przyszliśmy",
+      "expected_morph_tags": ["praet:pl"],
+      "gold": [["przy", "PREFIX"], ["sz", "ROOT_ALLOMORPH"], ["liśmy", "PAST_1PL"]]
+    }
+  ]
+}

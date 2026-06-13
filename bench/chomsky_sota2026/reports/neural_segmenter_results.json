@@ -1,0 +1,212 @@
+{
+  "summary": {
+    "system": "neural_char_boundary_tagger_smoke",
+    "train_paths": [
+      "data/morph_benchmark.json",
+      "data/synthetic_morph_examples.json"
+    ],
+    "eval_path": "/Users/kacper/Local/Ventures/Slayer/bench/chomsky_sota2026/data/morph_benchmark.json",
+    "train_cases": 112,
+    "cases": 12,
+    "boundary_f1": 1.0,
+    "warning": "Smoke run on the tiny current gold set. This is pipeline validation, not a SOTA result."
+  },
+  "rows": [
+    {
+      "surface": "bardziej",
+      "category": "adverb_comparative",
+      "gold": [
+        "bardz",
+        "iej"
+      ],
+      "predicted": [
+        "bardz",
+        "iej"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "najbardziej",
+      "category": "adverb_comparative",
+      "gold": [
+        "naj",
+        "bardz",
+        "iej"
+      ],
+      "predicted": [
+        "naj",
+        "bardz",
+        "iej"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "kogokolwiek",
+      "category": "indefinite_pronoun",
+      "gold": [
+        "kogo",
+        "kolwiek"
+      ],
+      "predicted": [
+        "kogo",
+        "kolwiek"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "czegokolwiek",
+      "category": "indefinite_pronoun",
+      "gold": [
+        "czego",
+        "kolwiek"
+      ],
+      "predicted": [
+        "czego",
+        "kolwiek"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "przemierzają",
+      "category": "prefixed_verb_theme",
+      "gold": [
+        "prze",
+        "mierz",
+        "aj",
+        "ą"
+      ],
+      "predicted": [
+        "prze",
+        "mierz",
+        "aj",
+        "ą"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "odmierzają",
+      "category": "prefixed_verb_theme",
+      "gold": [
+        "od",
+        "mierz",
+        "aj",
+        "ą"
+      ],
+      "predicted": [
+        "od",
+        "mierz",
+        "aj",
+        "ą"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "innego",
+      "category": "adjective_stem_extension",
+      "gold": [
+        "in",
+        "n",
+        "ego"
+      ],
+      "predicted": [
+        "in",
+        "n",
+        "ego"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "czynnego",
+      "category": "adjective_stem_extension",
+      "gold": [
+        "czyn",
+        "n",
+        "ego"
+      ],
+      "predicted": [
+        "czyn",
+        "n",
+        "ego"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "psem",
+      "category": "nominal_root_alternation",
+      "gold": [
+        "ps",
+        "em"
+      ],
+      "predicted": [
+        "ps",
+        "em"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "psu",
+      "category": "nominal_root_alternation",
+      "gold": [
+        "ps",
+        "u"
+      ],
+      "predicted": [
+        "ps",
+        "u"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "ręce",
+      "category": "nominal_root_alternation",
+      "gold": [
+        "ręc",
+        "e"
+      ],
+      "predicted": [
+        "ręc",
+        "e"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    },
+    {
+      "surface": "przyszliśmy",
+      "category": "verbal_root_alternation",
+      "gold": [
+        "przy",
+        "sz",
+        "liśmy"
+      ],
+      "predicted": [
+        "przy",
+        "sz",
+        "liśmy"
+      ],
+      "boundary_precision": 1.0,
+      "boundary_recall": 1.0,
+      "boundary_f1": 1.0
+    }
+  ]
+}

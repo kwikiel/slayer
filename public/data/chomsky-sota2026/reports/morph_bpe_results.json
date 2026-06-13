@@ -1,0 +1,1114 @@
+{
+  "warning": "Smoke run on current gold set. Full MorphBPE/SKMT needs corpus-scale training and downstream LLM evaluation.",
+  "train_paths": [
+    "data/morph_benchmark.json",
+    "data/synthetic_morph_examples.json"
+  ],
+  "eval_path": "/Users/kacper/Local/Ventures/Slayer/bench/chomsky_sota2026/data/morph_benchmark.json",
+  "merges": {
+    "standard_bpe": [
+      [
+        "a",
+        "j"
+      ],
+      [
+        "aj",
+        "ą"
+      ],
+      [
+        "i",
+        "e"
+      ],
+      [
+        "c",
+        "z"
+      ],
+      [
+        "g",
+        "o"
+      ],
+      [
+        "r",
+        "z"
+      ],
+      [
+        "k",
+        "o"
+      ],
+      [
+        "e",
+        "go"
+      ],
+      [
+        "o",
+        "d"
+      ],
+      [
+        "d",
+        "z"
+      ],
+      [
+        "ie",
+        "j"
+      ],
+      [
+        "n",
+        "ego"
+      ],
+      [
+        "ko",
+        "l"
+      ],
+      [
+        "s",
+        "z"
+      ],
+      [
+        "kol",
+        "w"
+      ],
+      [
+        "kolw",
+        "ie"
+      ],
+      [
+        "kolwie",
+        "k"
+      ],
+      [
+        "r",
+        "o"
+      ],
+      [
+        "p",
+        "rz"
+      ],
+      [
+        "n",
+        "nego"
+      ],
+      [
+        "cz",
+        "y"
+      ],
+      [
+        "prz",
+        "e"
+      ],
+      [
+        "sz",
+        "u"
+      ],
+      [
+        "szu",
+        "k"
+      ],
+      [
+        "szuk",
+        "ają"
+      ],
+      [
+        "b",
+        "ie"
+      ],
+      [
+        "bie",
+        "r"
+      ],
+      [
+        "w",
+        "o"
+      ],
+      [
+        "n",
+        "a"
+      ],
+      [
+        "na",
+        "d"
+      ],
+      [
+        "s",
+        "ają"
+      ],
+      [
+        "e",
+        "m"
+      ],
+      [
+        "l",
+        "i"
+      ],
+      [
+        "wo",
+        "ł"
+      ],
+      [
+        "woł",
+        "ają"
+      ],
+      [
+        "bier",
+        "ają"
+      ],
+      [
+        "m",
+        "ie"
+      ],
+      [
+        "mie",
+        "rz"
+      ],
+      [
+        "mierz",
+        "ają"
+      ],
+      [
+        "p",
+        "o"
+      ],
+      [
+        "z",
+        "a"
+      ],
+      [
+        "czy",
+        "t"
+      ],
+      [
+        "czyt",
+        "ają"
+      ],
+      [
+        "i",
+        "nnego"
+      ],
+      [
+        "p",
+        "s"
+      ],
+      [
+        "dz",
+        "ie"
+      ],
+      [
+        "li",
+        "cz"
+      ],
+      [
+        "licz",
+        "ają"
+      ],
+      [
+        "ro",
+        "z"
+      ],
+      [
+        "a",
+        "w"
+      ],
+      [
+        "p",
+        "i"
+      ],
+      [
+        "pi",
+        "sają"
+      ],
+      [
+        "w",
+        "y"
+      ],
+      [
+        "k",
+        "ro"
+      ],
+      [
+        "kro",
+        "j"
+      ],
+      [
+        "kroj",
+        "ają"
+      ],
+      [
+        "d",
+        "o"
+      ],
+      [
+        "p",
+        "od"
+      ],
+      [
+        "dz",
+        "iej"
+      ],
+      [
+        "r",
+        "ę"
+      ],
+      [
+        "rę",
+        "c"
+      ],
+      [
+        "s",
+        "t"
+      ],
+      [
+        "st",
+        "aw"
+      ],
+      [
+        "staw",
+        "ają"
+      ]
+    ],
+    "morph_bpe": [
+      [
+        "a",
+        "j"
+      ],
+      [
+        "i",
+        "e"
+      ],
+      [
+        "c",
+        "z"
+      ],
+      [
+        "g",
+        "o"
+      ],
+      [
+        "r",
+        "z"
+      ],
+      [
+        "k",
+        "o"
+      ],
+      [
+        "e",
+        "go"
+      ],
+      [
+        "o",
+        "d"
+      ],
+      [
+        "d",
+        "z"
+      ],
+      [
+        "ie",
+        "j"
+      ],
+      [
+        "ko",
+        "l"
+      ],
+      [
+        "s",
+        "z"
+      ],
+      [
+        "kol",
+        "w"
+      ],
+      [
+        "kolw",
+        "ie"
+      ],
+      [
+        "kolwie",
+        "k"
+      ],
+      [
+        "r",
+        "o"
+      ],
+      [
+        "p",
+        "rz"
+      ],
+      [
+        "cz",
+        "y"
+      ],
+      [
+        "prz",
+        "e"
+      ],
+      [
+        "sz",
+        "u"
+      ],
+      [
+        "szu",
+        "k"
+      ],
+      [
+        "b",
+        "ie"
+      ],
+      [
+        "bie",
+        "r"
+      ],
+      [
+        "w",
+        "o"
+      ],
+      [
+        "n",
+        "a"
+      ],
+      [
+        "na",
+        "d"
+      ],
+      [
+        "e",
+        "m"
+      ],
+      [
+        "l",
+        "i"
+      ],
+      [
+        "wo",
+        "ł"
+      ],
+      [
+        "m",
+        "ie"
+      ],
+      [
+        "mie",
+        "rz"
+      ],
+      [
+        "p",
+        "o"
+      ],
+      [
+        "z",
+        "a"
+      ],
+      [
+        "czy",
+        "t"
+      ],
+      [
+        "i",
+        "n"
+      ],
+      [
+        "p",
+        "s"
+      ],
+      [
+        "dz",
+        "ie"
+      ],
+      [
+        "li",
+        "cz"
+      ],
+      [
+        "ro",
+        "z"
+      ],
+      [
+        "a",
+        "w"
+      ],
+      [
+        "p",
+        "i"
+      ],
+      [
+        "pi",
+        "s"
+      ],
+      [
+        "w",
+        "y"
+      ],
+      [
+        "k",
+        "ro"
+      ],
+      [
+        "kro",
+        "j"
+      ],
+      [
+        "d",
+        "o"
+      ],
+      [
+        "p",
+        "od"
+      ],
+      [
+        "r",
+        "ę"
+      ],
+      [
+        "rę",
+        "c"
+      ],
+      [
+        "s",
+        "t"
+      ],
+      [
+        "st",
+        "aw"
+      ],
+      [
+        "b",
+        "a"
+      ],
+      [
+        "ba",
+        "r"
+      ],
+      [
+        "bar",
+        "dz"
+      ],
+      [
+        "o",
+        "cz"
+      ],
+      [
+        "dzie",
+        "c"
+      ],
+      [
+        "l",
+        "u"
+      ],
+      [
+        "lu",
+        "dz"
+      ],
+      [
+        "n",
+        "ó"
+      ],
+      [
+        "nó",
+        "ż"
+      ],
+      [
+        "n",
+        "o"
+      ],
+      [
+        "no",
+        "s"
+      ],
+      [
+        "ko",
+        "go"
+      ],
+      [
+        "cz",
+        "ego"
+      ]
+    ]
+  },
+  "results": [
+    {
+      "system": "standard_bpe_smoke",
+      "summary": {
+        "cases": 12,
+        "boundary_f1": 0.5099206349206349,
+        "fertility": 3.0,
+        "alignment_precision": 0.5444444444444444,
+        "alignment_recall": 0.5972222222222222
+      },
+      "categories": {
+        "adjective_stem_extension": {
+          "cases": 2,
+          "boundary_f1": 0.0,
+          "fertility": 1.5,
+          "alignment_precision": 0.0,
+          "alignment_recall": 0.0
+        },
+        "adverb_comparative": {
+          "cases": 2,
+          "boundary_f1": 0.14285714285714288,
+          "fertility": 5.0,
+          "alignment_precision": 0.1,
+          "alignment_recall": 0.25
+        },
+        "indefinite_pronoun": {
+          "cases": 2,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 3.0,
+          "alignment_precision": 0.5,
+          "alignment_recall": 1.0
+        },
+        "nominal_root_alternation": {
+          "cases": 3,
+          "boundary_f1": 1.0,
+          "fertility": 2.0,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        "prefixed_verb_theme": {
+          "cases": 2,
+          "boundary_f1": 0.5,
+          "fertility": 2.0,
+          "alignment_precision": 1.0,
+          "alignment_recall": 0.3333333333333333
+        },
+        "verbal_root_alternation": {
+          "cases": 1,
+          "boundary_f1": 0.5,
+          "fertility": 7.0,
+          "alignment_precision": 0.3333333333333333,
+          "alignment_recall": 1.0
+        }
+      },
+      "rows": [
+        {
+          "surface": "bardziej",
+          "category": "adverb_comparative",
+          "gold": [
+            "bardz",
+            "iej"
+          ],
+          "predicted": [
+            "b",
+            "a",
+            "r",
+            "dziej"
+          ],
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 4,
+          "alignment_precision": 0.0,
+          "alignment_recall": 0.0
+        },
+        {
+          "surface": "najbardziej",
+          "category": "adverb_comparative",
+          "gold": [
+            "naj",
+            "bardz",
+            "iej"
+          ],
+          "predicted": [
+            "n",
+            "aj",
+            "b",
+            "a",
+            "r",
+            "dziej"
+          ],
+          "boundary_precision": 0.2,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.28571428571428575,
+          "fertility": 6,
+          "alignment_precision": 0.2,
+          "alignment_recall": 0.5
+        },
+        {
+          "surface": "kogokolwiek",
+          "category": "indefinite_pronoun",
+          "gold": [
+            "kogo",
+            "kolwiek"
+          ],
+          "predicted": [
+            "ko",
+            "go",
+            "kolwiek"
+          ],
+          "boundary_precision": 0.5,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 3,
+          "alignment_precision": 0.5,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "czegokolwiek",
+          "category": "indefinite_pronoun",
+          "gold": [
+            "czego",
+            "kolwiek"
+          ],
+          "predicted": [
+            "cz",
+            "ego",
+            "kolwiek"
+          ],
+          "boundary_precision": 0.5,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 3,
+          "alignment_precision": 0.5,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "przemierzają",
+          "category": "prefixed_verb_theme",
+          "gold": [
+            "prze",
+            "mierz",
+            "aj",
+            "ą"
+          ],
+          "predicted": [
+            "prze",
+            "mierzają"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 0.3333333333333333,
+          "boundary_f1": 0.5,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 0.3333333333333333
+        },
+        {
+          "surface": "odmierzają",
+          "category": "prefixed_verb_theme",
+          "gold": [
+            "od",
+            "mierz",
+            "aj",
+            "ą"
+          ],
+          "predicted": [
+            "od",
+            "mierzają"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 0.3333333333333333,
+          "boundary_f1": 0.5,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 0.3333333333333333
+        },
+        {
+          "surface": "innego",
+          "category": "adjective_stem_extension",
+          "gold": [
+            "in",
+            "n",
+            "ego"
+          ],
+          "predicted": [
+            "innego"
+          ],
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 1,
+          "alignment_precision": 0.0,
+          "alignment_recall": 0.0
+        },
+        {
+          "surface": "czynnego",
+          "category": "adjective_stem_extension",
+          "gold": [
+            "czyn",
+            "n",
+            "ego"
+          ],
+          "predicted": [
+            "czy",
+            "nnego"
+          ],
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 2,
+          "alignment_precision": 0.0,
+          "alignment_recall": 0.0
+        },
+        {
+          "surface": "psem",
+          "category": "nominal_root_alternation",
+          "gold": [
+            "ps",
+            "em"
+          ],
+          "predicted": [
+            "ps",
+            "em"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "psu",
+          "category": "nominal_root_alternation",
+          "gold": [
+            "ps",
+            "u"
+          ],
+          "predicted": [
+            "ps",
+            "u"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "ręce",
+          "category": "nominal_root_alternation",
+          "gold": [
+            "ręc",
+            "e"
+          ],
+          "predicted": [
+            "ręc",
+            "e"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "przyszliśmy",
+          "category": "verbal_root_alternation",
+          "gold": [
+            "przy",
+            "sz",
+            "liśmy"
+          ],
+          "predicted": [
+            "prz",
+            "y",
+            "sz",
+            "li",
+            "ś",
+            "m",
+            "y"
+          ],
+          "boundary_precision": 0.3333333333333333,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.5,
+          "fertility": 7,
+          "alignment_precision": 0.3333333333333333,
+          "alignment_recall": 1.0
+        }
+      ]
+    },
+    {
+      "system": "morph_bpe_constrained_smoke",
+      "summary": {
+        "cases": 12,
+        "boundary_f1": 0.9249999999999999,
+        "fertility": 3.1666666666666665,
+        "alignment_precision": 0.8888888888888888,
+        "alignment_recall": 1.0
+      },
+      "categories": {
+        "adjective_stem_extension": {
+          "cases": 2,
+          "boundary_f1": 0.9,
+          "fertility": 3.5,
+          "alignment_precision": 0.8333333333333333,
+          "alignment_recall": 1.0
+        },
+        "adverb_comparative": {
+          "cases": 2,
+          "boundary_f1": 0.9,
+          "fertility": 3.0,
+          "alignment_precision": 0.8333333333333333,
+          "alignment_recall": 1.0
+        },
+        "indefinite_pronoun": {
+          "cases": 2,
+          "boundary_f1": 1.0,
+          "fertility": 2.0,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        "nominal_root_alternation": {
+          "cases": 3,
+          "boundary_f1": 1.0,
+          "fertility": 2.0,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        "prefixed_verb_theme": {
+          "cases": 2,
+          "boundary_f1": 1.0,
+          "fertility": 4.0,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        "verbal_root_alternation": {
+          "cases": 1,
+          "boundary_f1": 0.5,
+          "fertility": 7.0,
+          "alignment_precision": 0.3333333333333333,
+          "alignment_recall": 1.0
+        }
+      },
+      "rows": [
+        {
+          "surface": "bardziej",
+          "category": "adverb_comparative",
+          "gold": [
+            "bardz",
+            "iej"
+          ],
+          "predicted": [
+            "bardz",
+            "iej"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "najbardziej",
+          "category": "adverb_comparative",
+          "gold": [
+            "naj",
+            "bardz",
+            "iej"
+          ],
+          "predicted": [
+            "n",
+            "aj",
+            "bardz",
+            "iej"
+          ],
+          "boundary_precision": 0.6666666666666666,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.8,
+          "fertility": 4,
+          "alignment_precision": 0.6666666666666666,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "kogokolwiek",
+          "category": "indefinite_pronoun",
+          "gold": [
+            "kogo",
+            "kolwiek"
+          ],
+          "predicted": [
+            "kogo",
+            "kolwiek"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "czegokolwiek",
+          "category": "indefinite_pronoun",
+          "gold": [
+            "czego",
+            "kolwiek"
+          ],
+          "predicted": [
+            "czego",
+            "kolwiek"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "przemierzają",
+          "category": "prefixed_verb_theme",
+          "gold": [
+            "prze",
+            "mierz",
+            "aj",
+            "ą"
+          ],
+          "predicted": [
+            "prze",
+            "mierz",
+            "aj",
+            "ą"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 4,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "odmierzają",
+          "category": "prefixed_verb_theme",
+          "gold": [
+            "od",
+            "mierz",
+            "aj",
+            "ą"
+          ],
+          "predicted": [
+            "od",
+            "mierz",
+            "aj",
+            "ą"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 4,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "innego",
+          "category": "adjective_stem_extension",
+          "gold": [
+            "in",
+            "n",
+            "ego"
+          ],
+          "predicted": [
+            "in",
+            "n",
+            "ego"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 3,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "czynnego",
+          "category": "adjective_stem_extension",
+          "gold": [
+            "czyn",
+            "n",
+            "ego"
+          ],
+          "predicted": [
+            "czy",
+            "n",
+            "n",
+            "ego"
+          ],
+          "boundary_precision": 0.6666666666666666,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.8,
+          "fertility": 4,
+          "alignment_precision": 0.6666666666666666,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "psem",
+          "category": "nominal_root_alternation",
+          "gold": [
+            "ps",
+            "em"
+          ],
+          "predicted": [
+            "ps",
+            "em"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "psu",
+          "category": "nominal_root_alternation",
+          "gold": [
+            "ps",
+            "u"
+          ],
+          "predicted": [
+            "ps",
+            "u"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "ręce",
+          "category": "nominal_root_alternation",
+          "gold": [
+            "ręc",
+            "e"
+          ],
+          "predicted": [
+            "ręc",
+            "e"
+          ],
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "alignment_precision": 1.0,
+          "alignment_recall": 1.0
+        },
+        {
+          "surface": "przyszliśmy",
+          "category": "verbal_root_alternation",
+          "gold": [
+            "przy",
+            "sz",
+            "liśmy"
+          ],
+          "predicted": [
+            "prz",
+            "y",
+            "sz",
+            "li",
+            "ś",
+            "m",
+            "y"
+          ],
+          "boundary_precision": 0.3333333333333333,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.5,
+          "fertility": 7,
+          "alignment_precision": 0.3333333333333333,
+          "alignment_recall": 1.0
+        }
+      ]
+    }
+  ]
+}

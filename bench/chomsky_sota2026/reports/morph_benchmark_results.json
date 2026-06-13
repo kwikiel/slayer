@@ -1,0 +1,2027 @@
+{
+  "benchmark": {
+    "name": "Polish Morphological Boundary Benchmark",
+    "version": "0.1.0",
+    "description": "Small gold set for Polish morpheme boundary evaluation. Cases are grouped by failure mode rather than by frequency.",
+    "cases": [
+      {
+        "id": "adv_comp_bardziej",
+        "category": "adverb_comparative",
+        "surface": "bardziej",
+        "expected_morph_tags": [
+          "adv:com"
+        ],
+        "gold": [
+          [
+            "bardz",
+            "ROOT_ALLOMORPH"
+          ],
+          [
+            "iej",
+            "ADV_COMPARATIVE"
+          ]
+        ]
+      },
+      {
+        "id": "adv_comp_najbardziej",
+        "category": "adverb_comparative",
+        "surface": "najbardziej",
+        "expected_morph_tags": [
+          "adv:sup"
+        ],
+        "gold": [
+          [
+            "naj",
+            "PREFIX"
+          ],
+          [
+            "bardz",
+            "ROOT_ALLOMORPH"
+          ],
+          [
+            "iej",
+            "ADV_COMPARATIVE"
+          ]
+        ]
+      },
+      {
+        "id": "pron_kolwiek_kogo",
+        "category": "indefinite_pronoun",
+        "surface": "kogokolwiek",
+        "expected_morph_tags": [
+          "subst:sg:gen",
+          "subst:sg:acc"
+        ],
+        "gold": [
+          [
+            "kogo",
+            "PRONOUN_BASE"
+          ],
+          [
+            "kolwiek",
+            "INDEF_PARTICLE"
+          ]
+        ]
+      },
+      {
+        "id": "pron_kolwiek_czego",
+        "category": "indefinite_pronoun",
+        "surface": "czegokolwiek",
+        "expected_morph_tags": [
+          "subst:sg:gen",
+          "subst:sg:acc"
+        ],
+        "gold": [
+          [
+            "czego",
+            "PRONOUN_BASE"
+          ],
+          [
+            "kolwiek",
+            "INDEF_PARTICLE"
+          ]
+        ]
+      },
+      {
+        "id": "verb_pref_przemierzaja",
+        "category": "prefixed_verb_theme",
+        "surface": "przemierzają",
+        "expected_morph_tags": [
+          "fin:pl:ter"
+        ],
+        "gold": [
+          [
+            "prze",
+            "PREFIX"
+          ],
+          [
+            "mierz",
+            "ROOT"
+          ],
+          [
+            "aj",
+            "VERB_THEME"
+          ],
+          [
+            "ą",
+            "PRES_3PL"
+          ]
+        ]
+      },
+      {
+        "id": "verb_pref_odmierzaja",
+        "category": "prefixed_verb_theme",
+        "surface": "odmierzają",
+        "expected_morph_tags": [
+          "fin:pl:ter"
+        ],
+        "gold": [
+          [
+            "od",
+            "PREFIX"
+          ],
+          [
+            "mierz",
+            "ROOT"
+          ],
+          [
+            "aj",
+            "VERB_THEME"
+          ],
+          [
+            "ą",
+            "PRES_3PL"
+          ]
+        ]
+      },
+      {
+        "id": "adj_stem_ext_innego",
+        "category": "adjective_stem_extension",
+        "surface": "innego",
+        "expected_morph_tags": [
+          "adj:sg:gen",
+          "adj:sg:acc"
+        ],
+        "gold": [
+          [
+            "in",
+            "ROOT"
+          ],
+          [
+            "n",
+            "STEM_EXT"
+          ],
+          [
+            "ego",
+            "GEN_SG_MN_ADJ"
+          ]
+        ]
+      },
+      {
+        "id": "adj_stem_ext_czynnego",
+        "category": "adjective_stem_extension",
+        "surface": "czynnego",
+        "expected_morph_tags": [
+          "adj:sg:gen",
+          "adj:sg:acc"
+        ],
+        "gold": [
+          [
+            "czyn",
+            "ROOT"
+          ],
+          [
+            "n",
+            "STEM_EXT"
+          ],
+          [
+            "ego",
+            "GEN_SG_MN_ADJ"
+          ]
+        ]
+      },
+      {
+        "id": "noun_alt_psem",
+        "category": "nominal_root_alternation",
+        "surface": "psem",
+        "expected_morph_tags": [
+          "subst:sg:inst"
+        ],
+        "gold": [
+          [
+            "ps",
+            "ROOT_ALLOMORPH"
+          ],
+          [
+            "em",
+            "INST_SG"
+          ]
+        ]
+      },
+      {
+        "id": "noun_alt_psu",
+        "category": "nominal_root_alternation",
+        "surface": "psu",
+        "expected_morph_tags": [
+          "subst:sg:dat"
+        ],
+        "gold": [
+          [
+            "ps",
+            "ROOT_ALLOMORPH"
+          ],
+          [
+            "u",
+            "GEN_LOC_SG"
+          ]
+        ]
+      },
+      {
+        "id": "noun_alt_rece",
+        "category": "nominal_root_alternation",
+        "surface": "ręce",
+        "expected_morph_tags": [
+          "subst:sg:dat",
+          "subst:sg:loc",
+          "subst:pl:nom",
+          "subst:pl:acc"
+        ],
+        "gold": [
+          [
+            "ręc",
+            "ROOT_ALLOMORPH"
+          ],
+          [
+            "e",
+            "NOM_ACC_PL"
+          ]
+        ]
+      },
+      {
+        "id": "verb_allomorph_przyszlismy",
+        "category": "verbal_root_alternation",
+        "surface": "przyszliśmy",
+        "expected_morph_tags": [
+          "praet:pl"
+        ],
+        "gold": [
+          [
+            "przy",
+            "PREFIX"
+          ],
+          [
+            "sz",
+            "ROOT_ALLOMORPH"
+          ],
+          [
+            "liśmy",
+            "PAST_1PL"
+          ]
+        ]
+      }
+    ]
+  },
+  "analyzers": [
+    {
+      "name": "morfeusz2",
+      "status": "available",
+      "recognized_rate": 1.0,
+      "expected_tag_rate": 1.0,
+      "note": "form analyzer baseline; does not provide morpheme boundaries"
+    },
+    {
+      "name": "concraft-pl",
+      "status": "missing",
+      "recognized_rate": 0.0,
+      "expected_tag_rate": 0.0,
+      "note": "not installed in this environment"
+    }
+  ],
+  "results": [
+    {
+      "system": "polish_morph_current",
+      "summary": {
+        "cases": 12,
+        "boundary_f1": 0.8333333333333334,
+        "fertility": 2.5833333333333335,
+        "morph_alignment_precision": 0.8333333333333334,
+        "morph_alignment_recall": 0.8333333333333334,
+        "segment_exact": 0.8333333333333334,
+        "role_exact": 0.75,
+        "fallback_rate": 0.0,
+        "sources": {
+          "rule:adverb_comparative": 2,
+          "rule:indefinite_pronoun": 2,
+          "rule:present_3pl_aja": 2,
+          "rule:adjective_stem_extension": 2,
+          "heuristic": 3,
+          "ladder_entry": 1
+        }
+      },
+      "categories": {
+        "adjective_stem_extension": {
+          "cases": 2,
+          "boundary_f1": 1.0,
+          "fertility": 3.0,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": 1.0,
+          "role_exact": 1.0,
+          "fallback_rate": 0.0
+        },
+        "adverb_comparative": {
+          "cases": 2,
+          "boundary_f1": 1.0,
+          "fertility": 2.5,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": 1.0,
+          "role_exact": 1.0,
+          "fallback_rate": 0.0
+        },
+        "indefinite_pronoun": {
+          "cases": 2,
+          "boundary_f1": 1.0,
+          "fertility": 2.0,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": 1.0,
+          "role_exact": 1.0,
+          "fallback_rate": 0.0
+        },
+        "nominal_root_alternation": {
+          "cases": 3,
+          "boundary_f1": 0.3333333333333333,
+          "fertility": 1.6666666666666667,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.3333333333333333,
+          "segment_exact": 0.3333333333333333,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        },
+        "prefixed_verb_theme": {
+          "cases": 2,
+          "boundary_f1": 1.0,
+          "fertility": 4.0,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": 1.0,
+          "role_exact": 1.0,
+          "fallback_rate": 0.0
+        },
+        "verbal_root_alternation": {
+          "cases": 1,
+          "boundary_f1": 1.0,
+          "fertility": 3.0,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": 1.0,
+          "role_exact": 1.0,
+          "fallback_rate": 0.0
+        }
+      },
+      "rows": [
+        {
+          "id": "adv_comp_bardziej",
+          "category": "adverb_comparative",
+          "surface": "bardziej",
+          "gold": [
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "predicted": [
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "source": "rule:adverb_comparative",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "adv_comp_najbardziej",
+          "category": "adverb_comparative",
+          "surface": "najbardziej",
+          "gold": [
+            [
+              "naj",
+              "PREFIX"
+            ],
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "predicted": [
+            [
+              "naj",
+              "PREFIX"
+            ],
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "source": "rule:adverb_comparative",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 3,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "pron_kolwiek_kogo",
+          "category": "indefinite_pronoun",
+          "surface": "kogokolwiek",
+          "gold": [
+            [
+              "kogo",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "predicted": [
+            [
+              "kogo",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "source": "rule:indefinite_pronoun",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "pron_kolwiek_czego",
+          "category": "indefinite_pronoun",
+          "surface": "czegokolwiek",
+          "gold": [
+            [
+              "czego",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "predicted": [
+            [
+              "czego",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "source": "rule:indefinite_pronoun",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "verb_pref_przemierzaja",
+          "category": "prefixed_verb_theme",
+          "surface": "przemierzają",
+          "gold": [
+            [
+              "prze",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "prze",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "source": "rule:present_3pl_aja",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 4,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "verb_pref_odmierzaja",
+          "category": "prefixed_verb_theme",
+          "surface": "odmierzają",
+          "gold": [
+            [
+              "od",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "od",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "source": "rule:present_3pl_aja",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 4,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "adj_stem_ext_innego",
+          "category": "adjective_stem_extension",
+          "surface": "innego",
+          "gold": [
+            [
+              "in",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "predicted": [
+            [
+              "in",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "source": "rule:adjective_stem_extension",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 3,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "adj_stem_ext_czynnego",
+          "category": "adjective_stem_extension",
+          "surface": "czynnego",
+          "gold": [
+            [
+              "czyn",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "predicted": [
+            [
+              "czyn",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "source": "rule:adjective_stem_extension",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 3,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        },
+        {
+          "id": "noun_alt_psem",
+          "category": "nominal_root_alternation",
+          "surface": "psem",
+          "gold": [
+            [
+              "ps",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "em",
+              "INST_SG"
+            ]
+          ],
+          "predicted": [
+            [
+              "pse",
+              "ROOT"
+            ],
+            [
+              "m",
+              "INST_LOC_SG_ADJ"
+            ]
+          ],
+          "source": "heuristic",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 2,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_psu",
+          "category": "nominal_root_alternation",
+          "surface": "psu",
+          "gold": [
+            [
+              "ps",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "u",
+              "GEN_LOC_SG"
+            ]
+          ],
+          "predicted": [
+            [
+              "psu",
+              "ROOT"
+            ]
+          ],
+          "source": "heuristic",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 1,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_rece",
+          "category": "nominal_root_alternation",
+          "surface": "ręce",
+          "gold": [
+            [
+              "ręc",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "e",
+              "NOM_ACC_PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "ręc",
+              "ROOT"
+            ],
+            [
+              "e",
+              "NOM_ACC_PL"
+            ]
+          ],
+          "source": "heuristic",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": false
+        },
+        {
+          "id": "verb_allomorph_przyszlismy",
+          "category": "verbal_root_alternation",
+          "surface": "przyszliśmy",
+          "gold": [
+            [
+              "przy",
+              "PREFIX"
+            ],
+            [
+              "sz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "liśmy",
+              "PAST_1PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "przy",
+              "PREFIX"
+            ],
+            [
+              "sz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "liśmy",
+              "PAST_1PL"
+            ]
+          ],
+          "source": "ladder_entry",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 3,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": true
+        }
+      ]
+    },
+    {
+      "system": "phoneme_syllable_baseline",
+      "summary": {
+        "cases": 12,
+        "boundary_f1": 0.3611111111111111,
+        "fertility": 2.8333333333333335,
+        "morph_alignment_precision": 0.27777777777777773,
+        "morph_alignment_recall": 0.3888888888888889,
+        "segment_exact": 0.0,
+        "role_exact": 0.0,
+        "fallback_rate": 1.0,
+        "sources": {
+          "phoneme_syllable": 12
+        }
+      },
+      "categories": {
+        "adjective_stem_extension": {
+          "cases": 2,
+          "boundary_f1": 0.5,
+          "fertility": 3.0,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 1.0
+        },
+        "adverb_comparative": {
+          "cases": 2,
+          "boundary_f1": 0.25,
+          "fertility": 2.5,
+          "morph_alignment_precision": 0.25,
+          "morph_alignment_recall": 0.25,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 1.0
+        },
+        "indefinite_pronoun": {
+          "cases": 2,
+          "boundary_f1": 0.5,
+          "fertility": 4.0,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 1.0
+        },
+        "nominal_root_alternation": {
+          "cases": 3,
+          "boundary_f1": 0.0,
+          "fertility": 1.3333333333333333,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 1.0
+        },
+        "prefixed_verb_theme": {
+          "cases": 2,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 4.0,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.3333333333333333,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 1.0
+        },
+        "verbal_root_alternation": {
+          "cases": 1,
+          "boundary_f1": 0.5,
+          "fertility": 3.0,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 1.0
+        }
+      },
+      "rows": [
+        {
+          "id": "adv_comp_bardziej",
+          "category": "adverb_comparative",
+          "surface": "bardziej",
+          "gold": [
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "predicted": [
+            [
+              "bar",
+              "PHON_FALLBACK"
+            ],
+            [
+              "dźej",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 2,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "adv_comp_najbardziej",
+          "category": "adverb_comparative",
+          "surface": "najbardziej",
+          "gold": [
+            [
+              "naj",
+              "PREFIX"
+            ],
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "predicted": [
+            [
+              "naj",
+              "PHON_FALLBACK"
+            ],
+            [
+              "bar",
+              "PHON_FALLBACK"
+            ],
+            [
+              "dźej",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.5,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.5,
+          "fertility": 3,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "pron_kolwiek_kogo",
+          "category": "indefinite_pronoun",
+          "surface": "kogokolwiek",
+          "gold": [
+            [
+              "kogo",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "predicted": [
+            [
+              "ko",
+              "PHON_FALLBACK"
+            ],
+            [
+              "go",
+              "PHON_FALLBACK"
+            ],
+            [
+              "kol",
+              "PHON_FALLBACK"
+            ],
+            [
+              "w'ek",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.3333333333333333,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.5,
+          "fertility": 4,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "pron_kolwiek_czego",
+          "category": "indefinite_pronoun",
+          "surface": "czegokolwiek",
+          "gold": [
+            [
+              "czego",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "predicted": [
+            [
+              "cze",
+              "PHON_FALLBACK"
+            ],
+            [
+              "go",
+              "PHON_FALLBACK"
+            ],
+            [
+              "kol",
+              "PHON_FALLBACK"
+            ],
+            [
+              "w'ek",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.3333333333333333,
+          "boundary_recall": 1.0,
+          "boundary_f1": 0.5,
+          "fertility": 4,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "verb_pref_przemierzaja",
+          "category": "prefixed_verb_theme",
+          "surface": "przemierzają",
+          "gold": [
+            [
+              "prze",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "psze",
+              "PHON_FALLBACK"
+            ],
+            [
+              "m'e",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ża",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ją",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.6666666666666666,
+          "boundary_recall": 0.6666666666666666,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 4,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.3333333333333333,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "verb_pref_odmierzaja",
+          "category": "prefixed_verb_theme",
+          "surface": "odmierzają",
+          "gold": [
+            [
+              "od",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "od",
+              "PHON_FALLBACK"
+            ],
+            [
+              "m'e",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ża",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ją",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.6666666666666666,
+          "boundary_recall": 0.6666666666666666,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 4,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.3333333333333333,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "adj_stem_ext_innego",
+          "category": "adjective_stem_extension",
+          "surface": "innego",
+          "gold": [
+            [
+              "in",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "predicted": [
+            [
+              "in",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ne",
+              "PHON_FALLBACK"
+            ],
+            [
+              "go",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.5,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.5,
+          "fertility": 3,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "adj_stem_ext_czynnego",
+          "category": "adjective_stem_extension",
+          "surface": "czynnego",
+          "gold": [
+            [
+              "czyn",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "predicted": [
+            [
+              "czyn",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ne",
+              "PHON_FALLBACK"
+            ],
+            [
+              "go",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.5,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.5,
+          "fertility": 3,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_psem",
+          "category": "nominal_root_alternation",
+          "surface": "psem",
+          "gold": [
+            [
+              "ps",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "em",
+              "INST_SG"
+            ]
+          ],
+          "predicted": [
+            [
+              "psem",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 1,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_psu",
+          "category": "nominal_root_alternation",
+          "surface": "psu",
+          "gold": [
+            [
+              "ps",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "u",
+              "GEN_LOC_SG"
+            ]
+          ],
+          "predicted": [
+            [
+              "psu",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 1,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_rece",
+          "category": "nominal_root_alternation",
+          "surface": "ręce",
+          "gold": [
+            [
+              "ręc",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "e",
+              "NOM_ACC_PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "rę",
+              "PHON_FALLBACK"
+            ],
+            [
+              "ce",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 2,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "verb_allomorph_przyszlismy",
+          "category": "verbal_root_alternation",
+          "surface": "przyszliśmy",
+          "gold": [
+            [
+              "przy",
+              "PREFIX"
+            ],
+            [
+              "sz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "liśmy",
+              "PAST_1PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "pszy",
+              "PHON_FALLBACK"
+            ],
+            [
+              "szliś",
+              "PHON_FALLBACK"
+            ],
+            [
+              "my",
+              "PHON_FALLBACK"
+            ]
+          ],
+          "source": "phoneme_syllable",
+          "fallback": true,
+          "boundary_precision": 0.5,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.5,
+          "fertility": 3,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        }
+      ]
+    },
+    {
+      "system": "tiktoken_cl100k",
+      "summary": {
+        "cases": 12,
+        "boundary_f1": 0.325,
+        "fertility": 3.5833333333333335,
+        "morph_alignment_precision": 0.34027777777777773,
+        "morph_alignment_recall": 0.3333333333333333,
+        "segment_exact": 0.08333333333333333,
+        "role_exact": 0.0,
+        "fallback_rate": 0.0,
+        "sources": {
+          "tiktoken_cl100k": 12
+        }
+      },
+      "categories": {
+        "adjective_stem_extension": {
+          "cases": 2,
+          "boundary_f1": 0.5833333333333333,
+          "fertility": 2.5,
+          "morph_alignment_precision": 0.75,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        },
+        "adverb_comparative": {
+          "cases": 2,
+          "boundary_f1": 0.2,
+          "fertility": 3.0,
+          "morph_alignment_precision": 0.16666666666666666,
+          "morph_alignment_recall": 0.25,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        },
+        "indefinite_pronoun": {
+          "cases": 2,
+          "boundary_f1": 0.0,
+          "fertility": 6.0,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        },
+        "nominal_root_alternation": {
+          "cases": 3,
+          "boundary_f1": 0.3333333333333333,
+          "fertility": 2.3333333333333335,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.3333333333333333,
+          "segment_exact": 0.3333333333333333,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        },
+        "prefixed_verb_theme": {
+          "cases": 2,
+          "boundary_f1": 0.5,
+          "fertility": 4.0,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        },
+        "verbal_root_alternation": {
+          "cases": 1,
+          "boundary_f1": 0.3333333333333333,
+          "fertility": 5.0,
+          "morph_alignment_precision": 0.25,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": 0.0,
+          "role_exact": 0.0,
+          "fallback_rate": 0.0
+        }
+      },
+      "rows": [
+        {
+          "id": "adv_comp_bardziej",
+          "category": "adverb_comparative",
+          "surface": "bardziej",
+          "gold": [
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "predicted": [
+            [
+              "bard",
+              "BPE"
+            ],
+            [
+              "ziej",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 2,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "adv_comp_najbardziej",
+          "category": "adverb_comparative",
+          "surface": "najbardziej",
+          "gold": [
+            [
+              "naj",
+              "PREFIX"
+            ],
+            [
+              "bardz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "iej",
+              "ADV_COMPARATIVE"
+            ]
+          ],
+          "predicted": [
+            [
+              "n",
+              "BPE"
+            ],
+            [
+              "aj",
+              "BPE"
+            ],
+            [
+              "bard",
+              "BPE"
+            ],
+            [
+              "ziej",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.3333333333333333,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.4,
+          "fertility": 4,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "pron_kolwiek_kogo",
+          "category": "indefinite_pronoun",
+          "surface": "kogokolwiek",
+          "gold": [
+            [
+              "kogo",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "predicted": [
+            [
+              "k",
+              "BPE"
+            ],
+            [
+              "og",
+              "BPE"
+            ],
+            [
+              "ok",
+              "BPE"
+            ],
+            [
+              "ol",
+              "BPE"
+            ],
+            [
+              "w",
+              "BPE"
+            ],
+            [
+              "iek",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 6,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "pron_kolwiek_czego",
+          "category": "indefinite_pronoun",
+          "surface": "czegokolwiek",
+          "gold": [
+            [
+              "czego",
+              "PRONOUN_BASE"
+            ],
+            [
+              "kolwiek",
+              "INDEF_PARTICLE"
+            ]
+          ],
+          "predicted": [
+            [
+              "cz",
+              "BPE"
+            ],
+            [
+              "eg",
+              "BPE"
+            ],
+            [
+              "ok",
+              "BPE"
+            ],
+            [
+              "ol",
+              "BPE"
+            ],
+            [
+              "w",
+              "BPE"
+            ],
+            [
+              "iek",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 6,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "verb_pref_przemierzaja",
+          "category": "prefixed_verb_theme",
+          "surface": "przemierzają",
+          "gold": [
+            [
+              "prze",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "pr",
+              "BPE"
+            ],
+            [
+              "zem",
+              "BPE"
+            ],
+            [
+              "ierz",
+              "BPE"
+            ],
+            [
+              "ają",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.3333333333333333,
+          "boundary_recall": 0.3333333333333333,
+          "boundary_f1": 0.3333333333333333,
+          "fertility": 4,
+          "morph_alignment_precision": 0.3333333333333333,
+          "morph_alignment_recall": 0.3333333333333333,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "verb_pref_odmierzaja",
+          "category": "prefixed_verb_theme",
+          "surface": "odmierzają",
+          "gold": [
+            [
+              "od",
+              "PREFIX"
+            ],
+            [
+              "mierz",
+              "ROOT"
+            ],
+            [
+              "aj",
+              "VERB_THEME"
+            ],
+            [
+              "ą",
+              "PRES_3PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "od",
+              "BPE"
+            ],
+            [
+              "m",
+              "BPE"
+            ],
+            [
+              "ierz",
+              "BPE"
+            ],
+            [
+              "ają",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.6666666666666666,
+          "boundary_recall": 0.6666666666666666,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 4,
+          "morph_alignment_precision": 0.6666666666666666,
+          "morph_alignment_recall": 0.6666666666666666,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "adj_stem_ext_innego",
+          "category": "adjective_stem_extension",
+          "surface": "innego",
+          "gold": [
+            [
+              "in",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "predicted": [
+            [
+              "inn",
+              "BPE"
+            ],
+            [
+              "ego",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.6666666666666666,
+          "fertility": 2,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "adj_stem_ext_czynnego",
+          "category": "adjective_stem_extension",
+          "surface": "czynnego",
+          "gold": [
+            [
+              "czyn",
+              "ROOT"
+            ],
+            [
+              "n",
+              "STEM_EXT"
+            ],
+            [
+              "ego",
+              "GEN_SG_MN_ADJ"
+            ]
+          ],
+          "predicted": [
+            [
+              "cz",
+              "BPE"
+            ],
+            [
+              "yn",
+              "BPE"
+            ],
+            [
+              "nego",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.5,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.5,
+          "fertility": 3,
+          "morph_alignment_precision": 0.5,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_psem",
+          "category": "nominal_root_alternation",
+          "surface": "psem",
+          "gold": [
+            [
+              "ps",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "em",
+              "INST_SG"
+            ]
+          ],
+          "predicted": [
+            [
+              "p",
+              "BPE"
+            ],
+            [
+              "sem",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 2,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_psu",
+          "category": "nominal_root_alternation",
+          "surface": "psu",
+          "gold": [
+            [
+              "ps",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "u",
+              "GEN_LOC_SG"
+            ]
+          ],
+          "predicted": [
+            [
+              "ps",
+              "BPE"
+            ],
+            [
+              "u",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 1.0,
+          "boundary_recall": 1.0,
+          "boundary_f1": 1.0,
+          "fertility": 2,
+          "morph_alignment_precision": 1.0,
+          "morph_alignment_recall": 1.0,
+          "segment_exact": true,
+          "role_exact": false
+        },
+        {
+          "id": "noun_alt_rece",
+          "category": "nominal_root_alternation",
+          "surface": "ręce",
+          "gold": [
+            [
+              "ręc",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "e",
+              "NOM_ACC_PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "r",
+              "BPE"
+            ],
+            [
+              "ę",
+              "BPE"
+            ],
+            [
+              "ce",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.0,
+          "boundary_recall": 0.0,
+          "boundary_f1": 0.0,
+          "fertility": 3,
+          "morph_alignment_precision": 0.0,
+          "morph_alignment_recall": 0.0,
+          "segment_exact": false,
+          "role_exact": false
+        },
+        {
+          "id": "verb_allomorph_przyszlismy",
+          "category": "verbal_root_alternation",
+          "surface": "przyszliśmy",
+          "gold": [
+            [
+              "przy",
+              "PREFIX"
+            ],
+            [
+              "sz",
+              "ROOT_ALLOMORPH"
+            ],
+            [
+              "liśmy",
+              "PAST_1PL"
+            ]
+          ],
+          "predicted": [
+            [
+              "pr",
+              "BPE"
+            ],
+            [
+              "z",
+              "BPE"
+            ],
+            [
+              "ysz",
+              "BPE"
+            ],
+            [
+              "li",
+              "BPE"
+            ],
+            [
+              "śmy",
+              "BPE"
+            ]
+          ],
+          "source": "tiktoken_cl100k",
+          "fallback": false,
+          "boundary_precision": 0.25,
+          "boundary_recall": 0.5,
+          "boundary_f1": 0.3333333333333333,
+          "fertility": 5,
+          "morph_alignment_precision": 0.25,
+          "morph_alignment_recall": 0.5,
+          "segment_exact": false,
+          "role_exact": false
+        }
+      ]
+    }
+  ]
+}

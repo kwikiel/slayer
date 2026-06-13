@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "system": "standard_bpe_smoke",
+      "train_words": 112,
+      "eval_words": 12,
+      "train_paths": [
+        "data/morph_benchmark.json",
+        "data/synthetic_morph_examples.json"
+      ],
+      "eval_path": "/Users/kacper/Local/Ventures/Slayer/bench/chomsky_sota2026/data/morph_benchmark.json",
+      "eval_bigram_perplexity": 24.94584478810969,
+      "eval_fertility": 3.0,
+      "warning": "Bigram smoke test only. Replace with fixed-budget Polish LM pretraining for publishable downstream proof."
+    },
+    {
+      "system": "morph_bpe_constrained_smoke",
+      "train_words": 112,
+      "eval_words": 12,
+      "train_paths": [
+        "data/morph_benchmark.json",
+        "data/synthetic_morph_examples.json"
+      ],
+      "eval_path": "/Users/kacper/Local/Ventures/Slayer/bench/chomsky_sota2026/data/morph_benchmark.json",
+      "eval_bigram_perplexity": 19.599544846844733,
+      "eval_fertility": 3.1666666666666665,
+      "warning": "Bigram smoke test only. Replace with fixed-budget Polish LM pretraining for publishable downstream proof."
+    }
+  ]
+}

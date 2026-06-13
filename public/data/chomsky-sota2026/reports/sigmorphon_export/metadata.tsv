@@ -1,0 +1,13 @@
+id	surface	category	split	lemma	expected_morph_tags
+adv_comp_bardziej	bardziej	adverb_comparative	dev		adv:com
+adv_comp_najbardziej	najbardziej	adverb_comparative	dev		adv:sup
+pron_kolwiek_kogo	kogokolwiek	indefinite_pronoun	dev		subst:sg:gen,subst:sg:acc
+pron_kolwiek_czego	czegokolwiek	indefinite_pronoun	dev		subst:sg:gen,subst:sg:acc
+verb_pref_przemierzaja	przemierzają	prefixed_verb_theme	dev		fin:pl:ter
+verb_pref_odmierzaja	odmierzają	prefixed_verb_theme	dev		fin:pl:ter
+adj_stem_ext_innego	innego	adjective_stem_extension	dev		adj:sg:gen,adj:sg:acc
+adj_stem_ext_czynnego	czynnego	adjective_stem_extension	dev		adj:sg:gen,adj:sg:acc
+noun_alt_psem	psem	nominal_root_alternation	dev		subst:sg:inst
+noun_alt_psu	psu	nominal_root_alternation	dev		subst:sg:dat
+noun_alt_rece	ręce	nominal_root_alternation	dev		subst:sg:dat,subst:sg:loc,subst:pl:nom,subst:pl:acc
+verb_allomorph_przyszlismy	przyszliśmy	verbal_root_alternation	dev		praet:pl

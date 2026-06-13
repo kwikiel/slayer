@@ -1,0 +1,2 @@
+morfeusz2==1.99.15
+tiktoken==0.13.0
