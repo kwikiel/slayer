@@ -1,8 +1,10 @@
 import Console from "./console";
+import CptProgress from "./cpt";
+import CptHistory from "./history";
 
 export const metadata = {
   title: "Pomiar na żywo | Slayer",
-  description: "Podgląd na żywo: autonomiczna kolejka benchmarków na simp (RTX 3090) z paskiem postępu, ETA i wynikami.",
+  description: "Podgląd na żywo: postęp korpusu CPT do 2B tokenów oraz autonomiczna kolejka benchmarków na simp.",
 };
 
 const css = `
@@ -25,6 +27,24 @@ const css = `
     .scoreline{display:flex;align-items:baseline;justify-content:center;gap:14px;font-family:var(--mono);font-weight:600;font-size:2.4rem;margin:6px 0}
     .scoreline .b{color:var(--acc)}.scoreline .q{color:#9aa3b2}.scoreline .d{color:var(--dim);font-weight:400}
     h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4.4vw,2.8rem);letter-spacing:-.015em;margin:10px 0 0}
+    .cpt-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+    .cpt-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.015em;margin:8px 0 0;color:var(--ink)}
+    .cptbar{height:30px}
+    .cptbar i{background:linear-gradient(90deg,var(--acc),var(--good))}
+    .cptgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:18px}
+    .cptbucket{border:1px solid var(--line2);background:rgba(255,255,255,.025);border-radius:8px;padding:12px}
+    .cptbucket-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:8px}
+    .cptbucket-top b{font-size:.88rem;color:var(--ink);font-weight:600}
+    .cptbucket-top span{font-family:var(--mono);font-size:.68rem;color:var(--dim);white-space:nowrap}
+    .cptbucket p{margin:8px 0 0;color:var(--mut);font-size:.82rem;line-height:1.4}
+    .cpt-milestones{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+    .mile{border:1px solid var(--line2);border-radius:8px;padding:10px;background:rgba(255,255,255,.018)}
+    .mile span{display:block;font-family:var(--mono);font-size:.7rem;color:var(--dim)}
+    .mile b{display:block;font-size:.86rem;color:var(--mut);font-weight:500;margin-top:3px}
+    .mile.done{border-color:rgba(116,163,122,.42);background:rgba(116,163,122,.07)}
+    .mile.done b{color:var(--good)}
+    .pnote{padding-top:14px;margin:16px 0 0;border-top:1px solid var(--line2);color:var(--mut);font-size:.88rem}
+    @media(max-width:680px){.cpt-milestones{grid-template-columns:1fr 1fr}}
 `;
 
 export default function Progress() {
@@ -32,6 +52,8 @@ export default function Progress() {
     <div className="sec page-top">
       <style>{css}</style>
       <div className="inner">
+        <CptProgress />
+        <CptHistory />
         <Console />
       </div>
     </div>

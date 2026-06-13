@@ -1,0 +1,25 @@
+{
+ "note": "Snapshoty postępu korpusu CPT; dopisywane przez bench/cpt_progress_snapshot.py przy każdej aktualizacji cpt_progress.json. Jeden wpis na dzień (ostatni stan dnia).",
+ "target_tokens": 2000000000,
+ "history": [
+  {
+   "date": "2026-06-11",
+   "accepted_tokens": 0,
+   "accepted_documents": 0,
+   "event": "start programu wiedzy / otwarcie zbiórki"
+  },
+  {
+   "date": "2026-06-13",
+   "accepted_tokens": 10000000,
+   "accepted_documents": 92000,
+   "by_bucket": {
+    "Polski korpus domenowy": 10000000,
+    "Ogolny polski wysokiej jakosci": 0,
+    "Replay europejski/angielski": 0,
+    "Kod i dokumentacja": 0,
+    "Math/reasoning/fakty weryfikowalne": 0
+   },
+   "event": "seed corpus zaakceptowany"
+  }
+ ]
+}
