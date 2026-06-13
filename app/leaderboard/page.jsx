@@ -1,4 +1,5 @@
 import LeaderboardLive from "./live";
+import PolNativeBoard from "./polnative";
 
 export const metadata = {
   title: "Leaderboard — Bielik-11B-v3 vs Qwen3.5-9B | Slayer",
@@ -27,6 +28,7 @@ export default function Leaderboard() {
           <span className="live"><span className="d"></span>LIVE · AUTO-SYNC</span>
         </div>
         <LeaderboardLive />
+        <PolNativeBoard />
       </div>
     </div>
   );
