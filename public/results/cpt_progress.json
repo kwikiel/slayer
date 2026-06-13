@@ -1,0 +1,76 @@
+{
+  "goal": "CPT 2B high-quality tokens",
+  "target_tokens": 2000000000,
+  "accepted_tokens": 10000000,
+  "accepted_documents": 92000,
+  "updated_at": "2026-06-13",
+  "base_model": "Qwen/Qwen3.5-9B-Base",
+  "stage": "collection",
+  "status": "seed corpus accepted; broad high-quality CPT collection open",
+  "token_budget": [
+    {
+      "name": "Polski korpus domenowy",
+      "target_share": 0.5,
+      "target_tokens": 1000000000,
+      "accepted_tokens": 10000000,
+      "description": "Prawo, administracja, edukacja, gospodarka lokalna, dokumenty publiczne i dlugi ogon polskiej wiedzy."
+    },
+    {
+      "name": "Ogolny polski wysokiej jakosci",
+      "target_share": 0.25,
+      "target_tokens": 500000000,
+      "accepted_tokens": 0,
+      "description": "Ksiazki, artykuly, poradniki, Wikipedia/encyklopedie po dedupie, materialy edukacyjne."
+    },
+    {
+      "name": "Replay europejski/angielski",
+      "target_share": 0.1,
+      "target_tokens": 200000000,
+      "accepted_tokens": 0,
+      "description": "Retencja ogolnych kompetencji i ograniczenie zapominania."
+    },
+    {
+      "name": "Kod i dokumentacja",
+      "target_share": 0.1,
+      "target_tokens": 200000000,
+      "accepted_tokens": 0,
+      "description": "Dokumentacja techniczna, kod, API, narzedzia i teksty strukturalne."
+    },
+    {
+      "name": "Math/reasoning/fakty weryfikowalne",
+      "target_share": 0.05,
+      "target_tokens": 100000000,
+      "accepted_tokens": 0,
+      "description": "Material pod pozniejsze RLVR/GRPO i sanity-check reasoning."
+    }
+  ],
+  "gates": [
+    "license_ok",
+    "language_id_pl_or_replay",
+    "boilerplate_removed",
+    "exact_dedup",
+    "near_dedup",
+    "pii_policy_checked",
+    "benchmark_contamination_checked",
+    "quality_score_pass",
+    "holdout_split_done"
+  ],
+  "next_milestones": [
+    {
+      "tokens": 50000000,
+      "label": "pierwszy audyt miksu"
+    },
+    {
+      "tokens": 250000000,
+      "label": "maly CPT signal run"
+    },
+    {
+      "tokens": 1000000000,
+      "label": "decyzja o pelnym 2B runie"
+    },
+    {
+      "tokens": 2000000000,
+      "label": "CPT 2B ready"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "ts": "2026-06-13T01:33:04",
+  "ngram": 8,
+  "index_size": 468809,
+  "excl_hashes": 100,
+  "eval_sources": {
+    "runs/test_atoms.txt": 304937,
+    "slayer-data/polknowledge/bench.jsonl": 876,
+    "slayer-data/knowledge/probe_v1.jsonl": 438,
+    "slayer-data/mcq_heldout.jsonl": 633,
+    "slayer-data/mcq_test.jsonl": 414,
+    "slayer-data/style/holdout_v1.jsonl": 19783,
+    "/Users/kacper/.cache/huggingface/hub/datasets--amu-cai--llmzszl-dataset/snapshots/9c11d52a415147f1e2c44038a9d4d4155f064e1a/llmzszl-test.jsonl": 141728
+  },
+  "results": [
+    {
+      "file": "slayer-data/distill/distill_pl.jsonl",
+      "records": 1763,
+      "verbatim_hits": 5,
+      "rate_pct": 0.284,
+      "samples": [
+        {
+          "line": 455,
+          "span": "w którym roku odbyła się bitwa pod grunwaldem",
+          "type": "ngram"
+        },
+        {
+          "line": 464,
+          "span": "w którym roku odbyła się bitwa pod grunwaldem",
+          "type": "ngram"
+        },
+        {
+          "line": 474,
+          "span": "w którym roku odbyła się bitwa pod grunwaldem",
+          "type": "ngram"
+        },
+        {
+          "line": 486,
+          "span": "w którym roku odbyła się bitwa pod grunwaldem",
+          "type": "ngram"
+        },
+        {
+          "line": 492,
+          "span": "w którym roku polska przystąpiła do unii europejskiej",
+          "type": "ngram"
+        }
+      ]
+    }
+  ]
+}
