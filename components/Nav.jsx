@@ -22,6 +22,7 @@ const GROUPS = [
       ["/styl", "styl"],
       ["/zadania", "zadania"],
       ["/wiedza", "wiedza (CPT)"],
+      ["/eng-log", "eng log (notatki)"],
       ["/bielik-dane", "dane Bielika (analiza)"],
     ],
   },
